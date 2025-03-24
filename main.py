@@ -3552,14 +3552,16 @@
 #
 #
 # remove_empty_dirs("nested1")
+#
+# import os
+# # import os.path
+#
+# print(os.path.split(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
+# print(os.path.join("nested1", r"E:\Python522", "nested2", "nested3", "text3.txt"))
+# print(os.path.exists(r"E:\Python522\nested2\nested3\text3.txt"))
+# print(os.path.exists(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
+# print(os.path.isfile(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
+# print(os.path.isdir(r"E:\Python522\nested1\nested2\nested3"))
+#
 
-import os
-# import os.path
-
-print(os.path.split(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
-print(os.path.join("nested1", r"E:\Python522", "nested2", "nested3", "text3.txt"))
-print(os.path.exists(r"E:\Python522\nested2\nested3\text3.txt"))
-print(os.path.exists(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
-print(os.path.isfile(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
-print(os.path.isdir(r"E:\Python522\nested1\nested2\nested3"))
-
+print("Hello")
