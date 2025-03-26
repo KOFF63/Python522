@@ -1,4 +1,4 @@
-# name = "admin"
+
 # print("Hello", name)
 # age = 20.2
 # print(age)
@@ -8,6 +8,7 @@
 #
 # print(id(name))
 # print(id(age))
+# from os import write
 
 # a = b = c = 10
 # a, b, c = 5, "Hello", 7.2
@@ -3552,9 +3553,9 @@
 #
 #
 # remove_empty_dirs("nested1")
-#
+
 # import os
-# # import os.path
+# import os.path
 #
 # print(os.path.split(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
 # print(os.path.join("nested1", r"E:\Python522", "nested2", "nested3", "text3.txt"))
@@ -3563,5 +3564,141 @@
 # print(os.path.isfile(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
 # print(os.path.isdir(r"E:\Python522\nested1\nested2\nested3"))
 #
+#
+# with open("text1.txt", "w+") as f:
+#     print(f.write("Hello"))
+#     f.seek(0)
+#     data = f.read()  # "Hello"
+#     data += "!"  # "Hello!"
+#     f.seek(0)
+#     f.write(data)
 
-# print("Hello")
+# import os
+#
+# file = "text3.txt"
+# # f = open(file, "w")
+# # f.write("Замена строки в текстовом файле;\n"
+# #         "изменить строку в списке;\n"
+# #         "записать список в файл;\n")
+# # f.close()
+#
+# if os.path.exists(file):
+#     f = open(file, "r")
+#     read_line = f.readlines()
+#     f.close()
+#
+#     pos1 = int(input("pos1 = ")) - 1  # 1
+#     pos2 = int(input("pos2 = ")) - 1  # 3
+#
+#     # if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):
+#     # if 0 < pos1 <= len(read_line) and 0 < pos2 <= len(read_line):
+#     if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):
+#         read_line[pos1], read_line[pos2] = read_line[pos2], read_line[pos1]
+#     else:
+#         print("Такой строки нет")
+#     print(read_line)
+#
+#     f = open(file, "w")
+#     f.writelines(read_line)
+#     f.close()
+#
+# else:
+#     print("Такого файла нет")
+# s = "Hello\"World"
+# print(len(s))
+
+# print("Данные в локальном репозитории")
+
+# print("Код, созданный на новом устройстве")
+
+import os
+#
+# dirs = [r'Work\F1', r'Work\F2\F21']
+#
+# # for d in dirs:
+# #     os.makedirs(d)
+#
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+#
+# for key, value in files.items():
+#     for file in value:
+#         file_path = os.path.join(key, file)
+#         open(file_path, 'w').close()
+#
+#
+# file_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+#
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f"Некоторый текст для файла {file}")
+
+# Work\w.txt
+# Work\F1\f11.txt
+# Work\F1\f12.txt
+# Work\F1\f13.txt
+# Work\F2\F21\f211.txt
+# Work\F2\F21\f212.txt
+
+
+# def print_tree(topdown):
+#     print(f"Обход Work {'сверху вниз' if topdown else 'снизу вверх'}")
+#     for root, directory, file in os.walk("Work", topdown):
+#         print(root)
+#         print(directory)
+#         print(file)
+#     print("-" * 50)
+#
+#
+# print_tree(False)
+# print_tree(True)
+
+import os
+import time
+#
+# path = "main.py"
+# print(os.path.getsize(path))  # размер файла
+# print(os.path.getatime(path))  # время последнего доступа к файлу
+# print(os.path.getmtime(path))  # время последнего изменения файла
+# print(os.path.getctime(path))  # время создания файла
+#
+# size = os.path.getsize(path)
+# a_time = os.path.getatime(path)
+# m_time = os.path.getmtime(path)
+# c_time = os.path.getctime(path)
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(a_time)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(m_time)))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(c_time)))
+# print(size)
+# print(size // 1024)
+
+
+# import os
+#
+# file_path = r"C:\Users\krilo\PycharmProjects\PythonProject\two.txt"
+#
+# if os.path.exists(file_path):
+#     directory, file = os.path.split(file_path)
+#     atime = os.path.getatime(file_path)
+#     print(f"{file} ({directory}) - {atime}")
+# else:
+#     print(f"Файл {file_path} не существует")
+
+#
+# dir_name = "Work"
+#
+# objs = os.listdir(dir_name)
+# print(objs)
+#
+#
+# for obj in objs:
+#     p = os.path.join(dir_name, obj)
+#     # print(p)
+#     if os.path.isfile(p):
+#         print(f"{obj} - file - {os.path.getsize(p)} bytes")
+#     if os.path.isdir(p):
+#         print(f"{obj} - dir")
