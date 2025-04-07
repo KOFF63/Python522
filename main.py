@@ -3610,7 +3610,8 @@
 
 # print("Код, созданный на новом устройстве")
 
-import os
+
+# import os
 #
 # dirs = [r'Work\F1', r'Work\F2\F21']
 #
@@ -3764,7 +3765,8 @@ import time
 #     def print_info(self):
 #         print(" Персональные данные ".center(40, "*"))
 #         print(
-#             f"Имя: {self.name}\n Дата рождения: {self.birthday}\nНомер телефона:{self.phone}\nСтрана: {self.country}\n"
+#             f"Имя: {self.name}\n Дата рождения: {self.birthday}
+#             \nНомер телефона:{self.phone}\nСтрана: {self.country}\n"
 #             f"Город: {self.city}\nДомашний адрес: {self.address}")
 #
 #         print("=" * 40)
@@ -3878,4 +3880,219 @@ import time
 # del droid2
 # print("Численность роботов", Robot.k)
 
+#
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#
+# p1 = Point(5, 10)
+# p1.set_coord(5, 100)
+# print(p1.get_coord())
+# # print(p1.x, p1.y)
+#
+# p1.__x = 100
+# p1.__y = "abc"
+# print(p1.__x, p1.__y)
+# print(p1.__dict__)
+#
+# import math
+#
+#
+# class Rectangle:
+#     def __init__(self, length=1, width=1):
+#         self.__length = length
+#         self.__width = width
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def get_width(self):
+#         return self.__length
+#
+#     def get_length(self):
+#         return self.__length
+#
+#     def set_width(self, width):
+#         if Rectangle.__check_value(width):
+#             self.__width = width
+#
+#     def set_length(self, length):
+#         if Rectangle.__check_value(length):
+#             self.__length = length
+#
+#     def get_area(self):
+#         return self.__width * self.__length
+#
+#     def get_perimetr(self):
+#         return 2*(self.__width + self.__length)
+#
+#     def get_hypotenuse(self):
+#         return round(math.sqrt(self.__length ** 2 + self.__width ** 2), 2)
+#
+#
+# r1 = Rectangle()
+# r1.set_width(9)
+# r1.set_length(3)
+# print("длина", r1.get_length())
+# print("ширина", r1.get_width())
+# print("площадь", r1.get_perimetr())
+# print("гипотенуза", r1.get_hypotenuse())
 
+#
+# class Point:
+#     __slots__ = "x", "y", "z"
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 20
+# print(p1.x, p1.y, p1.z)
+# # print(p1.__dict__)
+#
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property
+#     def x(self):
+#         print("Вызов __get")
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         print("Вызов __set")
+#         self.__x = x
+#
+#     @x.deleter
+#     def x(self):
+#         print("удаление")
+#         del self.__x
+#
+#     # coordX = property(__get_coord_x, __set_coord_x, __del_coord_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 100
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+#
+# class Person:
+#     def __init__(self, name, old):
+#         self._name = name
+#         self._old = old
+#
+#     @property
+#     def name(self):
+#         return self._name
+#
+#     @name.setter
+#     def name(self, new_name):
+#         if isinstance(new_name, str) and new_name.strip():
+#             self._name = new_name
+#         else:
+#             raise ValueError("Имя должно быть непустой строкой")
+#
+#     @name.deleter
+#     def name(self):
+#         print("Удаление имени")
+#         self._name = None
+#
+#     @property
+#     def old(self):
+#         return self._old
+#
+#     @old.setter
+#     def old(self, new_old):
+#         if isinstance(new_old, int) and new_old >= 0:
+#             self._old = new_old
+#         else:
+#             raise ValueError("Возраст должен быть положительным целым числом")
+#
+#     @old.deleter
+#     def old(self):
+#         print("Удаление возраста")
+#         self._old = None
+#
+#
+# person = Person("Irina", 26)
+#
+# print(person.name)
+# print(person.old)
+#
+# person.name = "Igor"
+# person.old = 31
+#
+# print(person.name)
+# print(person.old)
+#
+# del person.name
+# del person.old
+#
+# print(person.name)
+# print(person.old)
+
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# # print(Point.get_count())
+# def inc(x):
+#     return x + 1
+#
+#
+# def dec(x):
+#     return x - 1
+#
+#
+# print(inc(10), dec(10))
+#
+#
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
