@@ -143,263 +143,309 @@
 
 
 # Решение через декоратор @property
-
-class Account:
-    rate_usd = 0.013
-    rate_eur = 0.011
-    suffix = "RUB"
-    suffix_usd = "USD"
-    suffix_eur = "EUR"
-
-    def __init__(self, num, surname, percent, value):
-        self._num = num
-        self._surname = surname
-        self._percent = percent
-        self._value = value
-        print(f"Счет #{self._num} принадлежащий {self._surname} был открыт.")
-        print("*" * 50)
-
-    def __del__(self):
-        print("*" * 50)
-        print(f"Счет #{self._num} принадлежащий {self._surname} был закрыт.")
-
-    @property
-    def num(self):
-        return self._num
-
-    @property
-    def surname(self):
-        return self._surname
-
-    @surname.setter
-    def surname(self, new_surname):
-        self._surname = new_surname
-
-    @property
-    def percent(self):
-        return self._percent
-
-    @percent.setter
-    def percent(self, new_percent):
-        self._percent = new_percent
-
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, new_value):
-        self._value = new_value
-
-    @classmethod
-    def set_eur_rate(cls, rate):
-        cls.rate_eur = rate
-
-    @classmethod
-    def set_usd_rate(cls, rate):
-        cls.rate_usd = rate
-
-    @staticmethod
-    def convert(value, rate):
-        return value * rate
-
-    def convert_to_usd(self):
-        usd_val = Account.convert(self._value, Account.rate_usd)
-        print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
-
-    def convert_to_eur(self):
-        eur_val = Account.convert(self._value, Account.rate_eur)
-        print(f"Состояние счета: {eur_val} {Account.suffix_eur}")
-
-    def edit_owner(self, surname):
-        self._surname = surname
-
-    def add_percents(self):
-        self._value += self._value * self._percent
-        print("Проценты были успешно начислены!")
-        self.print_balance()
-
-    def withdraw_money(self, val):
-        if val > self._value:
-            print(f"К сожалению у вас нет {val} {Account.suffix}")
-        else:
-            self._value -= val
-            print(f"{val} {Account.suffix} было успешно снято!")
-        self.print_balance()
-
-    def add_money(self, val):
-        self._value += val
-        print(f"{val} {Account.suffix} было успешно добавлено!")
-        self.print_balance()
-
-    def print_balance(self):
-        print(f"Текущий баланс {self._value} {Account.suffix}")
-
-    def print_info(self):
-        print("Информация о счете:")
-        print("-" * 20)
-        print(f"#{self._num}")
-        print(f"Владелец: {self._surname}")
-        self.print_balance()
-        print(f"Проценты: {self._percent:.0%}")
-        print("-" * 20)
-
-
-acc = Account("12345", "Долгих", 0.03, 1000)
-acc.print_info()
-acc.convert_to_usd()
-acc.convert_to_eur()
-print()
-
-Account.set_usd_rate(2)
-Account.set_eur_rate(3)
-acc.convert_to_usd()
-acc.convert_to_eur()
-print()
-
-acc.surname = "Дюма"
-acc.print_info()
-print()
-
-acc.add_percents()
-print()
-
-acc.withdraw_money(100)
-print()
-
-acc.withdraw_money(3000)
-print()
-
-acc.add_money(5000)
-print()
-
-acc.withdraw_money(3000)
-print()
+#
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, num, surname, percent, value):
+#         self._num = num
+#         self._surname = surname
+#         self._percent = percent
+#         self._value = value
+#         print(f"Счет #{self._num} принадлежащий {self._surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет #{self._num} принадлежащий {self._surname} был закрыт.")
+#
+#     @property
+#     def num(self):
+#         return self._num
+#
+#     @property
+#     def surname(self):
+#         return self._surname
+#
+#     @surname.setter
+#     def surname(self, new_surname):
+#         self._surname = new_surname
+#
+#     @property
+#     def percent(self):
+#         return self._percent
+#
+#     @percent.setter
+#     def percent(self, new_percent):
+#         self._percent = new_percent
+#
+#     @property
+#     def value(self):
+#         return self._value
+#
+#     @value.setter
+#     def value(self, new_value):
+#         self._value = new_value
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self._value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self._value, Account.rate_eur)
+#         print(f"Состояние счета: {eur_val} {Account.suffix_eur}")
+#
+#     def edit_owner(self, surname):
+#         self._surname = surname
+#
+#     def add_percents(self):
+#         self._value += self._value * self._percent
+#         print("Проценты были успешно начислены!")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self._value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self._value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self._value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self._value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print("-" * 20)
+#         print(f"#{self._num}")
+#         print(f"Владелец: {self._surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self._percent:.0%}")
+#         print("-" * 20)
+#
+#
+# acc = Account("12345", "Долгих", 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# Account.set_usd_rate(2)
+# Account.set_eur_rate(3)
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# acc.surname = "Дюма"
+# acc.print_info()
+# print()
+#
+# acc.add_percents()
+# print()
+#
+# acc.withdraw_money(100)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+#
+# acc.add_money(5000)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
 
 
 # Решение через get_...(), set_...()
+#
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, num, surname, percent, value):
+#         self.__num = num
+#         self.__surname = surname
+#         self.__percent = percent
+#         self.__value = value
+#         print(f"Счет #{self._num} принадлежащий {self._surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет #{self._num} принадлежащий {self._surname} был закрыт.")
+#
+#     def get_num(self):
+#         return self._num
+#
+#     def get_surname(self):
+#         return self._surname
+#
+#     def set_surname(self, new_surname):
+#         self._surname = new_surname
+#
+#     def get_percent(self):
+#         return self._percent
+#
+#     def set_percent(self, new_percent):
+#         self._percent = new_percent
+#
+#     def get_value(self):
+#         return self._value
+#
+#     def set_value(self, new_value):
+#         self._value = new_value
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self._value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self._value, Account.rate_eur)
+#         print(f"Состояние счета: {eur_val} {Account.suffix_eur}")
+#
+#     def edit_owner(self, surname):
+#         self._surname = surname
+#
+#     def add_percents(self):
+#         self._value += self._value * self._percent
+#         print("Проценты были успешно начислены!")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self._value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self._value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self._value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self._value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print("-" * 20)
+#         print(f"#{self._num}")
+#         print(f"Владелец: {self._surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self._percent:.0%}")
+#         print("-" * 20)
+#
+#
+# acc = Account("12345", "Долгих", 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# Account.set_usd_rate(2)
+# Account.set_eur_rate(3)
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# acc.set_surname("Дюма")
+# acc.print_info()
+# print()
+#
+# acc.add_percents()
+# print()
+#
+# acc.withdraw_money(100)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+#
+# acc.add_money(5000)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
 
-class Account:
-    rate_usd = 0.013
-    rate_eur = 0.011
-    suffix = "RUB"
-    suffix_usd = "USD"
-    suffix_eur = "EUR"
+import math
 
-    def __init__(self, num, surname, percent, value):
-        self._num = num
-        self._surname = surname
-        self._percent = percent
-        self._value = value
-        print(f"Счет #{self._num} принадлежащий {self._surname} был открыт.")
-        print("*" * 50)
 
-    def __del__(self):
-        print("*" * 50)
-        print(f"Счет #{self._num} принадлежащий {self._surname} был закрыт.")
+class Pair:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
 
-    def get_num(self):
-        return self._num
+    def change_numbers(self, new_a, new_b):
+        self.a = new_a
+        self.b = new_b
 
-    def get_surname(self):
-        return self._surname
+    def calculate_sum(self):
+        return self.a + self.b
 
-    def set_surname(self, new_surname):
-        self._surname = new_surname
+    def calculate_product(self):
+        return self.a * self.b
 
-    def get_percent(self):
-        return self._percent
 
-    def set_percent(self, new_percent):
-        self._percent = new_percent
+class RightTriangle(Pair):
+    def calculate_hypotenuse(self):
+        return round(math.sqrt(self.a ** 2 + self.b ** 2), 2)
 
-    def get_value(self):
-        return self._value
-
-    def set_value(self, new_value):
-        self._value = new_value
-
-    @classmethod
-    def set_eur_rate(cls, rate):
-        cls.rate_eur = rate
-
-    @classmethod
-    def set_usd_rate(cls, rate):
-        cls.rate_usd = rate
-
-    @staticmethod
-    def convert(value, rate):
-        return value * rate
-
-    def convert_to_usd(self):
-        usd_val = Account.convert(self._value, Account.rate_usd)
-        print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
-
-    def convert_to_eur(self):
-        eur_val = Account.convert(self._value, Account.rate_eur)
-        print(f"Состояние счета: {eur_val} {Account.suffix_eur}")
-
-    def edit_owner(self, surname):
-        self._surname = surname
-
-    def add_percents(self):
-        self._value += self._value * self._percent
-        print("Проценты были успешно начислены!")
-        self.print_balance()
-
-    def withdraw_money(self, val):
-        if val > self._value:
-            print(f"К сожалению у вас нет {val} {Account.suffix}")
-        else:
-            self._value -= val
-            print(f"{val} {Account.suffix} было успешно снято!")
-        self.print_balance()
-
-    def add_money(self, val):
-        self._value += val
-        print(f"{val} {Account.suffix} было успешно добавлено!")
-        self.print_balance()
-
-    def print_balance(self):
-        print(f"Текущий баланс {self._value} {Account.suffix}")
+    def calculate_area(self):
+        return round(0.5 * self.a * self.b, 2)
 
     def print_info(self):
-        print("Информация о счете:")
-        print("-" * 20)
-        print(f"#{self._num}")
-        print(f"Владелец: {self._surname}")
-        self.print_balance()
-        print(f"Проценты: {self._percent:.0%}")
-        print("-" * 20)
+        hypotenuse = self.calculate_hypotenuse()
+        print(f"Гипотенуза ABC: {hypotenuse}")
+        print(f"Прямоугольный треугольник ABC ({self.a}, {self.b}, {hypotenuse})")
+        print(f"Площадь ABC: {self.calculate_area()}")
 
 
-acc = Account("12345", "Долгих", 0.03, 1000)
-acc.print_info()
-acc.convert_to_usd()
-acc.convert_to_eur()
-print()
+print("Исходный треугольник:")
+triangle = RightTriangle(5, 8)
+triangle.print_info()
+print(f"\nСумма катетов: {triangle.calculate_sum()}")
+print(f"Произведение катетов: {triangle.calculate_product()}")
 
-Account.set_usd_rate(2)
-Account.set_eur_rate(3)
-acc.convert_to_usd()
-acc.convert_to_eur()
-print()
-
-acc.set_surname("Дюма")
-acc.print_info()
-print()
-
-acc.add_percents()
-print()
-
-acc.withdraw_money(100)
-print()
-
-acc.withdraw_money(3000)
-print()
-
-acc.add_money(5000)
-print()
-
-acc.withdraw_money(3000)
-print()
+triangle.change_numbers(10, 20)
+print("\nПосле изменения катетов:")
+print(f"Гипотенуза ABC: {triangle.calculate_hypotenuse()}")
+print(f"Сумма катетов: {triangle.calculate_sum()}")
+print(f"Произведение катетов: {triangle.calculate_product()}")
+print(f"Площадь ABC: {triangle.calculate_area()}")
