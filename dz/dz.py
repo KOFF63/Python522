@@ -403,49 +403,100 @@
 #
 # acc.withdraw_money(3000)
 # print()
+#
+# import math
+#
+#
+# class Pair:
+#     def __init__(self, a, b):
+#         self.a = a
+#         self.b = b
+#
+#     def change_numbers(self, new_a, new_b):
+#         self.a = new_a
+#         self.b = new_b
+#
+#     def calculate_sum(self):
+#         return self.a + self.b
+#
+#     def calculate_product(self):
+#         return self.a * self.b
+#
+#
+# class RightTriangle(Pair):
+#     def calculate_hypotenuse(self):
+#         return round(math.sqrt(self.a ** 2 + self.b ** 2), 2)
+#
+#     def calculate_area(self):
+#         return round(0.5 * self.a * self.b, 2)
+#
+#     def print_info(self):
+#         hypotenuse = self.calculate_hypotenuse()
+#         print(f"Гипотенуза ABC: {hypotenuse}")
+#         print(f"Прямоугольный треугольник ABC ({self.a}, {self.b}, {hypotenuse})")
+#         print(f"Площадь ABC: {self.calculate_area()}")
+#
+#
+# print("Исходный треугольник:")
+# triangle = RightTriangle(5, 8)
+# triangle.print_info()
+# print(f"\nСумма катетов: {triangle.calculate_sum()}")
+# print(f"Произведение катетов: {triangle.calculate_product()}")
+#
+# triangle.change_numbers(10, 20)
+# print("\nПосле изменения катетов:")
+# print(f"Гипотенуза ABC: {triangle.calculate_hypotenuse()}")
+# print(f"Сумма катетов: {triangle.calculate_sum()}")
+# print(f"Произведение катетов: {triangle.calculate_product()}")
+# print(f"Площадь ABC: {triangle.calculate_area()}")
 
-import math
+
+class Human:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def get_info(self):
+        return f"{self.name} {self.age}"
 
 
-class Pair:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+class Student(Human):
+    def __init__(self, name, age, group, course):
+        super().__init__(name, age)
+        self.group = group
+        self.course = course
 
-    def change_numbers(self, new_a, new_b):
-        self.a = new_a
-        self.b = new_b
-
-    def calculate_sum(self):
-        return self.a + self.b
-
-    def calculate_product(self):
-        return self.a * self.b
+    def get_info(self):
+        return f"{super().get_info()} {self.group} {self.course}"
 
 
-class RightTriangle(Pair):
-    def calculate_hypotenuse(self):
-        return round(math.sqrt(self.a ** 2 + self.b ** 2), 2)
+class Teacher(Human):
+    def __init__(self, name, age, subject, experience):
+        super().__init__(name, age)
+        self.subject = subject
+        self.experience = experience
 
-    def calculate_area(self):
-        return round(0.5 * self.a * self.b, 2)
-
-    def print_info(self):
-        hypotenuse = self.calculate_hypotenuse()
-        print(f"Гипотенуза ABC: {hypotenuse}")
-        print(f"Прямоугольный треугольник ABC ({self.a}, {self.b}, {hypotenuse})")
-        print(f"Площадь ABC: {self.calculate_area()}")
+    def get_info(self):
+        return f"{super().get_info()} {self.subject} {self.experience}"
 
 
-print("Исходный треугольник:")
-triangle = RightTriangle(5, 8)
-triangle.print_info()
-print(f"\nСумма катетов: {triangle.calculate_sum()}")
-print(f"Произведение катетов: {triangle.calculate_product()}")
+class Graduate(Student):
+    def __init__(self, name, age, group, course, thesis):
+        super().__init__(name, age, group, course)
+        self.thesis = thesis
 
-triangle.change_numbers(10, 20)
-print("\nПосле изменения катетов:")
-print(f"Гипотенуза ABC: {triangle.calculate_hypotenuse()}")
-print(f"Сумма катетов: {triangle.calculate_sum()}")
-print(f"Произведение катетов: {triangle.calculate_product()}")
-print(f"Площадь ABC: {triangle.calculate_area()}")
+    def get_info(self):
+        return f"{super().get_info()} {self.thesis}"
+
+
+group = [
+    Student("Батодалаев Даши", 16, "ГК Web_011", 5),
+    Student("Загидулин Линар", 32, "РПО PD_011", 5),
+    Graduate("Шугаин Сергей", 15, "РПО PD_011", 5, "Защита персональных данных"),
+    Teacher("Даньшин Андрей", 38, "Астрофизика", 110),
+    Student("Маркин Даниил", 17, "ГК Python_011", 5),
+    Teacher("Башкиров Алексей", 45, "Разработка приложений", 20)
+]
+
+for member in group:
+    print(member.get_info())
