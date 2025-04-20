@@ -450,53 +450,74 @@
 # print(f"Произведение катетов: {triangle.calculate_product()}")
 # print(f"Площадь ABC: {triangle.calculate_area()}")
 
+#
+# class Human:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_info(self):
+#         return f"{self.name} {self.age}"
+#
+#
+# class Student(Human):
+#     def __init__(self, name, age, group, course):
+#         super().__init__(name, age)
+#         self.group = group
+#         self.course = course
+#
+#     def get_info(self):
+#         return f"{super().get_info()} {self.group} {self.course}"
+#
+#
+# class Teacher(Human):
+#     def __init__(self, name, age, subject, experience):
+#         super().__init__(name, age)
+#         self.subject = subject
+#         self.experience = experience
+#
+#     def get_info(self):
+#         return f"{super().get_info()} {self.subject} {self.experience}"
+#
+#
+# class Graduate(Student):
+#     def __init__(self, name, age, group, course, thesis):
+#         super().__init__(name, age, group, course)
+#         self.thesis = thesis
+#
+#     def get_info(self):
+#         return f"{super().get_info()} {self.thesis}"
+#
+#
+# group = [
+#     Student("Батодалаев Даши", 16, "ГК Web_011", 5),
+#     Student("Загидулин Линар", 32, "РПО PD_011", 5),
+#     Graduate("Шугаин Сергей", 15, "РПО PD_011", 5, "Защита персональных данных"),
+#     Teacher("Даньшин Андрей", 38, "Астрофизика", 110),
+#     Student("Маркин Даниил", 17, "ГК Python_011", 5),
+#     Teacher("Башкиров Алексей", 45, "Разработка приложений", 20)
+# ]
+#
+# for member in group:
+#     print(member.get_info())
 
-class Human:
-    def __init__(self, name, age):
+class Student:
+    def __init__(self, name, laptop_model, laptop_cpu, laptop_ram):
         self.name = name
-        self.age = age
+        self.laptop = self.Laptop(laptop_model, laptop_cpu, laptop_ram)
 
-    def get_info(self):
-        return f"{self.name} {self.age}"
+    def print_info(self):
+        print(f"{self.name} => {self.laptop.model}, {self.laptop.cpu}, {self.laptop.ram}")
 
-
-class Student(Human):
-    def __init__(self, name, age, group, course):
-        super().__init__(name, age)
-        self.group = group
-        self.course = course
-
-    def get_info(self):
-        return f"{super().get_info()} {self.group} {self.course}"
+    class Laptop:
+        def __init__(self, model, cpu, ram):
+            self.model = model
+            self.cpu = cpu
+            self.ram = ram
 
 
-class Teacher(Human):
-    def __init__(self, name, age, subject, experience):
-        super().__init__(name, age)
-        self.subject = subject
-        self.experience = experience
+student1 = Student("Roman", "HP", "i7", "16")
+student2 = Student("Vladimir", "HP", "i7", "16")
 
-    def get_info(self):
-        return f"{super().get_info()} {self.subject} {self.experience}"
-
-
-class Graduate(Student):
-    def __init__(self, name, age, group, course, thesis):
-        super().__init__(name, age, group, course)
-        self.thesis = thesis
-
-    def get_info(self):
-        return f"{super().get_info()} {self.thesis}"
-
-
-group = [
-    Student("Батодалаев Даши", 16, "ГК Web_011", 5),
-    Student("Загидулин Линар", 32, "РПО PD_011", 5),
-    Graduate("Шугаин Сергей", 15, "РПО PD_011", 5, "Защита персональных данных"),
-    Teacher("Даньшин Андрей", 38, "Астрофизика", 110),
-    Student("Маркин Даниил", 17, "ГК Python_011", 5),
-    Teacher("Башкиров Алексей", 45, "Разработка приложений", 20)
-]
-
-for member in group:
-    print(member.get_info())
+student1.print_info()
+student2.print_info()

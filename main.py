@@ -3658,6 +3658,8 @@
 
 import os
 import time
+from tkinter.font import names
+
 
 #
 # path = "main.py"
@@ -4803,3 +4805,210 @@ import time
 # # gc.display2()
 #
 # gc.func()
+#
+# class MyOuter:
+#     age = 18
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @staticmethod
+#     def outer_static_method():
+#         print('Метод внешнего класса')
+#
+#     def outer_obj_method(self):
+#         print('Метод внешнего экземпляра класса', self.name)
+#
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print('Метод вложенного класса', MyOuter.age, self.obj.name)
+#             MyOuter.outer_static_method()
+#             self.obj.outer_obj_method()
+#
+#
+# out = MyOuter('внешний')
+# out.outer_obj_method()
+# inner = out.MyInner('внутренний', out)
+# print(out.name)
+# print(inner.inner_name)
+# inner.inner_method()
+#
+#
+# class Color:
+#     def __init__(self):
+#         self.name = "Green"
+#         self.lg = self.LightGreen()
+#
+#     def show(self):
+#         print("Name:", self.name)
+#
+#     class LightGreen:
+#         def __init__(self):
+#             self.name = "Light Green"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#
+# outer = Color()
+# outer.show()
+# print(outer.name)
+# outer.lg.display()
+# g = outer.lg
+# g.display()
+
+#
+# class Employee:
+#     def __init__(self):
+#         self.name = "Employee"
+#         self.intern = self.Intern()
+#         self.head = self.Head()
+#
+#     def show(self):
+#         print("Name:", self.name)
+#
+#     class Intern:
+#         def __init__(self):
+#             self.name = "Dima"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#     class Head:
+#         def __init__(self):
+#             self.name = "Alex"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#
+# outer = Employee()
+# outer.show()
+#
+# d1 = outer.intern
+# d2 = outer.head
+# d2 = outer.head
+# d1.display()
+# d2.display()
+
+#
+# class Base:
+#     def __init__(self):
+#         self.db = self.Inner()
+#
+#     def display(self):
+#         print("In Base Class")
+#
+#     class Inner:
+#         def display1(self):
+#             print("Inner of Base Class")
+#
+#
+# class SubClass(Base):
+#     def __init__(self):
+#         print("In Subclass")
+#         super().__init__()
+#
+#     class Inner(Base.Inner):
+#         def display2(self):
+#             print("Inner of Subclass")
+#
+#
+# a = SubClass()
+#
+# # b = a.db
+# b = SubClass.Inner()
+# b.display1()
+# b.display2()
+
+
+# class Creature:
+#     def __init__(self, name):
+#         self.name = name
+#
+#
+# class Animal(Creature):
+#     def sleep(self):
+#         print(self.name + "is sleeping")
+#
+#
+# class Pet(Creature):
+#     def play(self):
+#         print(self.name + "is playing")
+#
+#
+# class Dog(Animal, Pet):
+#     def bark(self):
+#         print(self.name + "is barking")
+#
+#
+# dog = Dog("Buddy")
+# dog.sleep()
+# dog.play()
+# dog.bark()
+
+#
+# class A:
+#     def __init__(self):
+#         print("class A")
+#
+#
+# class AA:
+#     def __init__(self):
+#         print("class AA")
+#
+#
+# class B(A):
+#     def __init__(self):
+#         print("class B")
+#
+#
+# class C(AA):
+#     def __init__(self):
+#         print("class C")
+#
+#
+# class D(B, C):
+#     def __init__(self):
+#         print("class D")
+#
+#
+# d = D()
+# print(D.__mro__)
+
+#
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Styles:
+#     def __init__(self, color="red", width=1):
+#         print("Инициализатор Styles")
+#         self.color = color
+#         self.width = width
+#
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point, *args):
+#         print("Инициализатор Pos")
+#         self.sp = sp
+#         self.ep = ep
+#         super().__init__(*args)
+#
+#
+# class Line(Pos, Styles):
+#     def draw(self):
+#         print(f"Рисование линии: {self.sp}, {self.ep}, {self.color}, {self.width}")
+#
+#
+# l1 = Line(Point(10, 10), Point(100, 100), "green", 5)
+# l1.draw()
