@@ -521,3 +521,29 @@ student2 = Student("Vladimir", "HP", "i7", "16")
 
 student1.print_info()
 student2.print_info()
+
+
+class Student:
+    def __init__(self, name, laptop_model, laptop_cpu, laptop_ram):
+        self.name = name
+        self.laptop = self.Laptop(laptop_model, laptop_cpu, laptop_ram)
+
+    def show(self):
+        print(f"{self.name} => ", end="")
+        self.laptop.show()
+
+    class Laptop:
+        def __init__(self, model, cpu, ram):
+            self.model = model
+            self.cpu = cpu
+            self.ram = ram
+
+        def show(self):
+            print(f"{self.model}, {self.cpu}, {self.ram}")
+
+
+student1 = Student("Roman", "HP", "i7", 16)
+student2 = Student("Vladimir", "HP", "i7", 16)
+student1.show()
+student2.show()
+

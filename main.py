@@ -1,3 +1,4 @@
+# name = "admin"
 # print("Hello", name)
 # age = 20.2
 # print(age)
@@ -3507,7 +3508,8 @@
 #
 # print(longest_world(file_name))
 
-# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\n
+# Строка №8\nСтрока №9\nСтрока №10\n"
 # with open("one.txt", "w") as f:
 #     f.write(text)
 #
@@ -3554,7 +3556,7 @@
 # remove_empty_dirs("nested1")
 
 # import os
-# import os.path
+# # import os.path
 #
 # print(os.path.split(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
 # print(os.path.join("nested1", r"E:\Python522", "nested2", "nested3", "text3.txt"))
@@ -3562,8 +3564,8 @@
 # print(os.path.exists(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
 # print(os.path.isfile(r"E:\Python522\nested1\nested2\nested3\text3.txt"))
 # print(os.path.isdir(r"E:\Python522\nested1\nested2\nested3"))
-#
-#
+
+
 # with open("text1.txt", "w+") as f:
 #     print(f.write("Hello"))
 #     f.seek(0)
@@ -3610,9 +3612,8 @@
 
 # print("Код, созданный на новом устройстве")
 
-
 # import os
-#
+
 # dirs = [r'Work\F1', r'Work\F2\F21']
 #
 # # for d in dirs:
@@ -3623,15 +3624,15 @@
 #     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
 #     r'Work\F2\F21': ['f211.txt', 'f212.txt']
 # }
-#
+
 # for key, value in files.items():
 #     for file in value:
 #         file_path = os.path.join(key, file)
 #         open(file_path, 'w').close()
-#
-#
+
+
 # file_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
-#
+
 # for file in file_with_text:
 #     with open(file, 'w') as f:
 #         f.write(f"Некоторый текст для файла {file}")
@@ -3656,12 +3657,9 @@
 # print_tree(False)
 # print_tree(True)
 
-import os
-import time
-from tkinter.font import names
+# import os
+# import time
 
-
-#
 # path = "main.py"
 # print(os.path.getsize(path))  # размер файла
 # print(os.path.getatime(path))  # время последнего доступа к файлу
@@ -3681,8 +3679,9 @@ from tkinter.font import names
 
 
 # import os
-#
-# file_path = r"C:\Users\krilo\PycharmProjects\PythonProject\two.txt"
+
+
+# file_path = r"nested1\nested2\nested3\text2.txt"
 #
 # if os.path.exists(file_path):
 #     directory, file = os.path.split(file_path)
@@ -3691,7 +3690,7 @@ from tkinter.font import names
 # else:
 #     print(f"Файл {file_path} не существует")
 
-#
+
 # dir_name = "Work"
 #
 # objs = os.listdir(dir_name)
@@ -3706,19 +3705,55 @@ from tkinter.font import names
 #     if os.path.isdir(p):
 #         print(f"{obj} - dir")
 
+# import os
+
+
+# def info_files(root, folder):
+#     for root, dirs, files in os.walk(root):
+#         for file in files:
+#             file_path = os.path.join(root, file)
+#             # print(file_path)
+#             file_size = os.path.getsize(file_path)
+#             if file_size == 0:
+#                 os.renames(file_path, os.path.join(folder, file))
+#                 print(f"Файл {file} перемещен из папки {root} в папку {folder}")
+#             else:
+#                 print(f"{file_path} - {file_size} bytes")
+#
+#
+# info_files("Work", "Work/empty_files")
+
+# Work\w.txt
+# Work\F1\f11.txt
+# Work\F1\f12.txt
+# Work\F1\f13.txt
+# Work\F2\F21\f211.txt
+# Work\F2\F21\f212.txt
 
 # ООП
-#
+
 # class Point:
 #     x = 1
 #     y = 2
-# # p1.x = 100
-# # print(Point.x)
-# # print(p1.x)
-#
-#
+
+
 # p1 = Point()
+# # Point.x = 100
+# # print(p1.x)
+# # print(Point.x)
+# # print(id(p1))
+# # print(id(Point))
+# p1.x = 100
+# p1.y = 50
+# print(p1.x, p1.y)
+# print(p1.__dict__)
 #
+# p2 = Point()
+# print(p2.x, p2.y)
+# print(p2.__dict__)
+# print(Point.__dict__)
+
+
 # class Point:
 #     x = 1
 #     y = 2
@@ -3735,8 +3770,8 @@ from tkinter.font import names
 #
 # p2 = Point()
 # p2.set_coord()
-#
-#
+
+
 # class Point:
 #     x = 1
 #     y = 2
@@ -3747,14 +3782,15 @@ from tkinter.font import names
 #
 #
 # p1 = Point()
-# p1.set_coord(5, 1)
+# p1.set_coord(5, 10)
 # Point.set_coord(p1, 10, 20)
 # print(p1.__dict__)
 #
 # p2 = Point()
 # p2.set_coord(2, 7)
 # print(p2.__dict__)
-#
+
+
 # class Human:
 #     name = "name"
 #     birthday = "00.00.0000"
@@ -3765,37 +3801,35 @@ from tkinter.font import names
 #
 #     def print_info(self):
 #         print(" Персональные данные ".center(40, "*"))
-#         print(
-#             f"Имя: {self.name}\n Дата рождения: {self.birthday}
-#             \nНомер телефона:{self.phone}\nСтрана: {self.country}\n"
-#             f"Город: {self.city}\nДомашний адрес: {self.address}")
-#
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\n"
+#               f"Номер телефона: {self.phone}\nСтрана: {self.country}\n"
+#               f"Город: {self.city}\nДомашний адрес: {self.address}")
 #         print("=" * 40)
 #
 #     def input_info(self, first_name, birthday, phone, country, city, address):
-#         self.name = name
+#         self.name = first_name
 #         self.birthday = birthday
 #         self.phone = phone
 #         self.country = country
 #         self.city = city
 #         self.address = address
 #
-#     def set_name(self, name):
+#     def set_name(self, name):  # установили новое имя
 #         self.name = name
 #
-#     def get_name(self):
+#     def get_name(self):  # получили имя
 #         return self.name
 #
 #
 # h1 = Human()
 # h1.print_info()
-# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар")
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1A")
 # h1.print_info()
 # h1.set_name("Юлия")
 # h1.print_info()
 # print(h1.get_name())
 
-#
+
 # class Person:
 #     skill = 10
 #
@@ -3804,7 +3838,7 @@ from tkinter.font import names
 #         self.surname = surname
 #
 #     def __del__(self):
-#         print("Удаление экземпляра")
+#         print("Удаление экземпляра\n\n")
 #
 #     def print_info(self):
 #         print("Данные сотрудника:", self.name, self.surname)
@@ -3817,14 +3851,16 @@ from tkinter.font import names
 # p1 = Person("Виктор", "Резник")
 # p1.print_info()
 # p1.add_skill(3)
+# # del p1
+# p1 = 5
 #
 # p2 = Person("Анна", "Долгих")
 # p2.print_info()
 # p2.add_skill(2)
 
-#
+
 # class Person:
-#     count = 0
+#     count = 0  # 3
 #
 #     def __init__(self, name, surname):
 #         self.name = name
@@ -3841,11 +3877,10 @@ from tkinter.font import names
 # p2 = Person("Анна", "Долгих")
 # p2.print_info()
 #
-#
+# p3 = Person("Анна", "Долгих")
 # print(p2.count)
 # print(Person.count)
-#
-#
+
 # class Robot:
 #     k = 0
 #
@@ -3855,13 +3890,13 @@ from tkinter.font import names
 #         Robot.k += 1
 #
 #     def __del__(self):
-#         print(self.name, "Выключается")
+#         print(self.name, "выключается!")
 #         Robot.k -= 1
 #
 #         if Robot.k == 0:
-#             print(self.name, "Был последним")
-#
-#         print("Работающих роботов осталось:", Robot.k)
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
 #
 #     def say_hi(self):
 #         print("Приветствую! Меня зовут:", self.name)
@@ -3869,23 +3904,29 @@ from tkinter.font import names
 #
 # droid1 = Robot("R2-D2")
 # droid1.say_hi()
-# print("Численность роботов", Robot.k)
+# print("Численность роботов:", Robot.k)
 #
 # droid2 = Robot("C-3PO")
 # droid2.say_hi()
-# print("Численность роботов", Robot.k)
+# print("Численность роботов:", Robot.k)
+#
+# droid3 = Robot("PC-3O")
+# droid3.say_hi()
+# print("Численность роботов:", Robot.k)
 #
 # print("\nЗдесь роботы могут проделать какую-то работу.\n")
 # print("Роботы закончили свою работу. Давайте их выключим.\n")
-# del droid1
-# del droid2
-# print("Численность роботов", Robot.k)
-
 #
+# del droid1, droid2, droid3
+#
+# print("Численность роботов:", Robot.k)
+
 # class Point:
 #     def __init__(self, x, y):
-#         self.__x = x
-#         self.__y = y
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
 #
 #     def __check_value(c):
 #         if isinstance(c, int) or isinstance(c, float):
@@ -3902,17 +3943,35 @@ from tkinter.font import names
 #     def get_coord(self):
 #         return self.__x, self.__y
 #
+#     def set_coord_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координат x должны быть числом")
+#
+#     def set_coord_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координата y должны быть числом")
+#
 #
 # p1 = Point(5, 10)
-# p1.set_coord(5, 100)
+# # print(p1.__x, p1.__y)
+# # p1.z = 20
+# # p1.__x = 100
+# # p1.__y = "abc"
+# # print(p1.__x, p1.__y)
+# p1.set_coord(5.2, 100)
+# p1.set_coord_x(8.2)
 # print(p1.get_coord())
-# # print(p1.x, p1.y)
-#
-# p1.__x = 100
-# p1.__y = "abc"
-# print(p1.__x, p1.__y)
 # print(p1.__dict__)
-#
+# # p1.__check_value(10)
+# # print(Point.__dict__)
+# p1._Point__x = 111
+# print(p1._Point__x)
+# print(p1.__dict__)
+
 # import math
 #
 #
@@ -3927,7 +3986,7 @@ from tkinter.font import names
 #         return False
 #
 #     def get_width(self):
-#         return self.__length
+#         return self.__width
 #
 #     def get_length(self):
 #         return self.__length
@@ -3943,24 +4002,33 @@ from tkinter.font import names
 #     def get_area(self):
 #         return self.__width * self.__length
 #
-#     def get_perimetr(self):
-#         return 2*(self.__width + self.__length)
+#     def get_perimeter(self):
+#         return 2 * (self.__width + self.__length)
 #
 #     def get_hypotenuse(self):
 #         return round(math.sqrt(self.__length ** 2 + self.__width ** 2), 2)
+#
+#     def get_draw(self):
+#         print(('*' * self.__width + "\n") * self.__length)
+#
+#     # def get_draw(self):
+#     #     for _ in range(self.__length):
+#     #         print("*" * self.__width)
 #
 #
 # r1 = Rectangle()
 # r1.set_width(9)
 # r1.set_length(3)
-# print("длина", r1.get_length())
-# print("ширина", r1.get_width())
-# print("площадь", r1.get_perimetr())
-# print("гипотенуза", r1.get_hypotenuse())
+# print("Длина прямоугольника:", r1.get_length())
+# print("Ширина прямоугольника:", r1.get_width())
+# print("Площадь прямоугольника:", r1.get_area())
+# print("Периметр прямоугольника:", r1.get_perimeter())
+# print("Гипотенуза прямоугольника:", r1.get_hypotenuse())
+# r1.get_draw()
 
-#
+
 # class Point:
-#     __slots__ = "x", "y", "z"
+#     __slots__ = ["x", "y"]
 #
 #     def __init__(self, x, y):
 #         self.x = x
@@ -3968,94 +4036,77 @@ from tkinter.font import names
 #
 #
 # p1 = Point(5, 10)
-# p1.z = 20
+# # p1.z = 20
+# print(p1.x, p1.y)
 # print(p1.x, p1.y, p1.z)
-# # print(p1.__dict__)
-#
+# print(p1.__dict__)
+
+
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
 #         self.__y = y
 #
-#     @property
-#     def x(self):
-#         print("Вызов __get")
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def __set_coord_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координат x должны быть числом")
+#
+#     def __get_coord_x(self):
 #         return self.__x
 #
-#     @x.setter
-#     def x(self, x):
-#         print("Вызов __set")
+#     def __del_coord_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     coordX = property(__get_coord_x, __set_coord_x, __del_coord_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.coordX = 20.5
+# print(p1.coordX)
+# del p1.coordX
+# print(p1.__dict__)
+
+# class Point:
+#     def __init__(self, x, y):
 #         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     @property
+#     def x(self):
+#         return self.__x
 #
 #     @x.deleter
 #     def x(self):
-#         print("удаление")
+#         print("Удаление свойства")
 #         del self.__x
 #
+#     @x.setter
+#     def x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координат x должны быть числом")
 #     # coordX = property(__get_coord_x, __set_coord_x, __del_coord_x)
 #
 #
 # p1 = Point(5, 10)
-# p1.x = 100
+# p1.x = 50
 # print(p1.x)
 # del p1.x
 # print(p1.__dict__)
-
-#
-# class Person:
-#     def __init__(self, name, old):
-#         self._name = name
-#         self._old = old
-#
-#     @property
-#     def name(self):
-#         return self._name
-#
-#     @name.setter
-#     def name(self, new_name):
-#         if isinstance(new_name, str) and new_name.strip():
-#             self._name = new_name
-#         else:
-#             raise ValueError("Имя должно быть непустой строкой")
-#
-#     @name.deleter
-#     def name(self):
-#         print("Удаление имени")
-#         self._name = None
-#
-#     @property
-#     def old(self):
-#         return self._old
-#
-#     @old.setter
-#     def old(self, new_old):
-#         if isinstance(new_old, int) and new_old >= 0:
-#             self._old = new_old
-#         else:
-#             raise ValueError("Возраст должен быть положительным целым числом")
-#
-#     @old.deleter
-#     def old(self):
-#         print("Удаление возраста")
-#         self._old = None
-#
-#
-# person = Person("Irina", 26)
-#
-# print(person.name)
-# print(person.old)
-#
-# person.name = "Igor"
-# person.old = 31
-#
-# print(person.name)
-# print(person.old)
-#
-# del person.name
-# del person.old
-#
-# print(person.name)
-# print(person.old)
 
 
 # class Point:
@@ -4074,7 +4125,9 @@ from tkinter.font import names
 # p1 = Point()
 # p2 = Point()
 # p3 = Point()
-# # print(Point.get_count())
+# print(Point.get_count())
+# print(p1.get_count())
+
 # def inc(x):
 #     return x + 1
 #
@@ -4096,31 +4149,38 @@ from tkinter.font import names
 #         return x - 1
 #
 #
+# ch1 = Change()
+# print(ch1.inc(10), ch1.dec(10))
 # print(Change.inc(10), Change.dec(10))
-#
+
+
 # class Numbers:
 #     @staticmethod
 #     def max(a, b, c, d):
-#         mx = a
-#         if b > mx:
-#             mx = b
-#         if c > mx:
-#             mx = c
-#         if d > mx:
-#             mx = d
+#         mx = a  # 3
+#         if b > mx:  # 5 > 3
+#             mx = b  # 5
+#         if c > mx:  # 7 > 5
+#             mx = c  # 7
+#         if d > mx:  # 9 > 7
+#             mx = d  # 9
 #         return mx
 #
 #     @staticmethod
 #     def min(*args):
-#         mn = args[0]
+#         mn = args[0]  # 3
 #         for i in args:
 #             if i < mn:
 #                 mn = i
 #         return mn
 #
+#     # @staticmethod
+#     # def average(*args):
+#     #     return sum(args) / len(args)
+#
 #     @staticmethod
-#     def average(*args):
-#         return sum(args) / len(args)
+#     def average(a, b, c, d):
+#         return (a + b + c + d) / 4
 #
 #     @staticmethod
 #     def factorial(n):
@@ -4135,7 +4195,7 @@ from tkinter.font import names
 # print(Numbers.average(3, 5, 7, 9))
 # print(Numbers.factorial(5))
 
-#
+
 # class Date:
 #     def __init__(self, day, month, year):
 #         self.day = day
@@ -4145,7 +4205,7 @@ from tkinter.font import names
 #     @classmethod
 #     def from_string(cls, string_date):
 #         day, month, year = map(int, string_date.split("."))
-#         date1 = cls(day, month, year)
+#         date1 = cls(day, month, year)  # date1 = Date(day, month, year)
 #         return date1
 #
 #     def string_to_db(self):
@@ -4153,12 +4213,14 @@ from tkinter.font import names
 #
 #
 # # string_date = "23.10.2025"
-# # day, month, year = map(int, string_date.split("."))
-# # print(day, month, year)
-# # print(string_date.split("."))
+# # day, month, year = map(int, string_date.split("."))  # 23 10 2025
+# # date = Date(day, month, year)
 # date = Date.from_string("23.10.2025")
 # print(date.string_to_db())
 #
+# date2 = Date.from_string("30.12.2024")
+# print(date2.string_to_db())
+
 # class Account:
 #     rate_usd = 0.013
 #     rate_eur = 0.011
@@ -4263,7 +4325,7 @@ from tkinter.font import names
 #
 # acc.withdraw_money(3000)
 # print()
-#
+
 # import re
 #
 #
@@ -4283,6 +4345,7 @@ from tkinter.font import names
 #             raise TypeError("Неверный формат ФИО")
 #         letter = "".join(re.findall(r"[a-zа-яё-]", fio, flags=re.IGNORECASE))  # ВолковИгорьНиколаевич
 #         for s in f:
+#             # print(s.strip(letter))
 #             if len(s.strip(letter)) != 0:
 #                 raise TypeError("В ФИО можно использовать только буквы и дефис")
 #
@@ -4300,11 +4363,9 @@ from tkinter.font import names
 #     def verify_ps(ps):
 #         if not isinstance(ps, str):
 #             raise TypeError("Паспорт должен быть строкой")
-#
-#         s = ps.split()
+#         s = ps.split()  # ['1234', '567890']
 #         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
 #             raise TypeError("Неверный формат паспорта")
-#
 #         for p in s:
 #             if not p.isdigit():
 #                 raise TypeError("Серия и номер паспорта должны быть числами")
@@ -4347,10 +4408,12 @@ from tkinter.font import names
 #
 #
 # p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
-# p1.fio = "Иванов Иван Иванович"
+# p1.fio = "Волков Игорь Викторович"
 # p1.old = 32
-# p1.weight = 70.2
+# p1.password = "3216 789845"
+# p1.weight = 70.9
 # print(p1.__dict__)
+
 
 # class Point:
 #     def __init__(self, x, y):
@@ -4769,7 +4832,7 @@ from tkinter.font import names
 
 
 # Интерфейс
-#
+
 # from abc import ABC, abstractmethod
 #
 #
@@ -4805,19 +4868,22 @@ from tkinter.font import names
 # # gc.display2()
 #
 # gc.func()
-#
+
+# Вложенные классы
+
 # class MyOuter:
 #     age = 18
 #
-#     def __init__(self, name):
+#     def __init__(self, name, surname):
 #         self.name = name
+#         self.surname = surname
 #
 #     @staticmethod
 #     def outer_static_method():
-#         print('Метод внешнего класса')
+#         print("Метод внешнего класса")
 #
 #     def outer_obj_method(self):
-#         print('Метод внешнего экземпляра класса', self.name)
+#         print("Метод внешнего экземпляра класса", self.name)
 #
 #     class MyInner:
 #         def __init__(self, inner_name, obj):
@@ -4825,19 +4891,19 @@ from tkinter.font import names
 #             self.obj = obj
 #
 #         def inner_method(self):
-#             print('Метод вложенного класса', MyOuter.age, self.obj.name)
+#             print("Метод вложенного класса", MyOuter.age, self.obj.name, self.obj.surname)
 #             MyOuter.outer_static_method()
 #             self.obj.outer_obj_method()
 #
 #
-# out = MyOuter('внешний')
+# out = MyOuter('внешний', 'второй параметр')
 # out.outer_obj_method()
 # inner = out.MyInner('внутренний', out)
 # print(out.name)
 # print(inner.inner_name)
 # inner.inner_method()
-#
-#
+
+
 # class Color:
 #     def __init__(self):
 #         self.name = "Green"
@@ -4857,30 +4923,31 @@ from tkinter.font import names
 # outer = Color()
 # outer.show()
 # print(outer.name)
-# outer.lg.display()
+# # print(outer.lg.name)
+# # outer.lg.display()
 # g = outer.lg
 # g.display()
 
+# class Intern:
+#     def __init__(self):
+#         self.name = "Дмитрий"
+#
+#     def display(self):
+#         print("Name:", self.name)
+#
 #
 # class Employee:
 #     def __init__(self):
 #         self.name = "Employee"
-#         self.intern = self.Intern()
-#         self.head = self.Head()
+#         self.intern = Intern()
+#         # self.head = self.Head()
 #
 #     def show(self):
 #         print("Name:", self.name)
 #
-#     class Intern:
-#         def __init__(self):
-#             self.name = "Dima"
-#
-#         def display(self):
-#             print("Name:", self.name)
-#
 #     class Head:
 #         def __init__(self):
-#             self.name = "Alex"
+#             self.name = "Александр"
 #
 #         def display(self):
 #             print("Name:", self.name)
@@ -4890,12 +4957,67 @@ from tkinter.font import names
 # outer.show()
 #
 # d1 = outer.intern
-# d2 = outer.head
-# d2 = outer.head
+# # d2 = outer.head
+#
+# d2 = Employee().Head()
 # d1.display()
 # d2.display()
 
+# class Outer:
+#     def __init__(self):
+#         self.inner = self.Inner()
 #
+#     def show(self):
+#         print("Наружный класс")
+#
+#     class Inner:
+#         def __init__(self):
+#             self.inner_inner = self.InnerClass()
+#
+#         def show(self):
+#             print("Промежуточный класс")
+#
+#         class InnerClass:
+#
+#             def show(self):
+#                 print("Вложенный класс")
+#
+#
+# outer = Outer()
+# outer.show()
+#
+# inner1 = outer.inner
+# inner1.show()
+#
+# inner2 = outer.inner.inner_inner
+# inner2.show()
+
+# class Computer:
+#     def __init__(self):
+#         self.name = "PC001"
+#         self.os = self.OS()
+#         self.cpu = self.CPU()
+#
+#     class OS:
+#         def system(self):
+#             return "Windows 10"
+#
+#     class CPU:
+#         def make(self):
+#             return "Intel"
+#
+#         def model(self):
+#             return "Core-i9"
+#
+#
+# comp = Computer()
+# my_os = comp.os
+# my_cpu = comp.cpu
+# print(comp.name)
+# print(my_os.system())
+# print(my_cpu.make())
+# print(my_cpu.model())
+
 # class Base:
 #     def __init__(self):
 #         self.db = self.Inner()
@@ -4905,7 +5027,7 @@ from tkinter.font import names
 #
 #     class Inner:
 #         def display1(self):
-#             print("Inner of Base Class")
+#             print("Inner Of Base Class")
 #
 #
 # class SubClass(Base):
@@ -4915,16 +5037,15 @@ from tkinter.font import names
 #
 #     class Inner(Base.Inner):
 #         def display2(self):
-#             print("Inner of Subclass")
+#             print("Inner Of Subclass")
 #
 #
 # a = SubClass()
-#
-# # b = a.db
-# b = SubClass.Inner()
+# # a.display()
+# b = a.db
+# # b = SubClass.Inner()
 # b.display1()
 # b.display2()
-
 
 # class Creature:
 #     def __init__(self, name):
@@ -4933,17 +5054,17 @@ from tkinter.font import names
 #
 # class Animal(Creature):
 #     def sleep(self):
-#         print(self.name + "is sleeping")
+#         print(self.name + " is sleeping")
 #
 #
 # class Pet(Creature):
 #     def play(self):
-#         print(self.name + "is playing")
+#         print(self.name + " is playing")
 #
 #
 # class Dog(Animal, Pet):
 #     def bark(self):
-#         print(self.name + "is barking")
+#         print(self.name + " is barking")
 #
 #
 # dog = Dog("Buddy")
@@ -4951,36 +5072,37 @@ from tkinter.font import names
 # dog.play()
 # dog.bark()
 
-#
+
 # class A:
 #     def __init__(self):
-#         print("class A")
+#         print("Инициализатор класса A")
 #
 #
 # class AA:
 #     def __init__(self):
-#         print("class AA")
+#         print("Инициализатор класса AA")
 #
 #
 # class B(A):
 #     def __init__(self):
-#         print("class B")
+#         print("Инициализатор класса B")
 #
 #
 # class C(AA):
 #     def __init__(self):
-#         print("class C")
+#         print("Инициализатор класса C")
 #
 #
 # class D(B, C):
 #     def __init__(self):
-#         print("class D")
-#
-#
-# d = D()
-# print(D.__mro__)
+#         print("Инициализатор класса D")
 
 #
+# d = D()
+# print(D.mro())
+# print(D.__mro__)
+
+
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
@@ -5002,6 +5124,7 @@ from tkinter.font import names
 #         print("Инициализатор Pos")
 #         self.sp = sp
 #         self.ep = ep
+#         # Styles.__init__(self, *args)
 #         super().__init__(*args)
 #
 #
@@ -5012,3 +5135,65 @@ from tkinter.font import names
 #
 # l1 = Line(Point(10, 10), Point(100, 100), "green", 5)
 # l1.draw()
+
+
+# Миксины
+
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+#
+# class LoggerMixin:
+#     def log(self, message, filename="log_file.txt"):
+#         with open(filename, "a") as fh:
+#             fh.write(message)
+#
+#     def display(self, message):
+#         Displayer.display(message)
+#         self.log(message)
+#
+#
+# class MySubClass(LoggerMixin, Displayer):
+#     def log(self, message, filename=""):
+#         super().log(message, filename="log.txt")
+#
+#
+# subclass = MySubClass()
+# subclass.display("Эта строка будет печататься и записываться в файл")
+
+#
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         super().__init__()
+#         print("Init Goods")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("Init MixinLog")
+#         MixinLog.ID += 1
+#         self.id = MixinLog.ID
+#
+#     def save_sell_log(self):
+#         print(f"{self.id}: товар был продан в 15:20")
+#
+#
+# class Notebook(Goods, MixinLog):
+#     ...
+#
+#
+# n = Notebook("HP", 1.5, 35000)
+# n.print_info()
+# n.save_sell_log()
+
+
