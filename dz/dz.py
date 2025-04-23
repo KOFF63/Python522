@@ -500,50 +500,166 @@
 #
 # for member in group:
 #     print(member.get_info())
+#
+# class Student:
+#     def __init__(self, name, laptop_model, laptop_cpu, laptop_ram):
+#         self.name = name
+#         self.laptop = self.Laptop(laptop_model, laptop_cpu, laptop_ram)
+#
+#     def print_info(self):
+#         print(f"{self.name} => {self.laptop.model}, {self.laptop.cpu}, {self.laptop.ram}")
+#
+#     class Laptop:
+#         def __init__(self, model, cpu, ram):
+#             self.model = model
+#             self.cpu = cpu
+#             self.ram = ram
+#
+#
+# student1 = Student("Roman", "HP", "i7", "16")
+# student2 = Student("Vladimir", "HP", "i7", "16")
+#
+# student1.print_info()
+# student2.print_info()
+#
+#
+# class Student:
+#     def __init__(self, name, laptop_model, laptop_cpu, laptop_ram):
+#         self.name = name
+#         self.laptop = self.Laptop(laptop_model, laptop_cpu, laptop_ram)
+#
+#     def show(self):
+#         print(f"{self.name} => ", end="")
+#         self.laptop.show()
+#
+#     class Laptop:
+#         def __init__(self, model, cpu, ram):
+#             self.model = model
+#             self.cpu = cpu
+#             self.ram = ram
+#
+#         def show(self):
+#             print(f"{self.model}, {self.cpu}, {self.ram}")
+#
+#
+# student1 = Student("Roman", "HP", "i7", 16)
+# student2 = Student("Vladimir", "HP", "i7", 16)
+# student1.show()
+# student2.show()
+#
 
-class Student:
-    def __init__(self, name, laptop_model, laptop_cpu, laptop_ram):
-        self.name = name
-        self.laptop = self.Laptop(laptop_model, laptop_cpu, laptop_ram)
+class Clock:
+    __DAY = 86400
 
-    def print_info(self):
-        print(f"{self.name} => {self.laptop.model}, {self.laptop.cpu}, {self.laptop.ram}")
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
 
-    class Laptop:
-        def __init__(self, model, cpu, ram):
-            self.model = model
-            self.cpu = cpu
-            self.ram = ram
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{self.__get_form(h)}:{self.__get_form(m)}:{self.__get_form(s)}"
+
+    @staticmethod
+    def __get_form(x):
+        return str(x) if x > 9 else "0" + str(x)
+
+    def __sub__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return Clock(self.sec - other.sec)
+
+    def __mul__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return Clock(self.sec * other.sec)
+
+    def __floordiv__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return Clock(self.sec // other.sec)
+
+    def __mod__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return Clock(self.sec % other.sec)
+
+    def __isub__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        self.sec = (self.sec - other.sec) % self.__DAY
+        return self
+
+    def __imul__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        self.sec = (self.sec * other.sec) % self.__DAY
+        return self
+
+    def __ifloordiv__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        self.sec = (self.sec // other.sec) % self.__DAY
+        return self
+
+    def __imod__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        self.sec = (self.sec % other.sec) % self.__DAY
+        return self
+
+    def __lt__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return self.sec < other.sec
+
+    def __le__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return self.sec <= other.sec
+
+    def __gt__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return self.sec > other.sec
+
+    def __ge__(self, other):
+        if not isinstance(other, Clock):
+            raise ValueError("Операнд должен быть объектом Clock")
+        return self.sec >= other.sec
 
 
-student1 = Student("Roman", "HP", "i7", "16")
-student2 = Student("Vladimir", "HP", "i7", "16")
+c1 = Clock(600)
+c2 = Clock(200)
+c3 = Clock(1200)
 
-student1.print_info()
-student2.print_info()
+print("\nАрифметические операции:")
+print(f"c1: {c1.get_format_time()}")
+print(f"c1 - c2: {(c1 - c2).get_format_time()}")
+print(f"c1 * c2: {(c1 * c2).get_format_time()}")
+print(f"c1 // c2: {(c1 // c2).get_format_time()}")
+print(f"c1 % c2: {(c1 % c2).get_format_time()}")
 
+c1_copy = Clock(600)
+c1_copy -= c2
+print(f"c1 -= c2: {c1_copy.get_format_time()}")
 
-class Student:
-    def __init__(self, name, laptop_model, laptop_cpu, laptop_ram):
-        self.name = name
-        self.laptop = self.Laptop(laptop_model, laptop_cpu, laptop_ram)
+c1_copy = Clock(600)
+c1_copy *= c2
+print(f"c1 *= c2: {c1_copy.get_format_time()}")
 
-    def show(self):
-        print(f"{self.name} => ", end="")
-        self.laptop.show()
+c1_copy = Clock(600)
+c1_copy //= c2
+print(f"c1 //= c2: {c1_copy.get_format_time()}")
 
-    class Laptop:
-        def __init__(self, model, cpu, ram):
-            self.model = model
-            self.cpu = cpu
-            self.ram = ram
+c1_copy = Clock(600)
+c1_copy %= c2
+print(f"c1 %= c2: {c1_copy.get_format_time()}")
 
-        def show(self):
-            print(f"{self.model}, {self.cpu}, {self.ram}")
-
-
-student1 = Student("Roman", "HP", "i7", 16)
-student2 = Student("Vladimir", "HP", "i7", 16)
-student1.show()
-student2.show()
-
+print("\nОперации сравнения:")
+print(f"c3 > c1: {c3 > c1}")
+print(f"c3 >= c1: {c3 >= c1}")
+print(f"c3 < c1: {c3 < c1}")
+print(f"c3 <= c1: {c3 <= c1}")
