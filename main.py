@@ -5211,63 +5211,63 @@
 # p1 = Point(5)
 # print(p1)
 
-
-class Clock:
-    __DAY = 86400
-
-    def __init__(self, sec: int):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__DAY
-
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
-
-    @staticmethod
-    def __get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
-
-    def __getitem__(self, item):
-        if not isinstance(item, str):
-            raise ValueError("Ключ должен быть строкой")
-        if item == "hour":
-            return (self.sec // 3600) % 24
-        if item == "min":
-            return (self.sec // 60) % 60
-        if item == "sec":
-            return self.sec % 60
-        return "Неверный ключ"
-
-    def __setitem__(self, key, value):
-        if not isinstance(key, str):
-            raise ValueError("Ключ должен быть строкой")
-        if not isinstance(value, int):
-            raise ValueError("Значение должен быть целым числом")
-
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-
-        if key == "hour":
-            self.sec = s + 60 * m + value * 3600
-        if key == "min":
-            self.sec = s + 60 * value + h * 3600
-        if key == "sec":
-            self.sec = value + 60 * m + h * 3600
-
-
-c1 = Clock(8000)
-print(c1.get_format_time())
-print(c1["hour"], c1["min"], c1["sec"])
-c1["hour"] = 10
-print(c1.get_format_time())
-c1["min"] = 62
-print(c1.get_format_time())
-c1["sec"] = 70
-print(c1.get_format_time())
+#
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         if item == "min":
+#             return (self.sec // 60) % 60
+#         if item == "sec":
+#             return self.sec % 60
+#         return "Неверный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         if not isinstance(value, int):
+#             raise ValueError("Значение должен быть целым числом")
+#
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#
+#         if key == "hour":
+#             self.sec = s + 60 * m + value * 3600
+#         if key == "min":
+#             self.sec = s + 60 * value + h * 3600
+#         if key == "sec":
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(8000)
+# print(c1.get_format_time())
+# print(c1["hour"], c1["min"], c1["sec"])
+# c1["hour"] = 10
+# print(c1.get_format_time())
+# c1["min"] = 62
+# print(c1.get_format_time())
+# c1["sec"] = 70
+# print(c1.get_format_time())
 
 
 # class Point:
@@ -5319,3 +5319,282 @@ print(c1.get_format_time())
 # print(cat3)
 # print(cat1 + cat2)
 
+#
+# import math
+#
+#
+# class Point:
+#     __slots__ = ('x', 'y', '_length')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.length = math.sqrt(x * x + y * y)
+#
+#     @property
+#     def length(self):
+#         return self._length
+#
+#     @length.setter
+#     def length(self, value):
+#         self._length = value
+#
+#
+# p1 = Point(1, 2)
+# print(p1.length)
+
+# Функторы
+
+# class Counter:
+#     def __init__(self):
+#         self.__count = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.__count += 1
+#         print(self.__count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+
+# def string_strip(chars):
+#     def wrap(string):
+#         if not isinstance(string, str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return string.strip(chars)
+#     return wrap
+#
+#
+# s1 = string_strip("?:!.; ")
+# print(s1("  Hello World!  ...  "))
+#
+#
+# class StringStrip:
+#     def __init__(self, chars):
+#         self.chars = chars
+#
+#     def __call__(self, *args, **kwargs):
+#         if not isinstance(args[0], str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return args[0].strip(self.chars)
+#
+#
+# s2 = StringStrip("?:!.; ")
+# print(s2("  Hello World!  ...  "))
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self):
+#         print("Перед вызовом функции")
+#         self.func()
+#         print("После вызова функции")
+#
+#
+# @MyDecorator
+# def func():
+#     print("text")
+#
+#
+# func()
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, a, b):
+#         # print("Перед вызовом функции")
+#         res = self.func(a, b)
+#         # print("После вызова функции")
+#         return f"Перед вызовом функции\n{res}\nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
+
+
+# class Power:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, a, b):
+#         return self.func(a, b) ** 2
+#
+#
+# @Power
+# def mult(a, b):
+#     return a * b
+#
+#
+# print(mult(2, 3))
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.func = fn
+#
+#     def __call__(self, *args, **kwargs):
+#         res = self.func(*args, **kwargs)
+#         return f"Перед вызовом функции\n{res}\nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def func1(a, b, c):
+#     return a * b * c
+#
+#
+# print(func(2, 5))
+# print(func1(2, 5, 2))
+
+
+# class MyDecorator:
+#     def __init__(self, arg):  # "test2"
+#         self.name = arg
+#
+#     def __call__(self, fn):  # func
+#         def wrap(*args, **kwargs):  # 2, 5
+#             res = fn(*args, **kwargs)
+#
+#             return f"Перед вызовом функции\n{self.name}\n{res}\nПосле вызова функции"
+#         return wrap
+#
+#
+# @MyDecorator("test2")
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
+
+
+# class MyDecorator:
+#     def __init__(self, arg):
+#         self.name = arg
+#
+#     def __call__(self, fn):
+#         def wrap(*args, **kwargs):
+#             res = fn(*args, **kwargs)
+#             return f"Результат : {res ** self.name}"
+#
+#         return wrap
+#
+#
+# @MyDecorator(3)
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 2))
+
+# Декорирование методов
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+#
+# p1 = Person("Виталий", "Карасев")
+# p1.info()
+
+
+# Декораторы классов
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def sample(self, value):
+#             return value * 2
+#
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print("Init ActualClass")
+#
+#     def method_in_class(self, value):
+#         return value * 4
+#
+#
+# obj = ActualClass()
+# print(obj.method_in_class(4))
+# print(obj.sample(4))
+
+
+# Метаклассы
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+
+# MyList = type(
+#     'MyList',
+#     (list,),
+#     dict(get_length=lambda self: len(self))
+# )
+#
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(7)
+# print(lst, lst.get_length())
+
+
+# Создание модулей
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+from geometry import rect, sq, trian
+
+# from geometry import *
+
+
+r1 = rect.Rectangle(1, 2)
+r2 = rect.Rectangle(3, 4)
+
+s1 = sq.Square(10)
+s2 = sq.Square(20)
+
+t1 = trian.Triangle(1, 2, 3)
+t2 = trian.Triangle(4, 5, 6)
+
+shape = [r1, r2, s1, s2, t1, t2]
+
+for g in shape:
+    print(g.get_perimeter())
