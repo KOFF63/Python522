@@ -775,43 +775,148 @@
 # for shape in shapes:
 #     shape.info()
 #     print()
+#
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'k', 'l', 'm', 'n']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person, tel
+#
+#
+# def write_json(person_dict, num):
+#     try:
+#         data = json.load(open("persons_dict.json"))
+#
+#     except FileNotFoundError:
+#         data = {}
+#
+#     data[num] = person_dict
+#     with open('persons_dict.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# person1, tel1 = gen_person()
+# write_json(gen_person()[0], gen_person()[1])
+
 
 import json
-from random import choice
 
 
-def gen_person():
-    name = ''
-    tel = ''
+class CountryManager:
+    COUNTRIES_FILE = 'countries.json'
 
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'k', 'l', 'm', 'n']
-    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    @staticmethod
+    def load_data():
+        try:
+            with open(CountryManager.COUNTRIES_FILE, 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
 
-    while len(name) != 7:
-        name += choice(letters)
+    @staticmethod
+    def save_data(data):
+        with open(CountryManager.COUNTRIES_FILE, 'w') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+        print("Файл сохранен")
 
-    while len(tel) != 10:
-        tel += choice(nums)
+    @staticmethod
+    def add_country():
+        country = input("Введите название страны (с заглавной буквы): ").strip()
+        capital = input("Введите название столицы страны (с заглавной буквы): ").strip()
 
-    person = {
-        'name': name,
-        'tel': tel
-    }
+        data = CountryManager.load_data()
+        data[country] = capital
+        CountryManager.save_data(data)
 
-    return person, tel
+    @staticmethod
+    def remove_country():
+        country = input("Введите название страны для удаления (с заглавной буквы): ").strip()
+
+        data = CountryManager.load_data()
+        if country in data:
+            del data[country]
+            CountryManager.save_data(data)
+            print(f"Страна {country} удалена")
+        else:
+            print(f"Страна {country} не найдена")
+
+    @staticmethod
+    def find_country():
+        country = input("Введите название страны для поиска (с заглавной буквы): ").strip()
+
+        data = CountryManager.load_data()
+        capital = data.get(country)
+        if capital:
+            print(f"Столица {country}: {capital}")
+        else:
+            print(f"Страна {country} не найдена")
+
+    @staticmethod
+    def edit_country():
+        country = input("Введите название страны для редактирования (с заглавной буквы): ").strip()
+
+        data = CountryManager.load_data()
+        if country in data:
+            capital = input(f"Введите новую столицу для {country} (с заглавной буквы): ").strip()
+            data[country] = capital
+            CountryManager.save_data(data)
+            print(f"Столица {country} изменена на {capital}")
+        else:
+            print(f"Страна {country} не найдена")
+
+    @staticmethod
+    def show_all():
+        data = CountryManager.load_data()
+        print(json.dumps(data, ensure_ascii=False, indent=4))
+
+    @staticmethod
+    def menu():
+        while True:
+            print("\n" + "*" * 30)
+            print("Выбор действия:")
+            print("1 - добавление данных")
+            print("2 - удаление данных")
+            print("3 - поиск данных")
+            print("4 - редактирование данных")
+            print("5 - просмотр данных")
+            print("6 - завершение работы")
+
+            choice = input("Ввод: ").strip()
+
+            if choice == '1':
+                CountryManager.add_country()
+            elif choice == '2':
+                CountryManager.remove_country()
+            elif choice == '3':
+                CountryManager.find_country()
+            elif choice == '4':
+                CountryManager.edit_country()
+            elif choice == '5':
+                CountryManager.show_all()
+            elif choice == '6':
+                print("Работа завершена")
+                break
+            else:
+                print("Неверный выбор. Попробуйте снова.")
 
 
-def write_json(person_dict, num):
-    try:
-        data = json.load(open("persons_dict.json"))
-
-    except FileNotFoundError:
-        data = {}
-
-    data[num] = person_dict
-    with open('persons_dict.json', 'w') as f:
-        json.dump(data, f, indent=2)
-
-
-person1, tel1 = gen_person()
-write_json(gen_person()[0], gen_person()[1])
+if __name__ == "__main__":
+    CountryManager.menu()
