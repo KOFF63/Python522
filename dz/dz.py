@@ -664,114 +664,154 @@
 # print(f"c3 < c1: {c3 < c1}")
 # print(f"c3 <= c1: {c3 <= c1}")
 
+#
+# from abc import ABC, abstractmethod
+# import math
+#
+#
+# class Shape(ABC):
+#     def __init__(self, color):
+#         self.color = color
+#
+#     @abstractmethod
+#     def perimeter(self):
+#         pass
+#
+#     @abstractmethod
+#     def area(self):
+#         pass
+#
+#     @abstractmethod
+#     def draw(self):
+#         pass
+#
+#     def info(self):
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area():.2f}" if isinstance(self.area(), float) else f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter():.2f}" if isinstance(self.perimeter(),
+#                                                                 float) else f"Периметр: {self.perimeter()}")
+#         self.draw()
+#
+#
+# class Square(Shape):
+#     def __init__(self, side, color="red"):
+#         super().__init__(color)
+#         self.side = side
+#
+#     def perimeter(self):
+#         return 4 * self.side
+#
+#     def area(self):
+#         return self.side ** 2
+#
+#     def draw(self):
+#         for _ in range(3):
+#             print("*" * self.side)
+#
+#     def info(self):
+#         print("===Квадрат===")
+#         print(f"Сторона: {self.side}")
+#         super().info()
+#
+#
+# class Rectangle(Shape):
+#     def __init__(self, length, width, color="green"):
+#         super().__init__(color)
+#         self.length = length
+#         self.width = width
+#
+#     def perimeter(self):
+#         return 2 * (self.length + self.width)
+#
+#     def area(self):
+#         return self.length * self.width
+#
+#     def draw(self):
+#         for _ in range(3):
+#             print("*" * self.length)
+#
+#     def info(self):
+#         print("===Прямоугольник===")
+#         print(f"Длина: {self.length}")
+#         print(f"Ширина: {self.width}")
+#         super().info()
+#
+#
+# class Triangle(Shape):
+#     def __init__(self, a, b, c, color="yellow"):
+#         super().__init__(color)
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def perimeter(self):
+#         return self.a + self.b + self.c
+#
+#     def area(self):
+#         p = self.perimeter() / 2
+#         return math.sqrt(p * (p - self.a) * (p - self.b) * (p - self.c))
+#
+#     def draw(self):
+#         height = 6
+#         for i in range(1, height + 1):
+#             spaces = " " * (height - i)
+#             stars = "*" * (2 * i - 1)
+#             print(spaces + stars)
+#
+#     def info(self):
+#         print("===Треугольник===")
+#         print(f"Сторона 1: {self.a}")
+#         print(f"Сторона 2: {self.b}")
+#         print(f"Сторона 3: {self.c}")
+#         super().info()
+#
+#
+# shapes = [
+#     Square(3),
+#     Rectangle(7, 3),
+#     Triangle(11, 6, 6)
+# ]
+#
+# for shape in shapes:
+#     shape.info()
+#     print()
 
-from abc import ABC, abstractmethod
-import math
+import json
+from random import choice
 
 
-class Shape(ABC):
-    def __init__(self, color):
-        self.color = color
+def gen_person():
+    name = ''
+    tel = ''
 
-    @abstractmethod
-    def perimeter(self):
-        pass
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'k', 'l', 'm', 'n']
+    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
-    @abstractmethod
-    def area(self):
-        pass
+    while len(name) != 7:
+        name += choice(letters)
 
-    @abstractmethod
-    def draw(self):
-        pass
+    while len(tel) != 10:
+        tel += choice(nums)
 
-    def info(self):
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area():.2f}" if isinstance(self.area(), float) else f"Площадь: {self.area()}")
-        print(f"Периметр: {self.perimeter():.2f}" if isinstance(self.perimeter(),
-                                                                float) else f"Периметр: {self.perimeter()}")
-        self.draw()
+    person = {
+        'name': name,
+        'tel': tel
+    }
+
+    return person, tel
 
 
-class Square(Shape):
-    def __init__(self, side, color="red"):
-        super().__init__(color)
-        self.side = side
+def write_json(person_dict, num):
+    try:
+        data = json.load(open("persons_dict.json"))
 
-    def perimeter(self):
-        return 4 * self.side
+    except FileNotFoundError:
+        data = {}
 
-    def area(self):
-        return self.side ** 2
-
-    def draw(self):
-        for _ in range(3):
-            print("*" * self.side)
-
-    def info(self):
-        print("===Квадрат===")
-        print(f"Сторона: {self.side}")
-        super().info()
+    data[num] = person_dict
+    with open('persons_dict.json', 'w') as f:
+        json.dump(data, f, indent=2)
 
 
-class Rectangle(Shape):
-    def __init__(self, length, width, color="green"):
-        super().__init__(color)
-        self.length = length
-        self.width = width
-
-    def perimeter(self):
-        return 2 * (self.length + self.width)
-
-    def area(self):
-        return self.length * self.width
-
-    def draw(self):
-        for _ in range(3):
-            print("*" * self.length)
-
-    def info(self):
-        print("===Прямоугольник===")
-        print(f"Длина: {self.length}")
-        print(f"Ширина: {self.width}")
-        super().info()
-
-
-class Triangle(Shape):
-    def __init__(self, a, b, c, color="yellow"):
-        super().__init__(color)
-        self.a = a
-        self.b = b
-        self.c = c
-
-    def perimeter(self):
-        return self.a + self.b + self.c
-
-    def area(self):
-        p = self.perimeter() / 2
-        return math.sqrt(p * (p - self.a) * (p - self.b) * (p - self.c))
-
-    def draw(self):
-        height = 6
-        for i in range(1, height + 1):
-            spaces = " " * (height - i)
-            stars = "*" * (2 * i - 1)
-            print(spaces + stars)
-
-    def info(self):
-        print("===Треугольник===")
-        print(f"Сторона 1: {self.a}")
-        print(f"Сторона 2: {self.b}")
-        print(f"Сторона 3: {self.c}")
-        super().info()
-
-
-shapes = [
-    Square(3),
-    Rectangle(7, 3),
-    Triangle(11, 6, 6)
-]
-
-for shape in shapes:
-    shape.info()
-    print()
+person1, tel1 = gen_person()
+write_json(gen_person()[0], gen_person()[1])

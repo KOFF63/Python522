@@ -5580,21 +5580,408 @@
 # import geometry.sq
 # import geometry.trian
 
-from geometry import rect, sq, trian
+# from geometry import rect, sq, trian
+
 
 # from geometry import *
+# if __name__ == '__main__':
+#
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print(g.get_perimeter())
+#
+# def ran():
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print(g.get_perimeter())
+#
+#
+# if __name__ == '__main__':
+#     ran()
+
+#
+# from car.electro_car import ElectroCar
+#
+#
+# if __name__ == '__main__':
+#     e_car = ElectroCar("Tesla", "T", 2018, 99000, 100)
+#     e_car.show_car()
+#     e_car.description_battery()
+
+# Упаковка (Сериализация) и распаковка (Десериализация) данных
+#
+# import pickle
 
 
-r1 = rect.Rectangle(1, 2)
-r2 = rect.Rectangle(3, 4)
+#
+#
+# filename = "basket.txt"
+#
+# shop = {
+#     "фрукты": ["яблоко", "груша"],
+#     "овощи": ("морковь", "лук"),
+#     "бюджет": 1000
+# }
+#
+# with open(filename, "wb") as fh:
+#     pickle.dump(shop, fh)
+#
+# with open(filename, "rb") as fh:
+#     shop_list = pickle.load(fh)
+#
+# print(shop_list)
 
-s1 = sq.Square(10)
-s2 = sq.Square(20)
+#
+# class Test:
+#     num = 25
+#     string = "Привет"
+#     lst = [1, 2, 3]
+#     dictionary = {"first": 1, "second": 2}
+#
+#     def __str__(self):
+#         return f"Число: {Test.num}\nСтрока: {Test.string}\nСписок: {Test.lst}\nСловарь: {Test.dictionary}"
+#
+#
+# obj = Test()
+# print(obj)
+#
+# obj1 = pickle.dumps(obj)
+# print(f"Сериализация в строку:\n{obj1}\n")
+#
+# obj2 = pickle.loads(obj1)
+# print(f"Десериализация из строки:\n{obj2}\n")
 
-t1 = trian.Triangle(1, 2, 3)
-t2 = trian.Triangle(4, 5, 6)
+#
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# print(item1)
+# item2 = pickle.dumps(item1)
+# print(item2)
+# item3 = pickle.loads(item2)
+# print(item3)
+# print(item3.__dict__)
 
-shape = [r1, r2, s1, s2, t1, t2]
+# import json
+#
+# data = {
+#     'name': 'Olga',
+#     'age': 35,
+#     '20': None,
+#     'True': False,
+#     'hobbies': ('running', 'singing'),
+#     'children': [
+#         {
+#             'firstName': 'Alice',
+#             'age': 6
+#         }
+#     ]
+# }
+# ...
 
-for g in shape:
-    print(g.get_perimeter())
+# with open('data_file.json', 'w') as fw:
+#     json.dump(data, fw, indent=4)
+#
+#
+# with open('data_file.json', "r") as fw:
+#     data1 = json.load(fw)
+#
+# print(data1)
+# #
+# json_string = json.dumps(data, sort_keys=True)
+# print(json_string)
+# print(type(json_string))
+# data2 = json.loads(json_string)
+# print(data2)
+# print(type(data2))
+#
+# x = {"name": "Виктор"}
+#
+# print(json.dumps(x))
+# print(json.dumps(x, ensure_ascii=False))
+#
+# a = json.dumps(x)
+# print(json.loads(a))
+#
+# with open('data_file1.json', 'w') as fw:
+#     json.dump(x, fw)
+#
+# with open('data_file1.json', "r") as fw:
+#     data2 = json.load(fw)
+#
+# print(data2)
+
+#
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'k', 'l', 'm', 'n']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open("persons.json"))
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
+
+#
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'k', 'l', 'm', 'n']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#     # print(name)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#     # print(tel)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person, tel
+#
+#
+# def write_json(person_dict, num):  # {"name": "...", "tel": "..."},  "1580892771"
+#     try:
+#         data = json.load(open("persons_dict.json"))
+#         # {"5714085368": {"name": "...", "tel": "..."},
+#         # "8228754779": {"name": "...", "tel": "..."}
+#         # "1580892771": {"name": "...", "tel": "..."}}
+#     except FileNotFoundError:
+#         data = {}  #
+#
+#     data[num] = person_dict
+#     with open('persons_dict.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# # for i in range(5):
+#
+# person1, tel1 = gen_person()
+# write_json(person1, tel1)
+# write_json(gen_person()[0], gen_person()[1])
+
+# import json
+#
+#
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # st = ''
+#         # for i in self.marks:
+#         #     st += str(i) + ", "
+#         # return f"Студент => {self.name}: {st[:-2]}"
+#         st = ", ".join(map(str, self.marks))
+#         return f"Студент => {self.name}: {st}"
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_marks(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     def dump_to_json(self):
+#         data = {"name": self.name, "marks": self.marks}
+#         with open(self.get_file_name(), "w") as f:
+#             json.dump(data, f)
+#
+#     def get_file_name(self):
+#         return self.name + ".json"
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), "r") as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         st = "\n".join(map(str, self.students))
+#         return f"\nГруппа: {self.group}\n{st}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(gr1, gr2, index):
+#         return gr2.add_student(gr1.remove_student(index))
+#
+#     def get_file_name(self):
+#         return self.group.lower().replace(" ", "-") + ".json"
+#
+#     def dump_to_json(self):
+#         data = [{'name': student.name, 'marks': student.marks} for student in self.students]
+#         with open(self.get_file_name(), 'w') as f:
+#             json.dump(data, f, indent=2)
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), "r") as f:
+#             print(json.load(f))
+#
+#
+# st1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_marks(2, 4)
+# # print(st1)
+# # print(st1.average_mark())
+#
+# st2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
+# st3 = Student("Birukov", [3, 5, 3, 2, 5, 4])
+# # st1.dump_to_json()
+# # st1.load_from_file()
+#
+# sts1 = [st1, st2]
+# group1 = Group(sts1, "ГК Python")
+# # # print(group1)
+# # # print()
+# # group1.add_student(st3)
+# # # print(group1)
+# # # print()
+# # group1.remove_student(1)
+# # # print(group1)
+# sts2 = [st2]
+# group2 = Group(sts2, "ГК Web")
+# # print(group1)
+# # print(group2)
+# Group.change_group(group1, group2, 0)
+# print(group1)
+# print(group2)
+# group2.dump_to_json()
+# group2.load_from_file()
+
+#
+# import requests
+# import json
+#
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+# # print(todos)
+#
+#
+# todos_by_user = {}  # {1: 11, 2: 3}
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+#
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)
+#
+# max_complete = top_users[0][1]
+# print(max_complete)
+#
+# users = []
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:
+#         break
+#     users.append(str(user))
+#
+# # users = ["11"]
+# print(users)
+#
+# max_users = " and ".join(users)
+# print(max_users)
+#
+#
+# e = "s" if len(users) > 1 else ""
+# print(f"User{e} {max_users} completed {max_complete} TODO
