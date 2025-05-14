@@ -5942,45 +5942,165 @@
 # print(group2)
 # group2.dump_to_json()
 # group2.load_from_file()
+#
+#
+# import requests
+# import json
+#
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+# # print(todos)
+#
+#
+# todos_by_user = {}
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+#
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)
+#
+# max_complete = top_users[0][1]
+# print(max_complete)
+#
+# users = []
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:
+#         break
+#     users.append(str(user))
+#
+# # users = ["11"]
+# print(users)
+#
+# max_users = " and ".join(users)
+# print(max_users)
+#
+# e = "s" if len(users) > 1 else ""
+# print(f"User{e} {max_users} completed {max_complete} TODOs")
+
+#
+# import csv
+#
+# from urllib3.filepost import writer
+
+# from urllib3.filepost import writer
+
+# with open('data.csv') as f:
+#     file_reader = csv.reader(f, delimiter=";")
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row[0]} - {row[1]}. Родился в {row[2]} году. ")
+#         count += 1
+#     print(f"Всего в файле {count} строки.")
+
+#
+# with open('data.csv') as f:
+#     fields = ["Имя", "Профессия", "Год рождения"]
+#     file_reader = csv.DictReader(f, delimiter=";", fieldnames=fields)
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#
+#         print(f"\t{row["Имя"]} - {row["Профессия"]}. Родился в {row["Год рождения"]} году. ")
+#         count += 1
+#     print(f"Всего в файле {count} строки.")
+
+# with open("student.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Женя", "9", "15"])
+#     writer.writerow(["Саша", "5", "12"])
+#     writer.writerow(["Маша", "11", "18"])
 
 
-import requests
-import json
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open("sw_data.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+#
+# with open("sw_data.csv", "r") as f:
+#     print(f.read())
 
 
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-todos = json.loads(response.text)
-# print(todos)
+# import csv
+#
+# from urllib3.filepost import writer
 
+# from tkinter.font import names
+#
+# with open("stud.csv", "w") as f:
+#     names = ["Имя", "Возраст"]
+#     file_writer = csv.DictWriter(f, delimiter=';', lineterminator='\r', fieldnames=names)
+#     file_writer.writeheader()
+#     file_writer.writerow({"Имя": "Саша", "Возраст": 6})
+#     file_writer.writerow({"Имя": "Маша", "Возраст": 6})
+#     file_writer.writerow({"Имя": "Ваша", "Возраст": 6})
+#
+# data = [{
+#
+#     'hostname': 'sw1',
+#
+#     'location': 'London',
+#
+#     'model': '3750',
+#
+#     'vendor': 'Cisco'
+#
+# }, {
+#
+#     'hostname': 'sw2',
+#
+#     'location': 'Liverpool',
+#
+#     'model': '3850',
+#
+#     'vendor': 'Cisco'
+#
+# }, {
+#
+#     'hostname': 'sw3',
+#
+#     'location': 'Liverpool',
+#
+#     'model': '3650',
+#
+#     'vendor': 'Cisco'
+#
+# }, {
+#
+#     'hostname': 'sw4',
+#
+#     'location': 'London',
+#
+#     'model': '3650',
+#
+#     'vendor': 'Cisco'
+#
+# }]
+#
+# with open("ud.csv", "w") as f:
+#     writer = csv.DictWriter(f, delimiter=';', lineterminator='\r', fieldnames=data[0].keys())
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+#
+# # print(data[0].keys())
 
-todos_by_user = {}
-
-for todo in todos:
-    if todo["completed"]:
-        try:
-            todos_by_user[todo["userId"]] += 1
-        except KeyError:
-            todos_by_user[todo["userId"]] = 1
-
-print(todos_by_user)
-
-top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
-print(top_users)
-
-max_complete = top_users[0][1]
-print(max_complete)
-
-users = []
-for user, num_complete in top_users:
-    if num_complete < max_complete:
-        break
-    users.append(str(user))
-
-# users = ["11"]
-print(users)
-
-max_users = " and ".join(users)
-print(max_users)
-
-e = "s" if len(users) > 1 else ""
-print(f"User{e} {max_users} completed {max_complete} TODOs")

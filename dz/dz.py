@@ -816,107 +816,126 @@
 # person1, tel1 = gen_person()
 # write_json(gen_person()[0], gen_person()[1])
 
+#
+# import json
+#
+#
+# class CountryManager:
+#     COUNTRIES_FILE = 'countries.json'
+#
+#     @staticmethod
+#     def load_data():
+#         try:
+#             with open(CountryManager.COUNTRIES_FILE, 'r') as f:
+#                 return json.load(f)
+#         except FileNotFoundError:
+#             return {}
+#
+#     @staticmethod
+#     def save_data(data):
+#         with open(CountryManager.COUNTRIES_FILE, 'w') as f:
+#             json.dump(data, f, ensure_ascii=False, indent=4)
+#         print("Файл сохранен")
+#
+#     @staticmethod
+#     def add_country():
+#         country = input("Введите название страны (с заглавной буквы): ").strip()
+#         capital = input("Введите название столицы страны (с заглавной буквы): ").strip()
+#
+#         data = CountryManager.load_data()
+#         data[country] = capital
+#         CountryManager.save_data(data)
+#
+#     @staticmethod
+#     def remove_country():
+#         country = input("Введите название страны для удаления (с заглавной буквы): ").strip()
+#
+#         data = CountryManager.load_data()
+#         if country in data:
+#             del data[country]
+#             CountryManager.save_data(data)
+#             print(f"Страна {country} удалена")
+#         else:
+#             print(f"Страна {country} не найдена")
+#
+#     @staticmethod
+#     def find_country():
+#         country = input("Введите название страны для поиска (с заглавной буквы): ").strip()
+#
+#         data = CountryManager.load_data()
+#         capital = data.get(country)
+#         if capital:
+#             print(f"Столица {country}: {capital}")
+#         else:
+#             print(f"Страна {country} не найдена")
+#
+#     @staticmethod
+#     def edit_country():
+#         country = input("Введите название страны для редактирования (с заглавной буквы): ").strip()
+#
+#         data = CountryManager.load_data()
+#         if country in data:
+#             capital = input(f"Введите новую столицу для {country} (с заглавной буквы): ").strip()
+#             data[country] = capital
+#             CountryManager.save_data(data)
+#             print(f"Столица {country} изменена на {capital}")
+#         else:
+#             print(f"Страна {country} не найдена")
+#
+#     @staticmethod
+#     def show_all():
+#         data = CountryManager.load_data()
+#         print(json.dumps(data, ensure_ascii=False, indent=4))
+#
+#     @staticmethod
+#     def menu():
+#         while True:
+#             print("\n" + "*" * 30)
+#             print("Выбор действия:")
+#             print("1 - добавление данных")
+#             print("2 - удаление данных")
+#             print("3 - поиск данных")
+#             print("4 - редактирование данных")
+#             print("5 - просмотр данных")
+#             print("6 - завершение работы")
+#
+#             choice = input("Ввод: ").strip()
+#
+#             if choice == '1':
+#                 CountryManager.add_country()
+#             elif choice == '2':
+#                 CountryManager.remove_country()
+#             elif choice == '3':
+#                 CountryManager.find_country()
+#             elif choice == '4':
+#                 CountryManager.edit_country()
+#             elif choice == '5':
+#                 CountryManager.show_all()
+#             elif choice == '6':
+#                 print("Работа завершена")
+#                 break
+#             else:
+#                 print("Неверный выбор. Попробуйте снова.")
+#
+#
+# if __name__ == "__main__":
+#     CountryManager.menu()
 
-import json
+import requests
+import csv
 
+response = requests.get('https://jsonplaceholder.typicode.com/todos')
+data = response.json()
 
-class CountryManager:
-    COUNTRIES_FILE = 'countries.json'
+headers = ['userId', 'id', 'title', 'completed']
 
-    @staticmethod
-    def load_data():
-        try:
-            with open(CountryManager.COUNTRIES_FILE, 'r') as f:
-                return json.load(f)
-        except FileNotFoundError:
-            return {}
+with open('todos.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.DictWriter(f, delimiter=';', lineterminator='\n', fieldnames=headers)
+    writer.writeheader()
 
-    @staticmethod
-    def save_data(data):
-        with open(CountryManager.COUNTRIES_FILE, 'w') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-        print("Файл сохранен")
+    for item in data:
+        item['completed'] = 'TRUE' if item['completed'] else 'FALSE'
+        writer.writerow(item)
 
-    @staticmethod
-    def add_country():
-        country = input("Введите название страны (с заглавной буквы): ").strip()
-        capital = input("Введите название столицы страны (с заглавной буквы): ").strip()
+print("Данные успешно сохранены в todos.csv")
 
-        data = CountryManager.load_data()
-        data[country] = capital
-        CountryManager.save_data(data)
-
-    @staticmethod
-    def remove_country():
-        country = input("Введите название страны для удаления (с заглавной буквы): ").strip()
-
-        data = CountryManager.load_data()
-        if country in data:
-            del data[country]
-            CountryManager.save_data(data)
-            print(f"Страна {country} удалена")
-        else:
-            print(f"Страна {country} не найдена")
-
-    @staticmethod
-    def find_country():
-        country = input("Введите название страны для поиска (с заглавной буквы): ").strip()
-
-        data = CountryManager.load_data()
-        capital = data.get(country)
-        if capital:
-            print(f"Столица {country}: {capital}")
-        else:
-            print(f"Страна {country} не найдена")
-
-    @staticmethod
-    def edit_country():
-        country = input("Введите название страны для редактирования (с заглавной буквы): ").strip()
-
-        data = CountryManager.load_data()
-        if country in data:
-            capital = input(f"Введите новую столицу для {country} (с заглавной буквы): ").strip()
-            data[country] = capital
-            CountryManager.save_data(data)
-            print(f"Столица {country} изменена на {capital}")
-        else:
-            print(f"Страна {country} не найдена")
-
-    @staticmethod
-    def show_all():
-        data = CountryManager.load_data()
-        print(json.dumps(data, ensure_ascii=False, indent=4))
-
-    @staticmethod
-    def menu():
-        while True:
-            print("\n" + "*" * 30)
-            print("Выбор действия:")
-            print("1 - добавление данных")
-            print("2 - удаление данных")
-            print("3 - поиск данных")
-            print("4 - редактирование данных")
-            print("5 - просмотр данных")
-            print("6 - завершение работы")
-
-            choice = input("Ввод: ").strip()
-
-            if choice == '1':
-                CountryManager.add_country()
-            elif choice == '2':
-                CountryManager.remove_country()
-            elif choice == '3':
-                CountryManager.find_country()
-            elif choice == '4':
-                CountryManager.edit_country()
-            elif choice == '5':
-                CountryManager.show_all()
-            elif choice == '6':
-                print("Работа завершена")
-                break
-            else:
-                print("Неверный выбор. Попробуйте снова.")
-
-
-if __name__ == "__main__":
-    CountryManager.menu()
