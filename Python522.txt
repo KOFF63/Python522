@@ -1,0 +1,298 @@
+https://www.python.org/
+
+Win + R => cmd
+python
+py
+
+print("Hello World")
+
+
+Вид -> Расширения имен файлов
+
+python 1.py
+
+IDLE
+
+Ctrl + /
+
+False => "", 0, 0.0, False, None
+
+
+Типы данных:
+- неизменяемые
+	str - строка
+	int - целое число
+	float - вещественное число
+	bool - булевый тип
+	tuple - кортеж
+	frozenset - замороженное множество 
+- изменяемый
+	list - список
+	set - множество
+	dict - словарь
+
+Длина списка = последний индекс + 1
+последний индекс = длина списка - 1
+
+PEP20
+import this
+
+PEP8
+
+1) от 0 по 9
+2)
+ворона - 1
+вороны - 2, 3, 4
+ворон - 5, 6, 7, 8, 9, 0
+
+Исключения: 11, 12, 13, 14
+
+копейка - 1, 21, 31, ..., 91
+копейки 
+2, 22, 92
+3,
+4, 
+копеек
+5 
+6, 7, 8, 9, 0
+
+text.txt
+
+Hello!
+
+
+
+Система контроля версий (Version Control Systems, VCS)
+git --version
+
+git init
+- инициализация репозитория (указывается один раз)
+
+git status
+- проверить статус репозитория
+
+git add -A
+		--all
+		main.py
+		.
+- добавляет файлы git
+
+git config --global user.name "new_user"
+           --local
+		   
+git config --global user.name
+
+git config --global user.email "test@mail.ru"
+git config --global user.email
+
+git commit -m "first commit"
+
+.gitignore
+
+
+git commit -m "added gitignore"
+
+токен
+
+Win + R => control
+
+
+https://github.com
+
+git remote add origin https://github.com/Helen-prog/Python522.git
+git push -u origin master
+
+
+0) git status
+1) git add .
+2) git commit -m "change file"
+3) git push
+
+git branch
+- просмотр веток
+
+git branch test
+- создание ветки
+
+git branch -D test
+- удаление ветки
+
+git branch readme
+
+git checkout readme
+- перейти на ветку
+
+readme.md
+
+
+git checkout master
+
+master -> readme
+- readme.md
+
+		   
+git merge readme
+- слияние веток
+
+git clone https://github.com/Helen-prog/Python522.git
+- клонирование репозитория
+
+git pull
+- забираем изменения с удаленного репозитория в локальный.
+
+
+class ClassName:
+	свойства - (переменные, поля)
+		- динамические (__init__)
+		- статические 
+	методы - (функции)
+		- экземпляра класса (self)
+		- статические ()  @staticmethod
+		- класса (cls)  @classmethod
+	
+	атрибуты = свойства + методы
+	
+Модификаторы доступа:
+public => self.x
+protected => self._x
+private => self.__x
+
+!5 = 1*2*3*4*5
+
+Родительский класс (Супер, Базовый)
+Дочерний класс (Подкласс, Класс наследник, Производный)
+
+DRY (Don`t Repeat Youself) - не повторяйся
+
+
+# круг
+def square(val1):
+	...
+	
+
+# прямоугольник
+def square(val1, val2):
+	...
+	
+square(5)
+square(5, 7)
+
+geometry  -> pip
+	rect.py
+	sq.py
+	trian.py
+
+
+rect.py  =>  __main__
+
+main.py  =>  geometry.rect
+
+
+Упаковка (Сериализация) и распаковка (Десериализация) данных
+1. marshal  (.pyc)
+2. pickle
+3. json
+
+dump() - сохраняет данные в открытый файл
+load() - считывает данные из файла
+
+dumps() - сохраняет данные в строку
+loads() - считывает данные из строки
+
+https://jsonplaceholder.typicode.com/todos
+https://jsonplaceholder.typicode.com
+
+requests
+
+pip install requests
+
+Компоненты MVC:
+• Модель (Model) — этот компонент отвечает за данные, а также 
+определяет структуру приложения. 
+• Представление (View) — этот компонент отвечает за 
+взаимодействие с пользователем. То есть код компонента 
+view определяет внешний вид приложения.
+• Контроллер (Controller) — этот компонент отвечает за связь между 
+model и view. По сути, это мозг MVC-приложения.
+
+CSV (Comma Separated Values - переменные, разделенные запятыми)
+
+data.csv
+
+Имя,Профессия,Год рождения
+Виктор,Веб-дизайнер,1995
+Игорь,Программист,1983
+Роман,Адимнистратор,1990
+
+Имя;Профессия;Год рождения
+Виктор;Веб-дизайнер;1995
+Игорь;Программист;1983
+
+csv.reader  => []
+csv.DictReader  => {}
+
+csv.writer  => []
+csv.DictWriter  => {}
+
+articles
+	project_articles.py
+	controller.py
+	view.py
+	model.py
+	
+
+{
+	"название": qqq,
+	"автор": www,
+	"количество страниц": 5,
+	"описание": eee
+}
+
+['qqq', 'www', '5', 'eee'] => 'qqq', 'www', '5', 'eee'
+
+{
+	title: qqq,
+	author: www,
+	pages: 5,
+	description: eee
+}
+
+{
+	qqq: {
+		title: qqq,
+		author: www,
+		pages: 5,
+		description: eee
+	},
+	aaa: {
+		title: aaa,
+		author: www,
+		pages: 5,
+		description: eee
+	}
+}
+
+
+*.db, *.sqlite
+
+SELECT [ALL | DISTINCT] {* | столбец1 [, столбец2]}
+FROM таблица1 [, таблица2]
+[WHERE условие]
+	AND | OR
+	поле [NOT] BETWEEN начальное_значение AND конечное_значение
+	поле [NOT] LIKE шаблон_строки
+		% - любое кол-во символов
+		_ - один любой символов
+	поле [NOT] GLOB регулярное_выражение
+		* - любое кол-во символов
+		? - один любой символов
+		. - соответствует любому одиночному символу
+		[симвлы] - один символ из перечисленных [abc]
+		[начальный_диапазон-конечный диапазон] - один символ 
+				из диапазоназона [a-zA-z0-9]
+		[^...] - один символ, который не входит перечисления
+	поле IS [NOT] NULL
+	поле IS [NOT]
+	поле [NOT] IN (набор_значений | выражение)
+[ORDER BY {[col_name | col_number [ASC | DESC]]}]	
+		
