@@ -29,7 +29,8 @@ WHERE Country = 'Россия';
 5. Восстановите строки, удаленные в 3 пункте.
 
 INSERT INTO Ware
-SELECT * FROM Ware_backup
+SELECT * 
+FROM Ware
 WHERE Country = 'Германия';
  
 6.  Выведите весь товар, который не черного цвета (продукт, цену, код продукта)
