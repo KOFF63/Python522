@@ -6158,34 +6158,158 @@
 #
 #     res1 = cur.fetchone()
 #     print(res1)
+#
+# import sqlite3
+#
+# list_cars = [
+#     ('BWM', 54000),
+#     ('Chevrolet', 46000),
+#     ('Lada', 38000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000)
+# ]
+#
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#         )""")
+#
+#     for car in list_cars:
+#         cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
 
-import sqlite3
-
-list_cars = [
-    ('BWM', 54000),
-    ('Chevrolet', 46000),
-    ('Lada', 38000),
-    ('Citroen', 29000),
-    ('Honda', 33000)
-]
-
-with sqlite3.connect("cars.db") as con:
-    cur = con.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS cars(
-        car_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        model TEXT,
-        price INTEGER
-        )""")
-
-    for car in list_cars:
-        cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
-
-    # cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
-    # cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
-    # cur.execute("INSERT INTO cars VALUES(3, 'Mercedes', 57000)")
-    # cur.execute("INSERT INTO cars VALUES(4, 'Bentley', 35000)")
-    # cur.execute("INSERT INTO cars VALUES(5, 'AUDI', 52000)")
+# cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
+# cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
+# cur.execute("INSERT INTO cars VALUES(3, 'Mercedes', 57000)")
+# cur.execute("INSERT INTO cars VALUES(4, 'Bentley', 35000)")
+# cur.execute("INSERT INTO cars VALUES(5, 'AUDI', 52000)")
 
 # con.commit()
 # con.close()
+
+#
+# p = True
+#
+# def fan1():
+#     global  p
+#     p = None
+#     def fan2():
+#         p ="py"
+#     fan2()
+# fan1()
+# print(p)
+# #
+#
+# for i in range(-2):
+#     print(i)
+#
+# # c = 'str'
+# print(c[0:3])
+
+# old = {'a': 10, 'b' : 10}
+# new = {}
+# for i, j in old.items():
+#     new[j] = i
+# print(new)
+#
+# try:
+#     print(1)
+# except Exception:
+#     print(0)
+
+
+# a = [1,2] - 1
+# print(a)
+
+# s = 10
+# print(b)
+#
+# c = [1,2]+[0]
+# print(c)
+
+# c = type({1:2,2:1})==type({1,2})
+# print(c)
+
+# b = 'python'
+# print(b[:6:2])
+
+# c = lambda x: print(0)
+# c(5)
+
+# a = [1] + [1]
+# print(a)
+
+
+# d = id({1}) == id({1})
+# print(d)
+
+#
+# a = {'a':10, 'c':30}
+# b = {'c':20, 'e':5}
+# for i in a.keys():
+#     if i not in b:
+#         b[i]=a[i]
+# print(b)
+
+#
+# while 1:
+#     print(1,break)
+
+
+# anow = {'a':{'a':['a']}}
+# print(anow.pop('a')==anow.clear())
+
+# def get(a=2,b=3):
+#     print(a+b)
+# get(4)
+
+
+# c = frozenset([1,2,3]) == {1,2,3}
+# print(c)
+
+#
+# for i in 'str':
+#     print(i.upper(), end='.')
+
+#
+# def fac(n):
+#     if n == 0:
+#         return 1
+#     else:
+#         return n * fac(n - 1)
+#
+#
+# print(fac(5))
+
+#
+# tuple_1 =(1,2,3)
+# tuple_2 =(4,5,6)
+# tuple_3 =tuple_1 +tuple_2
+# print(tuple_1<tuple_2)
+# print(tuple_2<tuple_3)
+# print(tuple_1<tuple_3)
+
+# import random
+# print(2.1 == random.uniform(2.1,2.1))
+#
+# c = id([1]) == id([1.0])
+# print(c)
+
+#
+# e = lambda x: x
+# a = {1,2,3}
+# b= e(a)
+# print(a == b)
+
+#
+# for i in range(len('str')):
+#     if i != 2:
+#         print('str'[i], end='-')
+#     else:
+#         print('str'[1])
+
+d = lambda: False
+print(d())
