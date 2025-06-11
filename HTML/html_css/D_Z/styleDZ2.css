@@ -1,0 +1,47 @@
+.roman{
+    list-style-type: upper-roman; font-family: Verdana, sans-serif; font-weight: bold
+}
+
+.red_text{
+    color: red
+}
+
+.yllow_text{
+    color: rgb(229, 229, 37);
+}
+
+.green_text{
+    color: green
+}
+
+.blue_text{
+    color: rgb(8, 169, 232); 
+}
+
+.violet_text{
+    color: rgb(105, 29, 105);
+}
+
+.latin{
+    list-style-type: lower-latin; color: black;
+}
+
+.orange{
+    list-style: url(orange_marker.png);
+}
+
+.green{
+    list-style: url(green_marker.png);
+}
+
+.red{
+    list-style: url(red_marker.png);
+}
+
+.blue{
+    list-style: url(blue_marker.png);
+}
+
+.black{
+    list-style: url(black_marker.png);
+}

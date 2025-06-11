@@ -1,0 +1,18 @@
+ul {
+    /* list-style-type: circle;
+    list-style-image: url(icon.png);
+    list-style-position: inside;
+    text-align: center; */ 
+    
+}
+
+ol {list-style-image: none;
+    /* list-style-type: lower-greek;
+    list-style-image: none; */
+    
+}
+
+li > ul {list-style-image: url(s.gif);
+    /* background: green; */
+
+}
