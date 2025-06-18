@@ -1,0 +1,29 @@
+body{
+    background-image: url(../img/pattern.png);
+}
+table {
+    border-collapse: collapse;
+    margin: 100px 50px;
+    font-family: verdana, sans-serif;
+    box-shadow: 0 0 10px gray;
+}
+
+th, td {
+    padding: 30px;
+    text-align: center;
+    border: 3px solid rgb(193, 193, 196);
+    font-weight: bold;
+    color: black;
+}
+
+th {
+    background-image: url(../img/tablebg.jpg);  
+}
+tr {
+    background-color: white;
+}
+.row {
+    background-color: rgb(193, 193, 196);
+}
+
+
