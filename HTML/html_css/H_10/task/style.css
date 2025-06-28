@@ -9,12 +9,12 @@ body {
     max-width: 1050px;
     min-width: 414px;
     margin: 0 auto;
-    text-align: center; /* Центрируем содержимое */
 }
 
+/* top */
 .top {
     background: #F3F3F3;
-    padding-bottom: 40px; /* Добавим отступ снизу */
+    padding-bottom: 120px;
 }
 
 .top__block {
@@ -37,7 +37,6 @@ body {
     margin: 0;
     display: flex;
     list-style: none;
-    padding: 0;
 }
 
 .top_block--right li {
@@ -53,53 +52,285 @@ body {
     text-decoration: none;
 }
 
-h1 {
-    color: rgb(37, 43, 66);
-    font-size: 58px;
+.top h1 {
     font-weight: 800;
+    font-size: 58px;
     line-height: 80px;
+    text-align: center;
     letter-spacing: 0.2px;
-    margin: 40px 0; /* Убрали боковые отступы */
+    color: #252B42;
+    margin-top: 120px;
+    margin-bottom: 40px;
 }
 
-h4 {
-    color: rgb(115, 115, 115);
-    font-size: 20px;
+.top h4 {
     font-weight: 500;
+    font-size: 20px;
     line-height: 30px;
+    text-align: center;
     letter-spacing: 0.2px;
-    margin: 40px 0; /* Убрали боковые отступы */
+    color: #737373;
+    margin: 0;
 }
 
-.buttons-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.top__btn {
     margin-top: 40px;
+    text-align: center;
 }
 
-input[type="button"] {
-    color: #F3F3F3;
-    font-size: 14px;
+.top__btn--left {
+    background: #FFA62B;
+    border-radius: 37px;
     font-weight: 700;
+    font-size: 14px;
     line-height: 28px;
     letter-spacing: 0.2px;
-    background: orange;
+    color: #FFFFFF;
     padding: 10px 36px;
-    border: 0;
-    border-radius: 40px;
-    cursor: pointer;
+    box-sizing: border-box;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+.top__btn--right {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    color: #00A0C1;
+    border: 1px solid #00A0C1;
+    border-radius: 37px;
+    padding: 10px 36px;
+    box-sizing: border-box;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.choose {
+    padding: 145px 0 100px;
+
+}
+
+.choose h2 {
+    color: rgb(37, 43, 66);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.choose_title--text {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 0 45px;
+}
+
+.choose__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.choose__element {
+    flex-basis: 328px;
+    box-sizing: border-box;
+    border: 1px solid rgb(232, 232, 232);
+    background: rgb(255, 255, 255);
+    padding: 35px 40px;
+    margin-bottom: 30px;
+}
+
+.choose__title {
+    display: flex;
+    align-items: center;
+}
+
+.choose__title h5 {
+    color: rgb(37, 43, 66);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    margin: 0 0 0 15px;
+}
+
+.choose__title p {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    margin: 0;
+}
+
+/* team */
+.team {
+    border-top: 1px solid gray;
+    padding: 80px 0 50px;
+}
+
+.team h2 {
+    color: rgb(37, 43, 66);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.team p {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 0 80px;
+}
+
+.team__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team__element {
+    box-sizing: border-box;
+    border: 1px solid rgb(238, 238, 238);
+    background: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.team__element h5 {
+    color: rgb(37, 43, 66);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    margin: 30px 0 5px;
+}
+
+.team__element h6 {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    margin: 0 0 5px;
+}
+
+.team__element div img {
+    margin: 0 7.5px 30px;
+}
+
+.team__element>img {
+    width: 100%;
+}
+
+/* contact */
+
+.contact {
+    padding: 90px 0;
+    background: url(images/b_5_fon.jpg) center #EFEFEF;
+    background-size: cover;
+}
+
+.contact h5 {
+    color: rgb(37, 43, 66);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    margin: 0;
+}
+
+.contact h2 {
+    color: rgb(37, 43, 66);
+    font-family: Montserrat;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    margin: 0 0 40px;
+}
+
+form {
+    max-width: 620px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input,
+select {
+    flex-basis: 290px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+textarea {
+    flex-basis: 100%;
+    margin-right: 20px;
+    padding: 12px 20px;
+}
+
+input {
+    box-sizing: border-box;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    background: rgb(249, 249, 249);
+    color: rgb(189, 189, 189);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    padding: 12px 20px;
+}
+
+select {
+    box-sizing: border-box;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    background: rgb(249, 249, 249);
+    color: rgb(189, 189, 189);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    padding: 12px 20px;
+}
+
+textarea {
+    box-sizing: border-box;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    background: rgb(249, 249, 249);
+    color: rgb(189, 189, 189);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    height: 140px;
+    margin-bottom: 40px;
 }
 
 button {
-    color: #00A0C1;
+    border-radius: 5px;
+    background: rgb(255, 166, 43);
+    color: rgb(255, 255, 255);
     font-size: 14px;
     font-weight: 700;
     line-height: 28px;
     letter-spacing: 0.2px;
-    padding: 10px 36px;
-    border-radius: 40px;
-    border: 1px solid #00A0C1;
-    background: transparent;
+    border: none;
+    padding: 15px 40px;
     cursor: pointer;
 }
