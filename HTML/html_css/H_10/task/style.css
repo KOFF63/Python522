@@ -334,3 +334,71 @@ button {
     padding: 15px 40px;
     cursor: pointer;
 }
+
+/* clients */
+
+.clients {
+    padding: 145px 0 100px;
+    background: rgb(243, 243, 243);
+
+}
+
+.clients h2 {
+    color: rgb(37, 43, 66);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.clients_title--text {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin: 0 0 45px;
+}
+
+.clients__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.clients__element {
+    flex-basis: 328px;
+    box-sizing: border-box;
+    border: 1px solid rgb(232, 232, 232);
+    background: rgb(255, 255, 255);
+    padding: 35px 40px;
+    margin-bottom: 30px;
+}
+
+.clients__title {
+    display: flex;
+    align-items: center;
+}
+
+
+.clients__title p {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 20px;
+    padding: 0 20px 0 0 ;
+
+}
+
+

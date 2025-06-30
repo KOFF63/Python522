@@ -6311,5 +6311,6 @@
 #     else:
 #         print('str'[1])
 
-d = lambda: False
-print(d())
+# d = lambda: False
+# print(d())
+
