@@ -19,6 +19,7 @@ body {
 
 .top__block {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -397,8 +398,57 @@ button {
     display: flex;
     align-items: center;
     margin: 0 0 20px 20px;
-    padding: 0 20px 0 0 ;
+    padding: 0 20px 0 0;
 
 }
 
+@media(max-width: 1050px) {
+    .wrap {
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
 
+    .choose__block,
+    .team__block,
+    .clients__block {
+        justify-content: space-evenly;
+    }
+}
+
+@media(max-width: 760px) {
+
+    .choose__element,
+    .team__element {
+        flex-basis: 100%;
+    }
+
+    .top h1 {
+        font-size: 54px;
+    }
+
+    br {
+        display: none;
+    }
+}
+
+@media(max-width: 718px){
+    input, select{
+        flex-basis: 100%;
+    }
+    textarea{
+        margin-right: 0;
+    }
+    button{
+        width: 100%;
+    }
+}
+
+@media(max-width: 458px){
+    .top__btn a{
+        display: block;
+        margin: 25px 40px;
+    }
+    .top h1 {
+        font-size: 40px;
+    }
+}
