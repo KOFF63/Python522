@@ -6314,3 +6314,119 @@
 # d = lambda: False
 # print(d())
 
+from bs4 import BeautifulSoup
+
+# f = open('index.html').read()
+#
+# soup = BeautifulSoup(f, "html.parser")
+# row = soup.find("div", class_="row")
+# row = soup.find_all("div", class_="row")[2].find("div", class_="name").text
+# row = soup.find_all("div", class_="row")[2].find("div", {"data-set":"salary"}).text
+# row = soup.find("div", string="Alena").parent
+# row = soup.find("div", string="Alena").findParent(class_="row")
+# row = soup.find("div", id="whois3").find_next_sibling()
+# row = soup.find("div", id="whois3").find_previous_sibling()
+# print(row)
+#
+# def get_copywriter(tag):
+#     whois = tag.find("div", class_="whois").text
+#     if "Copywriter" in whois:
+#         return tag
+#     return None
+#
+#
+# f = open('index.html').read()
+# soup = BeautifulSoup(f, "html.parser")
+# copywriter = []
+# row = soup.find_all("div", class_="row")
+# for i in row:
+#     cw = get_copywriter(i)
+#     if cw:
+#         copywriter.append(cw)
+# print(copywriter)
+# import re
+#
+#
+# def get_salary(s):
+#     pattern = r"\d+"
+#     # res = re.findall(pattern, s)[0]
+#     res = re.search(pattern, s).group()
+#     print(res)
+#
+#
+# f = open('index.html').read()
+# soup = BeautifulSoup(f, "html.parser")
+# salary = soup.find_all("div", {"data-set": "salary"})
+# for i in salary:
+#     get_salary(i.text)
+
+import requests
+
+# r = requests.get("https://ru.wordpress.org/")
+# # print(r.headers)
+# # print(r.content)
+# print(r.text)
+
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find("h1", class_="wp-block-heading").text
+#     return p1
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/"
+#     print(get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+import re
+import csv
+
+
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+def refined(s):
+    return re.sub(r'\D+', '', s)
+
+
+def write_csv(data):
+    with open('plugins.csv', 'a') as f:
+        writer = csv.writer(f, delimiter=',', lineterminator='\r')
+        writer.writerow([data['name'], data['url'], data['rating'], data['snippet']])
+
+
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    p1 = soup.find_all("section", class_="plugin-section")[2]
+    plugins = p1.find_all('li')
+    for plugin in plugins:
+        try:
+            name = plugin.find('h3', class_='entry-title').text
+        except AttributeError:
+            name = ""
+        url = plugin.find('h3', class_='entry-title').find('a').get('href')
+        rating = plugin.find('span', class_='rating-count').text
+        replace_rating = refined(rating)
+        snippet = plugin.find('div', class_='entry-excerpt').text.strip()
+        data = {'name': name, 'url': url, 'rating': rating, 'snippet': snippet}
+        write_csv(data)
+
+
+def main():
+    url = "https://ru.wordpress.org/plugins/"
+    get_data(get_html(url))
+
+
+if __name__ == '__main__':
+    main()

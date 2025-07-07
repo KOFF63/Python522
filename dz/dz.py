@@ -920,22 +920,96 @@
 #
 # if __name__ == "__main__":
 #     CountryManager.menu()
+#
+# import requests
+# import csv
+#
+# response = requests.get('https://jsonplaceholder.typicode.com/todos')
+# data = response.json()
+#
+# headers = ['userId', 'id', 'title', 'completed']
+#
+# with open('todos.csv', 'w', newline='', encoding='utf-8') as f:
+#     writer = csv.DictWriter(f, delimiter=';', lineterminator='\n', fieldnames=headers)
+#     writer.writeheader()
+#
+#     for item in data:
+#         item['completed'] = 'TRUE' if item['completed'] else 'FALSE'
+#         writer.writerow(item)
+#
+# print("Данные успешно сохранены в todos.csv")
+#
 
-import requests
+
+import re
 import csv
+import requests
+from bs4 import BeautifulSoup
 
-response = requests.get('https://jsonplaceholder.typicode.com/todos')
-data = response.json()
 
-headers = ['userId', 'id', 'title', 'completed']
+def get_html(url):
+    r = requests.get(url)
+    return r.text
 
-with open('todos.csv', 'w', newline='', encoding='utf-8') as f:
-    writer = csv.DictWriter(f, delimiter=';', lineterminator='\n', fieldnames=headers)
-    writer.writeheader()
 
-    for item in data:
-        item['completed'] = 'TRUE' if item['completed'] else 'FALSE'
-        writer.writerow(item)
+def refined(s):
+    return re.sub(r'[^\d.]', '', s)
 
-print("Данные успешно сохранены в todos.csv")
 
+def write_csv(data):
+    with open('books.csv', 'a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=',')
+        writer.writerow([data['title'], data['price'], data['rating'], data['availability']])
+
+
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    books = soup.find_all("article", class_="product_pod")
+
+    for book in books:
+        try:
+            title = book.find("h3").find("a")["title"]
+        except:
+            title = "N/A"
+
+        try:
+            price = book.find("p", class_="price_color").text
+            price_clean = refined(price)
+        except:
+            price_clean = "N/A"
+
+        try:
+            rating = book.find("p", class_="star-rating")["class"][1]
+        except:
+            rating = "N/A"
+
+        try:
+            availability = book.find("p", class_="instock availability").text.strip()
+        except:
+            availability = "N/A"
+
+        data = {
+            'title': title,
+            'price': price_clean,
+            'rating': rating,
+            'availability': availability
+        }
+
+        write_csv(data)
+
+
+def main():
+    with open('books.csv', 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=',')
+        writer.writerow(['Title', 'Price (£)', 'Rating', 'Availability'])
+
+    for page in range(1, 4):
+        url = f"https://books.toscrape.com/catalogue/page-{page}.html"
+        print(f"Парсинг страницы {page}...")
+        get_data(get_html(url))
+
+    print("Готово! Данные сохранены в books.csv")
+
+
+if __name__ == '__main__':
+    main()
