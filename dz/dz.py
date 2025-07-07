@@ -1003,13 +1003,6 @@ def main():
         writer = csv.writer(f, delimiter=',')
         writer.writerow(['Title', 'Price (£)', 'Rating', 'Availability'])
 
-    for page in range(1, 4):
-        url = f"https://books.toscrape.com/catalogue/page-{page}.html"
-        print(f"Парсинг страницы {page}...")
-        get_data(get_html(url))
-
-    print("Готово! Данные сохранены в books.csv")
-
 
 if __name__ == '__main__':
     main()
