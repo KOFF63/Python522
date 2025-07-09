@@ -939,70 +939,123 @@
 #
 # print("Данные успешно сохранены в todos.csv")
 #
+#
+#
+# import re
+# import csv
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     return re.sub(r'[^\d.]', '', s)
+#
+#
+# def write_csv(data):
+#     with open('books.csv', 'a', newline='', encoding='utf-8') as f:
+#         writer = csv.writer(f, delimiter=',')
+#         writer.writerow([data['title'], data['price'], data['rating'], data['availability']])
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     books = soup.find_all("article", class_="product_pod")
+#
+#     for book in books:
+#         try:
+#             title = book.find("h3").find("a")["title"]
+#         except:
+#             title = "N/A"
+#
+#         try:
+#             price = book.find("p", class_="price_color").text
+#             price_clean = refined(price)
+#         except:
+#             price_clean = "N/A"
+#
+#         try:
+#             rating = book.find("p", class_="star-rating")["class"][1]
+#         except:
+#             rating = "N/A"
+#
+#         try:
+#             availability = book.find("p", class_="instock availability").text.strip()
+#         except:
+#             availability = "N/A"
+#
+#         data = {
+#             'title': title,
+#             'price': price_clean,
+#             'rating': rating,
+#             'availability': availability
+#         }
+#
+#         write_csv(data)
+#
+#
+# def main():
+#     with open('books.csv', 'w', newline='', encoding='utf-8') as f:
+#         writer = csv.writer(f, delimiter=',')
+#         writer.writerow(['Title', 'Price (£)', 'Rating', 'Availability'])
+#
+#
+# if __name__ == '__main__':
+#     main()
 
-
-import re
-import csv
-import requests
 from bs4 import BeautifulSoup
+import requests
 
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
+class HabrParser:
+    def __init__(self, base_url, path, pages=3):
+        self.base_url = base_url
+        self.path = path
+        self.pages = pages
+        self.res = []
 
+    def get_html(self, page=1):
+        url = f"{self.base_url}page{page}/" if page > 1 else self.base_url
+        req = requests.get(url)
+        return BeautifulSoup(req.text, 'lxml')
 
-def refined(s):
-    return re.sub(r'[^\d.]', '', s)
+    def parsing(self, html):
+        articles = html.find_all('article', class_='tm-articles-list__item')
+        for item in articles:
+            title = item.find('h2', class_='tm-title').text.strip()
+            href = self.base_url[:-1] + item.find('a', class_='tm-title__link')['href']
+            author = item.find('a', class_='tm-user-info__username').text.strip()
+            self.res.append({
+                'title': title,
+                'href': href,
+                'author': author
+            })
 
+    def save(self):
+        with open(self.path, 'w', encoding='utf-8') as f:
+            for i, item in enumerate(self.res, 1):
+                f.write(f"Статья #{i}\n\n"
+                        f"Название: {item['title']}\n"
+                        f"Ссылка: {item['href']}\n"
+                        f"Автор: {item['author']}\n\n"
+                        f"{'*' * 50}\n")
 
-def write_csv(data):
-    with open('books.csv', 'a', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f, delimiter=',')
-        writer.writerow([data['title'], data['price'], data['rating'], data['availability']])
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    books = soup.find_all("article", class_="product_pod")
-
-    for book in books:
-        try:
-            title = book.find("h3").find("a")["title"]
-        except:
-            title = "N/A"
-
-        try:
-            price = book.find("p", class_="price_color").text
-            price_clean = refined(price)
-        except:
-            price_clean = "N/A"
-
-        try:
-            rating = book.find("p", class_="star-rating")["class"][1]
-        except:
-            rating = "N/A"
-
-        try:
-            availability = book.find("p", class_="instock availability").text.strip()
-        except:
-            availability = "N/A"
-
-        data = {
-            'title': title,
-            'price': price_clean,
-            'rating': rating,
-            'availability': availability
-        }
-
-        write_csv(data)
-
-
-def main():
-    with open('books.csv', 'w', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f, delimiter=',')
-        writer.writerow(['Title', 'Price (£)', 'Rating', 'Availability'])
+    def run(self):
+        for page in range(1, self.pages + 1):
+            html = self.get_html(page)
+            self.parsing(html)
+        self.save()
+        print(f"Сохранено {len(self.res)} статей в файл {self.path}")
 
 
 if __name__ == '__main__':
-    main()
+    parser = HabrParser(
+        base_url='https://habr.com/ru/news/',
+        path='habr_news.txt',
+        pages=3
+    )
+    parser.run()

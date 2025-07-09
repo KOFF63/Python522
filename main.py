@@ -6430,48 +6430,13 @@ from bs4 import BeautifulSoup
 # if __name__ == '__main__':
 #     main()
 
-import requests
-
-
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-
-def refind(s):
-    return s.split()[-1]
-
-
-def write_csv(data):
-    with open('plugins_list.csv', 'a') as f:
-        writer = csv.writer(f, delimiter=",", lineterminator="\r")
-        writer.writerow([data['name'],
-                         data['url'],
-                         data['active'],
-                         data['tested']])
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find_all("li", class_="wp-block-post")
-    for el in p1:
-        name = el.find('h3', class_='entry-title').text
-        url = el.find('h3', class_='entry-title').find('a')['href']
-        active = el.find('span', class_='active-installs').text.strip()
-        texted = el.find('span', class_='tested-with').text.strip()
-        test = refind(texted)
-        data = {
-            'name': name,
-            'url': url,
-            'active': active,
-            'tested': test
-        }
-        write_csv(data)
+from parsers import Parser
 
 
 def main():
-    url = "https://ru.wordpress.org/plugins/browse/popular"
-    get_data(get_html(url))
+    pars = Parser('https://www.ixbt.com/live/index/news/', 'news.txt')
+    pars.run()
+
 
 
 if __name__ == '__main__':
