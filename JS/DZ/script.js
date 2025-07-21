@@ -57,3 +57,13 @@ let res = document.querySelector(".resetFont");
 res.style.fontSize="20pt";
 res.style.fontWeight="400";
 res.style.textDecoration="underline"
+
+const ul = document.createElement('ul');
+        ul.innerHTML = `
+            <li>Пункт 1</li>
+            <li>Пункт 2</li>
+            <li>Пункт 3</li>`;
+        ul.style.listStyleType = 'square'; 
+        ul.style.width = '50%';            
+        
+        document.body.appendChild(ul);   
