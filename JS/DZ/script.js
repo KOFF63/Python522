@@ -20,16 +20,40 @@
 // }
 
 
-document.writeln("<table border='1' width='260'>");
-for(let i = 1; i < 11; i++) {
-    document.writeln("<tr align='center'>");
-    for(let j = 1; j < 11; j++) {
-        if((i + j) % 2 == 0) {
-            document.writeln("<td bgcolor='red'>" + (i * j) + "</td>");
-        } else {
-            document.writeln("<td bgcolor='yellow'>" + (i * j) + "</td>");
-        }
-    }
-    document.writeln("</tr>");
-}
-document.writeln("</table>");
+// document.writeln("<table border='1' width='260'>");
+// for(let i = 1; i < 11; i++) {
+//     document.writeln("<tr align='center'>");
+//     for(let j = 1; j < 11; j++) {
+//         if((i + j) % 2 == 0) {
+//             document.writeln("<td bgcolor='red'>" + (i * j) + "</td>");
+//         } else {
+//             document.writeln("<td bgcolor='yellow'>" + (i * j) + "</td>");
+//         }
+//     }
+//     document.writeln("</tr>");
+// }
+// document.writeln("</table>");
+
+
+document.writeln("<div id='demonstration'></div>");
+let div = document.querySelector("#demonstration");
+div.innerHTML = `Термоста́т — прибор для поддержания постоянной температуры. Поддержание температуры
+обеспечивается либо за счёт использования терморегуляторов, либо осуществлением фазового
+перехода (например, таяние льда). Для уменьшения потерь тепла или холода термостаты, как
+правило, теплоизолируют. Но не всегда. Широко известны автомобильные моторы, где летом нет
+никакой теплоизоляции и за счёт действия восковых термостатов поддерживается постоянная
+температура. Другим примером термостата, широко используемого в быту, является холодильник`;
+
+div.style.background="yellow";
+div.style.color="black";
+div.style.width="256px";
+div.style.height="256px";
+div.style.overflow="scroll"
+div.style.outline="1px dashed red";
+
+div.className = "resetFont";
+
+let res = document.querySelector(".resetFont");
+res.style.fontSize="20pt";
+res.style.fontWeight="400";
+res.style.textDecoration="underline"
