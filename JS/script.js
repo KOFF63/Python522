@@ -600,18 +600,249 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // let m = document.querySelectorAll(".red li")[1];
 // m.style.color = "orange";
 
-document.writeln("<div id='divSample'></div>");
-let div = document.querySelector("#divSample");
-div.innerHTML = "Дюбель — конструктивный элемент, который используется для укрепления винта или предмета на стене, на потолке или на полу в помещении или под открытым небом в различных материалах (бетон, кирпич и прочее). Сам дюбель удерживается в конструкции при помощи сил трения. С некоторого времени элементы связи и укрепления, дюбели и винт (шуруп) объединяют в одно целое и используются, прежде всего, для тяжёлых нагрузок. Дюбели предлагаются в различных величинах, которые руководствуются диаметром дюбеля (и соответственно необходимым отверстием), измеренным в миллиметрах..";
+// document.writeln("<div id='divSample'></div>");
+// let div = document.querySelector("#divSample");
+// div.innerHTML = "Дюбель — конструктивный элемент, который используется для укрепления винта или предмета на стене, на потолке или на полу в помещении или под открытым небом в различных материалах (бетон, кирпич и прочее). Сам дюбель удерживается в конструкции при помощи сил трения. С некоторого времени элементы связи и укрепления, дюбели и винт (шуруп) объединяют в одно целое и используются, прежде всего, для тяжёлых нагрузок. Дюбели предлагаются в различных величинах, которые руководствуются диаметром дюбеля (и соответственно необходимым отверстием), измеренным в миллиметрах..";
 
-div.style.background="#f0f";
-div.style.color="#99ffff";
-div.style.width="50%";
-div.style.outline="10px dotted #000";
+// div.style.background="#f0f";
+// div.style.color="#99ffff";
+// div.style.width="50%";
+// div.style.outline="10px dotted #000";
 
-div.className = "resetFont";
+// div.className = "resetFont";
 
-let res = document.querySelector(".resetFont");
-res.style.fontSize="12pt";
-res.style.fontWeight="bold";
-res.style.textDecoration="line-through"
+// let res = document.querySelector(".resetFont");
+// res.style.fontSize="12pt";
+// res.style.fontWeight="bold";
+// res.style.textDecoration="line-through"
+
+
+
+
+
+
+
+// let str = js.join(" & ");
+// console.log(str)
+
+// let st = ["Фамилия", "Имя", "Отчество"]
+// let fio = new Array(3);
+// for(let i = 0; i < fio.length; i++){
+//     fio[i] = prompt("Введите данные:", st[i]);
+// }
+
+// alert(fio.join(" "));
+
+
+// function caption(a, b, c){
+//     return a + b + c;
+// }
+
+// let test = caption(10, 20, 30);
+// console.log(test);
+
+// Декларирование
+
+// function showArrayContent(arrayToShow) {
+//     if(arrayToShow.length == 1){
+//         return arrayToShow;
+//     }else{
+//         let last = arrayToShow.pop();
+//         let str = arrayToShow.join(', ');
+//         let res = str + " и " + last;
+//         return res;
+//     }
+// }
+
+// let a = new Array('Текст');
+// let b = new Array('день', 'ночь');
+// let c = new Array('зима', 'весна', 'лета', 'осень');
+// alert(showArrayContent(a)); 
+// alert(showArrayContent(b)); 
+// alert(showArrayContent(c));
+
+
+// let sum1 = function(a, b){
+//     return a + b;
+// }
+
+// alert(sum1(2, 3));
+
+
+
+// function sum2 (a, b){
+//     return a + b;
+// }
+
+// alert(sum2(20, 30));
+
+// Анонимная функция
+
+// (function(){
+//     alert("hello world");
+// })();
+
+// (function(n){
+//     alert(n*n);
+// })(4);
+
+// function caption(a, b, c){
+//     let res = a + b + c;
+//     return res;
+// }
+
+
+// Arrow Function
+
+// let test = (a, b, c) => a + b + c;
+// let test = (a, b, c) =>{
+//     let res = a + b + c;
+//     return res;
+// }
+
+// alert(test(10, 20, 30));
+
+
+// let hello = n => alert("Hello, " + n );
+
+// hello("Igor");
+
+// document.writeln(Math.floor(7.9) + "<br>");
+// document.writeln(Math.ceil(7.1) + "<br>");
+// document.writeln(Math.round(7.5) + "<br>");
+
+
+// (function(min, max){
+//     document.writeln(Math.floor(Math.random() * (max - min) + min) + "<br>");
+// }(2, 9));
+
+
+// document.writeln(Math.floor(Math.random() * 9) + "<br>");
+// document.writeln(Math.floor(Math.random() * 7 + 2) + "<br>");
+// document.writeln(Math.floor(Math.random() * 7 + 7) + "<br>");
+
+// let randMas = ["Цикл", "Массив", "Условие", "Функция"];
+// document.writeln(pickRandom(randMas));
+
+// function pickRandom(mas){
+//     return mas[Math.floor(Math.random()*mas.length)];
+// }
+
+
+
+// let j = 2;
+
+// function ch(){
+//     j = 1;
+//     // console.log(j);
+// }
+// ch();
+// console.log(j);
+
+
+
+// document.writeln("<div id='block'></div>");
+// let block = document.getElementById("block"); 
+
+// block.style.width = "100px";
+// block.style.height = "100px";
+// // block.style.background = "rgb(255,0,0)";
+
+// let createColor = () => {
+//     let r = Math.floor(Math.random() * 256);
+//     let g = Math.floor(Math.random() * 256);
+//     let b = Math.floor(Math.random() * 256);
+//     block.style.background = `rgb(${r}, ${g}, ${b})`;
+// };
+
+// createColor();
+
+
+// function test(a, b){
+//     alert("a="+a+", b="+b);
+// }
+
+test(1);
+test(1, 2);
+test(1, 2, 3);
+
+function sum(){
+    let res = 0;
+    for(let i=0; i<arguments.length; i++){
+        res += arguments[i];
+    }
+    return res;
+}
+    document.writeln(sum() + "</br>")
+    document.writeln(sum(1) + "</br>")
+    document.writeln(sum(1, 2) + "</br>")
+    document.writeln(sum(1, 2, 3) + "</br>")
+    document.writeln(sum(1,2,3,4) + "</br>")
+    document.writeln(sum(1,2,3,4,5) + "</br>")
+
+
+// function hello(name="незнакомец"){
+//     // name = name || "незнакомец"
+//     document.writeln("Hello, " + name + "! <br>");
+// }
+
+// hello("Igor");
+// hello();
+
+// function square(width, height, fon="green"){
+//     document.writeln("<div id='shape'></div>");
+//     let div = document.querySelector('#shape');
+
+//     div.style.background = fon;
+//     div.style.width = width + "px";
+//     div.style.height = height + "px";
+// }
+
+// square(50,50,"gold")
+// square(150, 100)
+
+
+
+// function hello(){
+//     alert("Привет");
+// }
+
+// alert(hello);
+
+// let str = "I\'m a JavaScript \"programmer\"";
+// document.writeln(str + "<br>");
+// document.writeln(str.length + "<br>");
+// document.writeln(str[2] + "<br>");
+
+// str = str[2] +"y";
+// document.writeln(str + "<br>");
+
+
+// let s = "абббабввбабвбвббабвббабв";
+// counterLetters(s);
+
+// function counterLetters(str){
+//     let letters = ["а", "б", "в"];
+//     for(let i = 0; i< letters.length; i++){
+//         let count = 0;
+//         for(let j=0; j<str.length; j++){
+//             if(str[j] == letters[i]){
+//                 count++;
+//             }
+//         }
+//         document.writeln("Символ '" + letters[i] + "' встретился " + count + " раз<br>")
+//     }
+// 
+
+
+// let n = prompt("ВВедите имя", "никита");
+// alert(first(n));
+
+// function first(str){
+//     let firstLetter = str.charAt(0).toUpperCase();
+    
+//     for(let i=1; i< str.length; i++){
+//         firstLetter += str[i].toLowerCase();
+//     }
+//     return firstLetter;
+// }
