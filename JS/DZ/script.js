@@ -71,33 +71,48 @@
 
 
 
-const months = [
-  "Январь", "Февраль", "Март", 
-  "Апрель", "Май", "Июнь", 
-  "Июль", "Август", "Сентябрь", 
-  "Октябрь", "Ноябрь", "Декабрь"
-];
+// const months = [
+//   "Январь", "Февраль", "Март", 
+//   "Апрель", "Май", "Июнь", 
+//   "Июль", "Август", "Сентябрь", 
+//   "Октябрь", "Ноябрь", "Декабрь"
+// ];
 
-function getRandomColor() {
-  const r = Math.floor(Math.random() * 256); 
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  return `rgb(${r}, ${g}, ${b})`;
-}
+// function getRandomColor() {
+//   const r = Math.floor(Math.random() * 256); 
+//   const g = Math.floor(Math.random() * 256);
+//   const b = Math.floor(Math.random() * 256);
+//   return `rgb(${r}, ${g}, ${b})`;
+// }
 
-for (let i = 0; i < months.length; i++) {
-  const color = getRandomColor();
-  document.writeln(`
-    <div style="
-      background-color: ${color};
-      padding: 5px;
-      margin: 5px 0;
-      color: white;
-      font-weight: bold;
-      width: 600px;
-      text-align: center;
-    ">
-      ${months[i]}
-    </div>
-  `);
-}
+// for (let i = 0; i < months.length; i++) {
+//   const color = getRandomColor();
+//   document.writeln(`
+//     <div style="
+//       background-color: ${color};
+//       padding: 5px;
+//       margin: 5px 0;
+//       color: white;
+//       font-weight: bold;
+//       width: 600px;
+//       text-align: center;
+//     ">
+//       ${months[i]}
+//     </div>
+//   `);
+// }
+
+
+
+const showBtn = document.getElementById("showBtn");
+const hideBtn = document.getElementById("hideBtn");
+const myImage = document.getElementById("myImage");
+
+showBtn.addEventListener("click", () => {
+    myImage.style.display = "block";
+});
+
+hideBtn.addEventListener("click", () => {
+    myImage.style.display = "none";
+});
+

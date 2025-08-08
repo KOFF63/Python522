@@ -1,4 +1,5 @@
 "use strict";
+"use strict";
 
 /* let message;  // let, const, var
 message = "Hello";
@@ -298,6 +299,7 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //     default:
 //         alert("Я таких значений не знаю");
 // }
+
 // let m = +prompt("Введите номер месяца");
 // let n;
 // switch(m){
@@ -318,29 +320,30 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // alert("Вы ввели: " + n);
 
 
-// document.write("Текст введен в браузер");
-// document.write("<p>Текст <b>выведен</b> в браузер</p>");
+// document.writeln("Текст выведен в браузер");
+// document.writeln("<p>Текст <b>выведен</b> в браузер</p>");
 // document.writeln("<img src='1.jpg' />")
 
 // let i = 0;
-// do{
-//     document.writeln("Этот номер:" + i + "<br>");
+// do {
+//     document.writeln("Это номер: " + i + "<br>");
 //     i++;
 // } while(i < 5);
+
 // document.writeln("<br><br>Второй цикл: <br>");
 
-
-// let j = 5;
+// let j = 0;
 // while (j < 5){
-//     document.writeln("Этот номер:" + j + "<br>");
+//     document.writeln("Это номер: " + j + "<br>");
 //     j++;
 // }
 
-// let i = 1;
-// do{
-//     document.writeln("Квадрат:" + i + " равен " +i ** 2 +"<br>");
-//     i++;
-// } while(i < 8);
+// let i = 0;
+// do {
+//     document.writeln("Квадрат: " + ++i + " равен " + i ** 2 + "<br>");
+//     // i++;
+// } while (i < 7);
+
 // let ch, pr=1;
 
 // do{
@@ -351,35 +354,43 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //     if(ch == 0){
 //         continue;
 //     }
-//     pr *= ch;
+//     pr *= ch;  // pr = pr * ch
 // }while(true);
 
-// alert(pr)
+// alert(pr);
 
-// for(let i = 1; i < 6; i++){
+// for(инициализация_переменной; проверка_условия; изменение_счетчика){
+//     тело цикла;
+// }
+
+// for(start; stop; step){
+//     тело цикла;
+// }
+
+// for (let i = 1; i < 6; i++) {
 //     document.writeln(i + "<br>");
 // }
 
 // document.writeln("<br><br>Второй цикл:<br>");
 
 // let j = 1;
-// while(j < 6) {
-//     document.writeln(j + "<br>")
+// while (j < 6) {
+//     document.writeln(j + "<br>");
 //     j++;
 // }
-
 // let i = 1;
-// for(; ;){
-//     if(i == 6){
+// for (; ;) {
+//     if (i == 6) {
 //         break;
 //     }
 //     document.writeln(i + "<br>");
 //     i++;
 // }
 
-// for(let i = 1; i < 6; i++){
+// for (let i = 1; i < 6; i++) {
 //     document.writeln(i + "<br>");
 // }
+
 // document.writeln("i = " + i + "<br>");
 
 // for(let i=0; i<4; i++){
@@ -388,41 +399,49 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //         document.writeln("-- <br>");
 //     }
 // }
-// let tr = prompt()
-// let td = prompt()
+
+// let tr = prompt("Вветите количество строк:");
+// let td = prompt("Вветите количество столбцов:");
 // let symbol = prompt("Введите символ");
 
-
-// document.writeln("<table border ='1'>");
-// for(let i=0; i<tr; i++){
+// document.writeln("<table border='1'>");
+// for (let i = 0; i < tr; i++) {
 //     document.writeln("<tr>");
-//     for(let j=0; j<td; j++){
+//     for (let j = 0; j < td; j++) {
 //         document.writeln("<td>" + symbol + "</td>");
-//     }
-//     document.writeln("</tr>");
-// }
-// document.writeln("<table>");
-
-
-// document.writeln("<table border ='1' width='260'>");
-// for(let i=1; i<11; i++){
-//     document.writeln("<tr aling='center'>");
-//     for(let j=1; j<11; j++){
-//         if(i % 2 == 0){
-//         document.writeln("<td bgcolor='red'>" + i * j + "</td>");
-//         } else{       
-//         document.writeln("<td bgcolor='yellow'>" + i * j + "</td>");}
 //     }
 //     document.writeln("</tr>");
 // }
 // document.writeln("</table>");
 
+// document.writeln("<table border='1' width='260'>");
+// document.writeln("<tr align='center'>");
+// for (let i = 0; i < 11; i++) {
+//     document.writeln("<td>" + i + "</td>");
+// }
+// document.writeln("</tr>");
+// for (let i = 1; i < 11; i++) {
+//     document.writeln("<tr align='center'>");
+//     document.writeln("<td>" + i + "</td>");
+//     for (let j = 1; j < 11; j++) {
+//         if (i%2 == j%2) {
+//             document.writeln("<td bgcolor='red'>" + i * j + "</td>");
+//         } else {
+//             document.writeln("<td bgcolor='yellow'>" + i * j + "</td>");
+//         }
+//     }
+//     document.writeln("</tr>");
+// }
+// document.writeln("</table>");
 
-// let arr1 = new Array(2,6,8);
+// Массив
+
+// let arr1 = new Array(2, 6, 8);
 // let arr2 = new Array(5);
 
-// let arr3 =[1,3,7]
-// let arr4 =[5]
+// let arr3 = [1,3,7];
+// let arr4 = [5];
+
 
 // console.log(arr1);
 // console.log(arr2);
@@ -430,24 +449,25 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // console.log(arr4);
 // console.log(arr3.length);
 
-// document.writeln(arr1)
+// document.writeln(arr1);
+// alert(arr1);
 
-// let f = [1,2,3,4,5,6,7];
+// let f = [1, 2, 3, 4, 5, 6, 7];
 // console.log(f);
-// console.table(f)
-// console.log("length", f.length);
+// console.table(f);
+// console.log("Length: ", f.length);
 
 // f.length = 3;
 // console.log(f);
-// console.log("length", f.length);
+// console.log("Length: ", f.length);
 
 // f.length = 7;
 // console.log(f);
-// console.log("length", f.length);
+// console.log("Length: ", f.length);
 
 // f.length = 0;
 // console.log(f);
-// console.log("length", f.length);
+// console.log("Length: ", f.length);
 
 // let arr = new Array();
 // arr[0] = 15;
@@ -461,29 +481,43 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //     document.writeln(arr[i] + "<br>");
 // }
 
-// let arr = [2, 6, 7, "igor", 1.5, true];
-// console.log(arr)
+// let arr = new Array(6);
 
-// let mas = [[2,1,1], [6,3,7], [8,5,6]];
+// for(let i = 0; i < arr.length; i++){
+//     arr[i] = prompt("Введите " + (i+1)  + " элемент массива: ");
+// }
+
+// console.log(arr);
+
+// for(let i = 0; i < arr.length; i++){
+//     document.writeln(arr[i] + "<br>");
+// }
+
+// let arr = [2, 6, 7, "Игорь", 1.5, true];
+// console.log(arr);
+
+// let mas = [[2,1,1], [6,3,7,9], [8,5,6]];
 // console.log(mas);
 // console.table(mas);
+
 // console.log(mas[1][2]);
 
-
+// document.writeln(mas + "<br>");
 
 // let questions = ["На ноль делить можно?", "Волга впадает в Каспийское море", "Атмосферное даваление увеличивается с высотой", "2x2 будет 8", "Дельфины - это рыбы", "Мадонна - это настоящее имя певицы", "Первая мировая война началась 1 сентября 1939 года"];
 
-// let correct_answer = [false, true, false, false, false, false, false,];
+// let correct_answer = [false, true, false, false, false, false, false];
+
 // let sum = 0;
 // let res = new Array();
-// for(let i=0; i<questions.length; i++){
+
+// for (let i = 0; i < questions.length; i++) {
 //     let answer = confirm(questions[i]);
 //     if(answer == correct_answer[i]){
 //         res[i] = 10;
 //         sum += res[i];
-//     } else{
+//     } else {
 //         res[i] = 0;
-
 //     }
 // }
 
@@ -491,24 +525,24 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // console.log(sum);
 
 // document.writeln("<table border='1' width='500'>");
- 
+
 // document.writeln("<tr>");
 // document.writeln("<th>Вопрос</th>");
 // document.writeln("<th>Баллы</th>");
 // document.writeln("</tr>");
- 
+
 // for(let i = 0; i < questions.length; i++){
 //     document.writeln("<tr>");
 //     document.writeln("<td>" + questions[i] + "</td>");
 //     document.writeln("<td>" + res[i] + "</td>");
 //     document.writeln("</tr>");
 // }
- 
+
 // document.writeln("<tr>");
 // document.writeln("<th>Итого</th>");
 // document.writeln("<th>" + sum + "</th>");
 // document.writeln("</tr>");
- 
+
 // document.writeln("</table>");
 
 
@@ -516,79 +550,81 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // console.log(text1);
 // console.log(text1.textContent);
 
-// text1.textContent = "Новое содержимое<b>с html раметкой</b>";
+// text1.textContent = "Новое содержимое <b>с html разметкой</b>";
 
 // let text2 = document.getElementById("text_2");
-// text2.innerHTML = "Новое содержимое<b>с html раметкой</b>";
+// text2.innerHTML = "Новое содержимое <b>с html разметкой</b>"
 
 
+// let res = +prompt("Выберите изображение", "1-собака, 2-кот, 3-птица, 4-рыба");
+// document.writeln("<div id='image'></div>");
+// let img = document.getElementById("image");
 
-// let res = +prompt("Выберите изображение", "1-собака", "2-кот","3-птица","4-рыба");
-// document.writeln("<div id='image'></div></div>");
-// let img = document.getElementById("image")
-
-// switch(res){
+// switch (res) {
 //     case 1:
-//         img.innerHTML ="<img src='img/dog.jpg'>";
+//         img.innerHTML = "<img src='img/dog.jpg'>";
 //         break;
-//     case 2: 
-//         img.innerHTML ="<img src='img/cat.jpg'>";
+//     case 2:
+//         img.innerHTML = "<img src='img/cat.jpg'>";
 //         break;
-//     case 3: 
-//         img.innerHTML ="<img src='img/bird.jpeg'>";
+//     case 3:
+//         img.innerHTML = "<img src='img/bird.jpeg'>";
 //         break;
-//     case 4: 
-//         img.innerHTML ="<img src='img/fish.jpeg'>";
+//     case 4:
+//         img.innerHTML = "<img src='img/fish.jpeg'>";
 //         break;
 //     default:
-//         alert("Нет изображения")       
+//         alert("Такого изображения нет");
 // }
-
 
 // let tag = document.getElementsByTagName("p")[2];
 // console.log(tag);
 // tag.innerHTML = "Hello tag";
 // tag.style.background = "silver";
-// tag.style.color = "red";
+// tag.style.padding = "10px 20px";
+// tag.style.color = "blue";
 // tag.style.fontWeight = "bold";
+
+// // list-style-type => listStyleType
 
 // tag.id = "test";
 // tag.className = "x";
 
 
-
 // let q = document.getElementsByClassName('a');
 // console.log(q);
-// q[1].style.color = 'red';
-// q[0].style.color = 'green';
+// q[1].style.color = "red";
+// q[0].style.color = "blue";
+
 
 // document.querySelector(css);
 // document.querySelectorAll(css);
 
-// let select_class = document.querySelector('.a');
-// let select_class = document.querySelectorAll('.a')[1];
-// console.log(selet_class);
+// let select_class = document.querySelector(".a");
+// let select_class = document.querySelectorAll(".a")[1];
+// console.log(select_class);
 
-
-// let select_tag = document.querySelector('p');
-// let select_tag = document.querySelectorAll('p')[1];
+// let select_tag = document.querySelector("p");
+// let select_tag = document.querySelectorAll("p")[1];
 // console.log(select_tag);
 
-// let select_id = document.querySelectorAll('#text_1')[0];
+// let select_id = document.querySelector("#text_1");
+// let select_id = document.querySelectorAll("#text_1")[0];
 // console.log(select_id);
-// select_id.style.color ="red";
+
+// select_id.style.color = "red";
 
 // let el = document.querySelector("h2");
 // el.style.color = "red";
 
-// let el1 = document.querySelectorAll('h2')[1];
-// el1.style.color = "purple";
+// let el1 = document.querySelectorAll("h2");
+// el1[1].style.color = "purple";
 
 // let lists = document.querySelectorAll("li");
 // console.log(lists.length);
 
 // for(let i=0; i<lists.length; i++){
-//     lists[i].innerHTML += " - Фрукты";
+//     lists[i].innerHTML += " - фрукты";
 // }
 
 // let purples = document.querySelectorAll(".purple li");
@@ -596,57 +632,105 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //     purples[i].innerHTML += "!!!";
 // }
 
-
-// let m = document.querySelectorAll(".red li")[1];
+// // let m = document.querySelectorAll(".red li")[1];
+// let m = document.getElementsByClassName("red")[0].getElementsByTagName("li")[1];
 // m.style.color = "orange";
 
 // document.writeln("<div id='divSample'></div>");
 // let div = document.querySelector("#divSample");
-// div.innerHTML = "Дюбель — конструктивный элемент, который используется для укрепления винта или предмета на стене, на потолке или на полу в помещении или под открытым небом в различных материалах (бетон, кирпич и прочее). Сам дюбель удерживается в конструкции при помощи сил трения. С некоторого времени элементы связи и укрепления, дюбели и винт (шуруп) объединяют в одно целое и используются, прежде всего, для тяжёлых нагрузок. Дюбели предлагаются в различных величинах, которые руководствуются диаметром дюбеля (и соответственно необходимым отверстием), измеренным в миллиметрах..";
+// div.innerHTML = `Дюбель —конструктивный элемент, который используется для укрепления винта или предмета на стене, на потолке или на полу в помещении или под открытым небом в различных материалах (бетон, кирпич и прочее). Сам дюбель удерживается в конструкции при помощи сил трения. С
+// некоторого времени элементы связи и укрепления, дюбели и винт (шуруп) объединяют в одно
+// целое и используются, прежде всего, для тяжёлых нагрузок. Дюбели предлагаются в различных
+// величинах, которые руководствуются диаметром дюбеля (и соответственно необходимым
+// отверстием), измеренным в миллиметрах.`;
 
 // div.style.background="#f0f";
 // div.style.color="#99ffff";
 // div.style.width="50%";
-// div.style.outline="10px dotted #000";
+// // div.style.outline="10px dotted #000";
+// div.style.border="10px dotted #000";
 
 // div.className = "resetFont";
 
 // let res = document.querySelector(".resetFont");
-// res.style.fontSize="12pt";
-// res.style.fontWeight="bold";
-// res.style.textDecoration="line-through"
+// res.style.fontSize = "12pt";
+// res.style.fontWeight = "bold";
+// res.style.textDecoration = "line-through";
 
 
+// let js = ["нужно", "учить", "JavaScript"];
+// console.log(js);
+
+// console.log(js.pop());
+// console.log(js);
+
+// js.push("JavaScript", "!");
+// console.log(js);
+
+// console.log(js.shift());
+// console.log(js);
+
+// js.unshift("Почему", "нужно");
+// console.log(js);
 
 
+// let arr = js.slice(1,3);
+// console.log(arr);
+// console.log(js.slice(1));
+
+// js.splice(0, 1);
+// console.log(js);
+
+// js.splice(0, 2, "Мы", "изучаем");
+// console.log(js);
+
+// js.splice(2, 0, "сложный", "язык");
+// console.log(js);
+
+// js.splice(-2, 0, "но", "очень", "интересный");
+// console.log(js);
+
+// // let str = js.join(" & ");
+// // console.log(str);
+
+// // let st = ["Фамилия", "Имя", "Отчество"]
+// // let fio = new Array(3);
+
+// // for(let i = 0; i < fio.length; i++){
+// //     fio[i] = prompt("Введите данные:\n" + st[i]);
+// //     // fio[i] = prompt("Введите данные:", st[i]);
+// // }
+
+// // alert(fio.join(" "));
+
+// // js.reverse();
+// // console.log(js);
+
+// js.sort();
+// console.log(js);
+
+// let n = [1, 5, 15, 2];
+// n.sort((a, b) => a - b);
+// console.log(n);
 
 
-
-// let str = js.join(" & ");
-// console.log(str)
-
-// let st = ["Фамилия", "Имя", "Отчество"]
-// let fio = new Array(3);
-// for(let i = 0; i < fio.length; i++){
-//     fio[i] = prompt("Введите данные:", st[i]);
-// }
-
-// alert(fio.join(" "));
-
+// Fuction Declaration
 
 // function caption(a, b, c){
-//     return a + b + c;
+//     let res = a + b + c;
+//     return res;
+//     console.log(res);
 // }
+
 
 // let test = caption(10, 20, 30);
 // console.log(test);
 
-// Декларирование
 
 // function showArrayContent(arrayToShow) {
 //     if(arrayToShow.length == 1){
 //         return arrayToShow;
-//     }else{
+//     } else {
 //         let last = arrayToShow.pop();
 //         let str = arrayToShow.join(', ');
 //         let res = str + " и " + last;
@@ -654,15 +738,20 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //     }
 // }
 
+
 // let a = new Array('Текст');
 // let b = new Array('день', 'ночь');
 // let c = new Array('зима', 'весна', 'лета', 'осень');
-// alert(showArrayContent(a)); 
-// alert(showArrayContent(b)); 
+
+// // alert(showArrayContent(a)); // Выводим содержимое массивов,
+// alert(showArrayContent(b)); // используя созданную выше функцию.
 // alert(showArrayContent(c));
 
 
-// let sum1 = function(a, b){
+// Function Expression
+
+
+// let sum1 = function (a, b) {
 //     return a + b;
 // }
 
@@ -670,40 +759,46 @@ false => 0, 0.0, "", false, null, undefined, NaN
 
 
 
+// alert(sum2(20, 30));
+
 // function sum2 (a, b){
 //     return a + b;
 // }
 
-// alert(sum2(20, 30));
 
-// Анонимная функция
+// Immediately Invoked Function Expression (IIFE) - самовызывающаяся функции (анонимная функция)
 
 // (function(){
-//     alert("hello world");
+//     alert("Привет мир");
 // })();
 
 // (function(n){
 //     alert(n*n);
-// })(4);
+// })(4)
+
+// let a = 4;
+// alert(a);
 
 // function caption(a, b, c){
 //     let res = a + b + c;
 //     return res;
 // }
 
+// // Arrow Function 
 
-// Arrow Function
-
-// let test = (a, b, c) => a + b + c;
-// let test = (a, b, c) =>{
+// // let test = (a, b, c) => a + b + c;
+// let test = (a, b, c) => { 
 //     let res = a + b + c;
 //     return res;
 // }
 
-// alert(test(10, 20, 30));
+// // alert(test(10, 20, 30));
 
+// // let hello = () => alert("Hello");
 
-// let hello = n => alert("Hello, " + n );
+// // hello();
+
+// let hello = n => alert("Hello, " + n);
 
 // hello("Igor");
 
@@ -711,15 +806,17 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // document.writeln(Math.ceil(7.1) + "<br>");
 // document.writeln(Math.round(7.5) + "<br>");
 
-
 // (function(min, max){
 //     document.writeln(Math.floor(Math.random() * (max - min) + min) + "<br>");
-// }(2, 9));
+// }(7, 14));
 
 
-// document.writeln(Math.floor(Math.random() * 9) + "<br>");
-// document.writeln(Math.floor(Math.random() * 7 + 2) + "<br>");
-// document.writeln(Math.floor(Math.random() * 7 + 7) + "<br>");
+// document.writeln(Math.floor(Math.random() * 9) + "<br>");  // от 0 до 9
+// document.writeln(Math.floor(Math.random() * 7 + 2) + "<br>");  // от 2 до 9
+
+// // от 7 до 15
+
+// document.writeln(Math.floor(Math.random() * 8 + 7) + "<br>");
 
 // let randMas = ["Цикл", "Массив", "Условие", "Функция"];
 // document.writeln(pickRandom(randMas));
@@ -728,80 +825,85 @@ false => 0, 0.0, "", false, null, undefined, NaN
 //     return mas[Math.floor(Math.random()*mas.length)];
 // }
 
-
-
 // let j = 2;
 
-// function ch(){
-//     j = 1;
-//     // console.log(j);
+// if(true){
+//     let j = 1;
+//     // console.log(j);    
 // }
-// ch();
+
 // console.log(j);
 
-
-
 // document.writeln("<div id='block'></div>");
-// let block = document.getElementById("block"); 
+// let id = document.getElementById("block");
 
-// block.style.width = "100px";
-// block.style.height = "100px";
-// // block.style.background = "rgb(255,0,0)";
+// id.style.width = "100px";
+// id.style.height = "100px";
+// // id.style.background = "rgb(255, 0, 0)";
 
 // let createColor = () => {
 //     let r = Math.floor(Math.random() * 256);
 //     let g = Math.floor(Math.random() * 256);
 //     let b = Math.floor(Math.random() * 256);
-//     block.style.background = `rgb(${r}, ${g}, ${b})`;
-// };
+//     // id.style.background = "rgb(" + r + ", " + g + ", " + b + ")";
+//     id.style.background = `rgb(${r}, ${g}, ${b})`;
+// }
 
 // createColor();
 
-
-// function test(a, b){
+// function test(a, b) {
 //     alert("a="+a+", b="+b);
 // }
 
-test(1);
-test(1, 2);
-test(1, 2, 3);
+// test(1);
+// test(1, 2);
+// test(1, 2, 3);
 
-function sum(){
-    let res = 0;
-    for(let i=0; i<arguments.length; i++){
-        res += arguments[i];
-    }
-    return res;
-}
-    document.writeln(sum() + "</br>")
-    document.writeln(sum(1) + "</br>")
-    document.writeln(sum(1, 2) + "</br>")
-    document.writeln(sum(1, 2, 3) + "</br>")
-    document.writeln(sum(1,2,3,4) + "</br>")
-    document.writeln(sum(1,2,3,4,5) + "</br>")
+// function test() {
+//     console.log(arguments[0]);
+//     console.log(arguments[1]);
+//     console.log(arguments[2]);
+//     console.log(arguments[3]);
 
-
-// function hello(name="незнакомец"){
-//     // name = name || "незнакомец"
-//     document.writeln("Hello, " + name + "! <br>");
 // }
 
-// hello("Igor");
+// test(1, 2, 3);
+
+// function sum(){
+//     let res = 0;
+//     for(let i=0; i<arguments.length; i++){
+//         res += arguments[i];
+//     }
+//     return res;
+// }
+
+// document.writeln(sum() + "</br>");
+// document.writeln(sum(1) + "</br>");
+// document.writeln(sum(1,2) + "</br>");
+// document.writeln(sum(1,2,3) + "</br>");
+// document.writeln(sum(1,2,3,4) + "</br>");
+// document.writeln(sum(1,2,3,4,5) + "</br>");
+
+// function hello(name="незнакомец"){
+//     // name = name || "незнакомец";
+//     document.writeln("Привет, " + name + "! <br>");
+// }
+
+// hello("Иван");
 // hello();
 
-// function square(width, height, fon="green"){
+// function square(width=300, height=200, fon="green"){
 //     document.writeln("<div id='shape'></div>");
-//     let div = document.querySelector('#shape');
+//     let div = document.querySelector("#shape");
 
-//     div.style.background = fon;
+//     div.style.background = fon;  
 //     div.style.width = width + "px";
 //     div.style.height = height + "px";
 // }
 
-// square(50,50,"gold")
-// square(150, 100)
-
-
+// square(350, 450, "gold");
+// square(150, 100);
+// square(100);
 
 // function hello(){
 //     alert("Привет");
@@ -810,11 +912,13 @@ function sum(){
 // alert(hello);
 
 // let str = "I\'m a JavaScript \"programmer\"";
+
 // document.writeln(str + "<br>");
 // document.writeln(str.length + "<br>");
 // document.writeln(str[2] + "<br>");
 
-// str = str[2] +"y";
+// // str[2] = "y"
+// str = str[2] + "y";
 // document.writeln(str + "<br>");
 
 
@@ -823,26 +927,220 @@ function sum(){
 
 // function counterLetters(str){
 //     let letters = ["а", "б", "в"];
-//     for(let i = 0; i< letters.length; i++){
+//     for(let i = 0; i < letters.length; i++){
 //         let count = 0;
 //         for(let j=0; j<str.length; j++){
 //             if(str[j] == letters[i]){
 //                 count++;
 //             }
 //         }
-//         document.writeln("Символ '" + letters[i] + "' встретился " + count + " раз<br>")
+//         document.writeln("Символ '" + letters[i] + "' встретился " + count + " раз<br>");
 //     }
-// 
+// }
 
+// let str = "I\'m a JavaScript \"programmer\"";
+// document.writeln(str[6] + "<br>");
+// document.writeln(str.charAt(6) + "<br>");
 
-// let n = prompt("ВВедите имя", "никита");
+// document.writeln(str.toLowerCase() + "<br>");
+// document.writeln(str.toUpperCase() + "<br>");
+// document.writeln(str + "<br>");
+
+// let n = prompt("Введите имя", "ниКиТа");
 // alert(first(n));
 
 // function first(str){
 //     let firstLetter = str.charAt(0).toUpperCase();
-    
-//     for(let i=1; i< str.length; i++){
+
+//     for(let i=1; i < str.length; i++){
 //         firstLetter += str[i].toLowerCase();
 //     }
 //     return firstLetter;
 // }
+
+// let str = "I\'m a JavaScript \"programmer\"";
+// let str1 = "Я учу JavaScript. Мне нравится JavaScript.";
+// str = str.concat(str1);
+// document.writeln(str + "<br>");
+
+// // document.writeln(str.indexOf("JavaScript", 7) + "<br>");
+// // document.writeln(str.lastIndexOf("JavaScript") + "<br>");
+
+// // let email;
+
+// // do{
+// //     email = prompt("Введите email:");
+// //     if(email.indexOf("@")==-1){
+// //         alert("Некорректно. Повторите операцию");
+// //         continue;
+// //     }
+// //     break;
+// // }while(true);
+
+// // alert("Спасибо за сотрудничество");
+
+// // document.writeln(str.split(".") + "<br>");
+// // console.log(str.split(".", 2));
+
+// document.writeln(str.slice(0,3) + "<br>");
+// document.writeln(str.slice(3,0) + "<br>");
+// document.writeln(str.slice(-23, -10) + "<br>");
+// document.writeln(str.substring(0,3) + "<br>");
+// document.writeln(str.substring(3,0) + "<br>");
+// document.writeln(str.substring(-10) + "<br>");
+
+// let style = prompt("Введите свойство CSS", "list-style-type");
+// alert(replace(style));
+
+
+// function replace(str){
+//     let mas = str.split("-");  // ["background", "color"]
+//     for(let i = 1; i < mas.length; i++){
+//         mas[i] = mas[i].charAt(0).toUpperCase() + mas[i].slice(1);
+//     }
+//     return mas.join('');
+// }
+
+// function loadStr() {
+//     alert("Страница была загружена");
+// }
+
+// let m = document.getElementById("mes");
+
+// function over() {
+//     m.style.color = "red";
+// }
+
+// function out() {
+//     m.style.color = "yellow";
+// }
+
+// function change() {
+//     let id = document.getElementById("title");
+//     id.style.color = "blue";
+// }
+
+// function randomBg() {
+//     // document.body.style.background="rgb("+rand()+","+rand()+","+rand()+")";
+//     document.body.style.background = `rgb(${rand()}, ${rand()}, ${rand()})`;
+// }
+
+// function rand() {
+//     return Math.floor(Math.random() * 256);
+// }
+
+// let image = document.getElementById("image");
+
+// function on() {
+//     image.src = "night.png";
+// }
+
+// let but;
+
+// function off() {
+//     image.src = "day.png";
+// }
+
+// let but = document.getElementById("but");
+
+// but.onclick = function(){
+//     alert("Спасибо");
+// }
+
+
+// but.onclick = hello;
+
+// function hello(){
+//     alert("Спасибо");
+// }
+
+// function change(id){
+//     id.innerHTML = "Новый текст";
+// }
+
+// function setColor(elem){
+//     document.body.style.background = elem.className;
+// }
+
+// let el = document.querySelector("#but");
+
+// el.addEventListener("click", function(){
+//     el.innerHTML="Новый текст";
+// });
+
+// el.addEventListener("contextmenu", setColor);
+
+// function setColor(){
+//     el.style.color = "green";
+//     el.style.background = "yellow";
+// }
+
+
+// document.addEventListener("mousemove", function(event){
+//      let c = document.querySelector("#elem");
+//      let x = event.clientX;
+//      let y = event.clientY
+//      c.textContent = "X = " + x + ", Y = " + y;
+
+//      c.addEventListener("dblclick", function(event){
+//         event.target.style.background="red";
+//      })
+// })
+
+// let el = document.querySelector("#but");
+
+
+// el.addEventListener("click", handler);
+
+// function handler(){
+//     alert("Спасибо");
+//     el.removeEventListener("click", handler);
+// }
+
+// setTimeout(фунция, задержка);
+
+// setTimeout("alert('Текст')", 3000);
+
+// setTimeout(hello, 1000, "Привет", "друг");
+// // setTimeout('hello("Привет", "друг")', 5000);
+
+// function hello(h, n){
+//     alert(h + ", " + n + "!");
+// }
+
+
+// document.writeln("<div id='dt'>Создание анимированного текста</div>");
+
+// let id = document.querySelector("#dt");  // <div id='dt'>Создание анимированного текста</div>
+// let text = document.querySelector("#dt").innerHTML;  // Создание анимированного текста
+
+// let i = 0;
+
+// window.addEventListener('load', animText);
+
+// function animText(){
+//     id.innerHTML = text.substring(0, i);
+//     i++;
+//     if(i > text.length){
+//         i = 0;
+//     }
+//     setTimeout(animText, 500);
+// }
+
+// let d = new Date();
+// document.writeln(d + "<br>");
+// document.writeln(d.toDateString() + "<br>");
+// document.writeln(d.getFullYear() + "<br>");  // 2025
+// document.writeln(d.getMonth() + "<br>");  // 6, от 0 по 11
+// document.writeln(d.getDate() + "<br>");  // 23
+// document.writeln(d.getDay() + "<br>");  // 3, от 0 - воскресенье, 6-cуббота
+
+let mounth = ['анваря', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+let day = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+
+// Сегодня: 23 июля 2025 год, Среда
+let d = new Date();
+let fullDate = "Сегодня: " + d.getDate() + " " + mounth[d.getMonth()] + " " + d.getFullYear() + " год, " + day[d.getDay()];
+
+document.writeln(fullDate);
