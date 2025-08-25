@@ -104,15 +104,84 @@
 
 
 
-const showBtn = document.getElementById("showBtn");
-const hideBtn = document.getElementById("hideBtn");
-const myImage = document.getElementById("myImage");
+// const showBtn = document.getElementById("showBtn");
+// const hideBtn = document.getElementById("hideBtn");
+// const myImage = document.getElementById("myImage");
 
-showBtn.addEventListener("click", () => {
-    myImage.style.display = "block";
-});
+// showBtn.addEventListener("click", () => {
+//     myImage.style.display = "block";
+// });
 
-hideBtn.addEventListener("click", () => {
-    myImage.style.display = "none";
-});
+// hideBtn.addEventListener("click", () => {
+//     myImage.style.display = "none";
+// });
 
+
+
+
+const images = [
+    "images/1b.jpg",
+    "images/s-l1600.jpg", 
+    "images/screen-4.jpg"
+];
+
+const firstInput = document.getElementById('firstNum');
+const secondInput = document.getElementById('secondNum');
+const errorDiv = document.getElementById('errorMessage');
+const swapBtn = document.getElementById('swapBtn');
+
+function updateImages() {
+    for (let i = 0; i < 3; i++) {
+        document.getElementById(`img${i+1}`).src = images[i];
+    }
+}
+
+function animateSwap(firstIndex, secondIndex) {
+    const img1 = document.getElementById(`img${firstIndex + 1}`);
+    const img2 = document.getElementById(`img${secondIndex + 1}`);
+    
+    img1.style.transform = 'scale(1.1)';
+    img2.style.transform = 'scale(1.1)';
+    
+    setTimeout(() => {
+        img1.style.transform = 'scale(1)';
+        img2.style.transform = 'scale(1)';
+    }, 500);
+}
+
+
+function swapImages() {
+    errorDiv.textContent = '';
+    
+    const firstIndex = parseInt(firstInput.value) - 1;
+    const secondIndex = parseInt(secondInput.value) - 1;
+    
+    if (isNaN(firstIndex) || isNaN(secondIndex)) {
+        errorDiv.textContent = 'Пожалуйста, введите числа!';
+        return;
+    }
+    
+    if (firstIndex < 0 || firstIndex > 2 || secondIndex < 0 || secondIndex > 2) {
+        errorDiv.textContent = 'Номера должны быть от 1 до 3!';
+        return;
+    }
+    
+    if (firstIndex === secondIndex) {
+        errorDiv.textContent = 'Выберите разные картинки для обмена!';
+        return;
+    }
+    
+    const temp = images[firstIndex];
+    images[firstIndex] = images[secondIndex];
+    images[secondIndex] = temp;
+    
+    updateImages();
+    
+    
+    animateSwap(firstIndex, secondIndex);
+}
+
+swapBtn.addEventListener('click', swapImages);
+
+
+window.addEventListener('DOMContentLoaded', updateImages);
