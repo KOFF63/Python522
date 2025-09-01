@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загадка про ёлку</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <fieldset>
+                <legend><h3>Получи ответ на загадку</h3></legend>
+                
+                <p class="riddle-text">Зимой и летом одним цветом. Что это?</p>
+                
+                <div class="option">
+                    <input type="radio" name="radio2" value="wrong1" id="wrong1">
+                    <label for="wrong1">Снеговик</label>
+                </div>
+                
+                <div class="option">
+                    <input type="radio" name="radio2" value="correct" id="correct">
+                    <label for="correct">Ёлка</label>
+                </div>
+                
+                <div class="option">
+                    <input type="radio" name="radio2" value="wrong2" id="wrong2">
+                    <label for="wrong2">Солнце</label>
+                </div>
+                
+                <div class="option">
+                    <input type="radio" name="radio2" value="wrong3" id="wrong3">
+                    <label for="wrong3">Море</label>
+                </div>
+                
+                <div class="option">
+                    <input type="radio" name="radio2" value="wrong4" id="wrong4">
+                    <label for="wrong4">Небо</label>
+                </div>
+                
+                <button type="button" id="submitBtn">Выбрать</button>
+                
+                <div id="result"></div>
+            </fieldset>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
