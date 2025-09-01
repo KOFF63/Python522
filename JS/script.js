@@ -1135,12 +1135,158 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // document.writeln(d.getDate() + "<br>");  // 23
 // document.writeln(d.getDay() + "<br>");  // 3, от 0 - воскресенье, 6-cуббота
 
-let mounth = ['анваря', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+// let mounth = ['анваря', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 
-let day = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+// let day = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
 
-// Сегодня: 23 июля 2025 год, Среда
-let d = new Date();
-let fullDate = "Сегодня: " + d.getDate() + " " + mounth[d.getMonth()] + " " + d.getFullYear() + " год, " + day[d.getDay()];
+// // Сегодня: 23 июля 2025 год, Среда
+// let d = new Date();
+// let fullDate = "Сегодня: " + d.getDate() + " " + mounth[d.getMonth()] + " " + d.getFullYear() + " год, " + day[d.getDay()];
 
-document.writeln(fullDate);
+// document.writeln(fullDate);
+
+
+// document.from1.style.background = "silver";
+// document.forms[0].style.padding = "16px";
+// document.forms['form1'].style.margin = "20px"
+// document.forms.form1.style.background ="aqua2px dotted gray";
+
+// document.from1.
+
+// let but =document.querySelector("button");
+
+// but.addEventListener("click",content);
+
+// function content(){
+//     alert(txt.value);
+// }
+
+// let input = document.querySelectorAll("input[type='checkbox']")
+// let form1 = document.forms.form1;
+
+// console.log(input.length);
+// console.log(form1.length);
+
+// for (let i = 0; i < input.length; i++) {
+//     input[i].addEventListener("click", checkAll);
+// }
+// let nam;
+// function checkAll(){
+//     nam = 0;
+//     for (let i = 0; i < input.length; i++){
+//         if (input[i].checked && input[i].type == "checkbox"){
+//             num++;
+//         }
+//     }
+//     if (num == 3){
+//         for (let i = 0; i < input.length; i++){
+//             if (input[i].checked && input[i].type == "checkbox"){
+//                 input[i].disabled = true;
+//             }
+//         }
+//     } else {
+//         for (let i = 0; i < input.length; i++){
+//             input.disabled = false;
+//         }
+
+//     }
+//     console.log(nam);
+
+// let regexp = new RegExp;
+// let regexp1 =/шаблон/;
+// let regexp2 = /шаблон/gmi;
+
+let str = "Я ищу совпадения в 2025   году. Hello  Ёжик 1234 56789";
+// let exp = /ищу/g;
+
+document.writeln(str + "<br>");
+// document.writeln(str.search(exp) + "<br>");
+// document.writeln(str.match(exp) + "<br>");
+// document.writeln(exp.test(str) + "<br>");
+
+
+// let exp = /[0256]/g;
+// document.writeln(str.match(exp) + "<br>");
+
+
+
+
+// let exp = /[я]/gi;
+// let exp = /[0-9]/g;
+
+// document.writeln(str.match(exp) + "<br>");
+
+
+// let html = `
+//     <table>
+//         <tr>
+//             <td bgcolor="#CCC">
+//                 <img src="222.pgn">
+//             <td bgcolor="#003399">
+//                 <img src="1f3.pgn">
+//             <td bgcolor="#00ccdd">
+//                 <img src="FFF.pgn">
+//             </td>
+//         </tr>
+//     </table>
+// `;
+
+// let reg = /#([0-9a-f]{3}){1,2}/gi;
+// document.writeln(html.match(reg) + "<br>");
+
+
+
+// let exp = /\W/g;
+// let exp = /\D/g;
+// let exp = /\S/g;
+// document.writeln(str.match(exp) + "<br>");
+
+
+// str = "909"
+// let exp = /^\d{3}$/;
+// document.writeln(str.match(exp) + "<br>");
+
+// let exp = /\d.\d/g;
+// document.writeln(str.match(exp) + "<br>");
+
+// let exp = /\d+/g;
+// let exp = /\d?/g;
+// let exp = /\d*/g;
+// document.writeln(str.match(exp) + "<br>");
+
+// let html = `
+//     <p>
+//         <img src="222.jpg">
+//         <img src="gvsdv222.png">
+//         <span>else</span>
+//         <img src="RRR.jpeg">
+//         <img src="uio.gif">
+//     </p>
+// `;
+
+// let exp = /(\w+)\.(gif|jpg|jpeg|png|bmp)/g;
+// document.writeln(html.match(exp) + "<br>");
+
+
+// document.writeln("aaa".replace('a','b') + "<br>");
+// document.writeln("aaa".replace(/a/g,'b') + "<br>");
+
+// let text = "I kill you black dog ";
+// document.writeln(text + "<br>");
+
+// let exp = /(book|kill|black)/ig;
+// text = text.replace(exp,"***");
+// document.writeln("<p>"+ text +"</p>");
+
+
+// let text = "red color: #F00 and green: #090";
+// document.writeln(text +"<br>");
+// let exp = /(#[a-f0-9]{3})/ig;
+// text = text.replace(exp,"<span style='color:$1'>$1</span>");
+// document.writeln("<p>"+ text +"</p>");
+
+let text = "I like yandex.ru";
+document.writeln(text +"<br>");
+let exp = /(([a-z0-9-]{2,}\.)+[a-z]{2,4})/i;
+text = text.replace(exp,"<a href='https://$1' >$1</a>");
+document.writeln("<p>"+ text +"</p>");
