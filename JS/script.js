@@ -1196,10 +1196,10 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // let regexp1 =/шаблон/;
 // let regexp2 = /шаблон/gmi;
 
-let str = "Я ищу совпадения в 2025   году. Hello  Ёжик 1234 56789";
+// let str = "Я ищу совпадения в 2025   году. Hello  Ёжик 1234 56789";
 // let exp = /ищу/g;
 
-document.writeln(str + "<br>");
+// document.writeln(str + "<br>");
 // document.writeln(str.search(exp) + "<br>");
 // document.writeln(str.match(exp) + "<br>");
 // document.writeln(exp.test(str) + "<br>");
@@ -1285,8 +1285,130 @@ document.writeln(str + "<br>");
 // text = text.replace(exp,"<span style='color:$1'>$1</span>");
 // document.writeln("<p>"+ text +"</p>");
 
-let text = "I like yandex.ru";
-document.writeln(text +"<br>");
-let exp = /(([a-z0-9-]{2,}\.)+[a-z]{2,4})/i;
-text = text.replace(exp,"<a href='https://$1' >$1</a>");
-document.writeln("<p>"+ text +"</p>");
+// let text = "I like yandex.ru";
+// document.writeln(text +"<br>");
+// let exp = /(([a-z0-9-]{2,}\.)+[a-z]{2,4})/i;
+// text = text.replace(exp,"<a href='https://$1' >$1</a>");
+// document.writeln("<p>"+ text +"</p>");
+
+
+// let str = " +7 (999)  123 45 78   ";
+// let re = str.split(" ");
+// document.writeln(re + "<br>");
+// console.log(re);
+
+
+// let car = new Object();
+
+// let car1 = {};
+
+// let car = new Object();
+// car ["type"] = "BMW";
+// car["color"] = "white";
+// console.log(car);
+
+// let car = {
+//     name: "Volvo",
+//     year: 2019
+// };
+
+// console.log(car);
+
+// let obj ={
+//     name: "Гомер",
+//     colors:{
+//         first: "green",
+//         second: "blue"
+//     },
+//     color:[
+//         "black",
+//         "white",
+//         "red",
+//         "blue"
+//     ],
+//     hello: function(){
+//         document.writeln("Привет");
+//     }
+// }    
+
+
+
+// let fil = obj.color.filter(function(elem) {
+//     return elem.length < 5;
+// });
+
+// document.writeln("<br>" + fil + "<br>")
+
+// document.writeln(obj.name + " " + obj.colors.first + " " + obj.color[1]);
+// obj.hello();
+
+
+// let x = 15, y = 10;
+// let coords = {
+//     x: x,
+//     y: y,
+//     calcSq: function(){
+//         document.writeln(this.x * this.y);
+//     }
+// }
+
+// coords.calcSq();
+
+// let x = 15, y = 10;
+// let coords = {
+//     x, y,
+//     calcSq(){
+//         document.writeln(this.x * this.y);
+//     }
+// }
+
+// coords.calcSq();
+
+
+// function Car(name, year){
+//     this.name = name;
+//     this.year = year;
+// }
+
+// Car.prototype.getAge =function(){
+//     return new Date().getFullYear() - this.year;
+// }
+
+// Car.prototype.color = "black";
+
+// let ford = new Car("Ford", 2019)
+// console.log(ford);
+// console.log(ford.getAge());
+// ford.color = "red"
+// console.log(ford.color);
+
+// let bmw = new Car("BMW", 2017);
+// console.log(bmw);
+// console.log(bmw.getAge());
+
+
+function User(pName, pAge){
+    this.name = pName;
+    this.age = pAge;
+
+    this.displayInfo = function(){
+        document.writeln("Имя: " + this.name + "; возраст: " + this.age + "<br>");
+    }
+}
+
+let tom = new User("Tom", 26);
+
+tom.displayInfo();
+
+// function User(pName, pAge){
+//     this.name = pName;
+//     this.age = pAge;
+ 
+//     this.displayInfo = function(){
+//         document.writeln("Имя: " + this.name + "; возраст: " + this.age + "<br>");
+//     }
+// }
+ 
+// let tom = new User("Tom", 26);
+// tom.displayInfo();
+ 

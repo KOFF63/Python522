@@ -185,3 +185,32 @@
 
 
 // window.addEventListener('DOMContentLoaded', updateImages);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const submitBtn = document.querySelector('#submitBtn');
+    const nameInput = document.querySelector('#nameInput');
+    const messageInput = document.querySelector('#messageInput');
+    const messageContainer = document.querySelector('#messageContainer');
+    
+    submitBtn.addEventListener("click", smsUser);
+    
+    function smsUser(){
+        const sms = messageInput.value;
+        const name = nameInput.value;
+        const regExpMail = /([\w.]+@[\w.]+\.[a-z]{2,3})/ig;
+        const formattedSms = sms.replace(regExpMail, "<span style='color: red'>$1</span>");
+        
+        const newMessage = document.createElement('div');
+        newMessage.className = 'message';
+        newMessage.innerHTML = `
+            <fieldset>
+                <legend>${name}</legend>
+                <div>${formattedSms}</div>
+            </fieldset>
+        `;
+        
+        messageContainer.appendChild(newMessage);
+        
+        nameInput.value = '';
+    }
+});

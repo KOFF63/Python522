@@ -2,64 +2,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загадка про ёлку</title>
     <link rel="stylesheet" href="style.css">
-   <style>
-        .pane {
-            position: relative;
-            border-top: 2px solid #339900;
-            background-color: #ccffcc;
-            padding: 0px 20px 20px;
-            margin: 0px;
-        }
-
-        .remove-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            display: block;
-            background: url(button_delete_green.png) no-repeat;
-            width: 16px;
-            height: 16px;
-        }
-
-        h3 {
-            padding-right: 20px;
-        }
-    </style>
 </head>
 <body>
-   <div id="messages-container">
-        <div class="pane">
-            <h3>Лошадь</h3>
-            <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид
-                дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
-            <span class="remove-button"></span>
-        </div>
-        <div class="pane">
-            <h3>Осёл</h3>
-            <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
-            <span class="remove-button"></span>
-        </div>
-        <div class="pane">
-            <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
-            <p>Корова — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют тёлками.</p>
-            <span class="remove-button"></span>
-        </div>
-</div>
+    <form action="#">
+        <fieldset>
+            <legend>Гостевая книга</legend>
+            <p><input type="text" name="your_name" id="nameInput"> - имя</p>
+            <p><textarea name="your_message" id="messageInput" rows="5" cols="40">Настоящие условия лицензии являются соглашением sergey@mail.ru между корпорацией Microsoft (или, в зависимости от места вашего проживания, одним из ее аффилированных лиц) и вами. Прочтите их внимательно. Они применяются к вышеуказанному программному обеспечению, включая носители, на которых оно распространяется (если они есть). Условия лицензионного соглашения, предоставляемые в печатном виде, которые могут mister.900@gmail.com сопровождать программное обеспечение, имеют преимущественную силу над любыми условиями лицензии, предоставляемыми в электронном виде. Эти условия tester_3333.mig@bk.ru распространяются так же на все.</textarea></p>
+            <button type="button" id="submitBtn" style="padding: 10px 20px; min-width: 180px;">Добавить сообщение</button>
+        </fieldset>
+    </form>
+    
+    <div id="messageContainer" class="message-container"></div>
 
-<script>
-    const removeButtons = document.querySelectorAll('.remove-button');
-    removeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const pane = this.closest('.pane');
-            if (pane) {
-                pane.remove();
-            }
-        });
-    });
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
