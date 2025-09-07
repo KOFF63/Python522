@@ -1,13 +1,15 @@
 
-function Person(name, age, job) {
-    this.name = name;
-    this.age = age;
-    this.job = job;
+class Person {
+    constructor(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+    }
     
     
-    this.who = function() {
+    who() {
         return `Я ${this.name} мне ${this.age} лет. Я работаю ${this.job}ом.`;
-    };
+    }
 }
 
 
@@ -15,7 +17,9 @@ const person1 = new Person('Дмитрий', 26, 'Дизайнер');
 const person2 = new Person('Станислав', 29, 'Программист');
 const person3 = new Person('Сергей', 35, 'Менеджер');
 
+
 const people = [person1, person2, person3];
+
 
 function displayPeople() {
     const container = document.getElementById('people-container');
@@ -29,7 +33,3 @@ function displayPeople() {
 }
 
 document.addEventListener('DOMContentLoaded', displayPeople);
-
-console.log(person1.who());
-console.log(person2.who());
-console.log(person3.who());
