@@ -1387,18 +1387,18 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // console.log(bmw.getAge());
 
 
-function User(pName, pAge){
-    this.name = pName;
-    this.age = pAge;
+// function User(pName, pAge){
+//     this.name = pName;
+//     this.age = pAge;
 
-    this.displayInfo = function(){
-        document.writeln("Имя: " + this.name + "; возраст: " + this.age + "<br>");
-    }
-}
+//     this.displayInfo = function(){
+//         document.writeln("Имя: " + this.name + "; возраст: " + this.age + "<br>");
+//     }
+// }
 
-let tom = new User("Tom", 26);
+// let tom = new User("Tom", 26);
 
-tom.displayInfo();
+// tom.displayInfo();
 
 // function User(pName, pAge){
 //     this.name = pName;
@@ -1412,3 +1412,110 @@ tom.displayInfo();
 // let tom = new User("Tom", 26);
 // tom.displayInfo();
  
+
+// let user = {
+//     login: {
+//         firstName: "Kate",
+//         lastName: "Pavlova"
+//     },
+//     password: "qwerty",
+//     role: "guest"
+// }
+
+// // let {login: {firstName: f, lastName}, password,role} = user;
+// let {login: {firstName: f, lastName}, ...rest} = user;
+// document.writeln(f + " " + lastName + " " + rest.password + " " + rest.role);
+
+// let number = [3,5,6];
+// // let [a,b,c] = number;
+// // document.writeln(a + ' ' + b + ' ' + c);
+// let [,,c] = number;
+// document.writeln(c);
+
+// let pers = {
+//     name: "Igor",
+//     colors: [
+//         "красный",
+//         "белый",
+//         "синий",
+//         "черный",
+//     ],
+//     brand: "Bentley",
+//     start(){
+//         let {name, colors, brand} = this;
+//         let color = Math.floor(Math.random() * 4);
+//         document.writeln(name + " выиграл " + colors[color] + " " + brand);
+//     }
+// }
+
+// pers.start();
+
+// let form = document.form1;
+// form.addEventListener("submit", event => {
+//     event.preventDefault();
+
+//     let title = form.title.value;
+//     let text = form.text.value;
+//     let description = form.description.value;
+
+//     // console.log(title,text);
+//     saveForm({title, text, description});
+// });
+
+// // function saveForm(obj){
+// //     let {title, text, description} = obj;
+// //     let formData = {
+// //         data: new Date().toLocaleDateString(),
+// //         title, text, description
+// //     }
+// //     console.log("FormData:", formData);
+// // }
+
+// function saveForm(obj){
+//     let formData = {
+//         data: new Date().toLocaleDateString(),
+//         ...obj
+//     }
+//     console.log("FormData:", formData);
+// }
+
+// class User {
+//     constructor(name){
+//         this.name = name;
+//     }
+
+//     sayHi(){
+//         document.writeln("Hello, " + this.name + "!");
+//     }
+// }
+
+// let user = new User("Igor");
+// user.sayHi();
+
+// console.log(typeof User);
+
+
+
+// class User{
+//     constructor(login){
+//         this.login = login;
+//     }
+//     get login(){
+//         return this._login;
+//     }
+
+//     set login(value){
+//         if(value.length <6){
+//             alert("короткий");
+//             return;
+//         }
+//         this._login = value;
+//     }
+// }
+
+// let user = new User("administrator");
+// alert(user.login);
+// user.login = "admin_admin";
+// alert(user.login);
+// user.login = "admin";
+// alert(user.login);

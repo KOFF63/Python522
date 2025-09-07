@@ -3,48 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Загадка про ёлку</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Конструктор объектов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .person {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-wrapper">
-            <fieldset>
-                <legend><h3>Получи ответ на загадку</h3></legend>
-                
-                <p class="riddle-text">Зимой и летом одним цветом. Что это?</p>
-                
-                <div class="option">
-                    <input type="radio" name="radio2" value="wrong1" id="wrong1">
-                    <label for="wrong1">Снеговик</label>
-                </div>
-                
-                <div class="option">
-                    <input type="radio" name="radio2" value="correct" id="correct">
-                    <label for="correct">Ёлка</label>
-                </div>
-                
-                <div class="option">
-                    <input type="radio" name="radio2" value="wrong2" id="wrong2">
-                    <label for="wrong2">Солнце</label>
-                </div>
-                
-                <div class="option">
-                    <input type="radio" name="radio2" value="wrong3" id="wrong3">
-                    <label for="wrong3">Море</label>
-                </div>
-                
-                <div class="option">
-                    <input type="radio" name="radio2" value="wrong4" id="wrong4">
-                    <label for="wrong4">Небо</label>
-                </div>
-                
-                <button type="button" id="submitBtn">Выбрать</button>
-                
-                <div id="result"></div>
-            </fieldset>
-        </div>
-    </div>
+    <h1>Информация о людях</h1>
+    <div id="people-container"></div>
 
     <script src="script.js"></script>
 </body>
