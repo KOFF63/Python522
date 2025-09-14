@@ -1521,47 +1521,81 @@ false => 0, 0.0, "", false, null, undefined, NaN
 // alert(user.login);
 
 
-class Header{
-    constructor(img, h1, h2){
-        this.src = img;
-        this.h1 = h1;
-        this.h2 = h2;
-        this.out = "";
-    }
-    render(id){
-        this.out = `
-            <img src="${this.src}" alt="">
-            <h1>${this.h1}</h1>
-            <h2>${this.h2}</h2>
-        `;
-        document.querySelector(`#${id}`).innerHTML = this.out;
+// class Header{
+//     constructor(img, h1, h2){
+//         this.src = img;
+//         this.h1 = h1;
+//         this.h2 = h2;
+//         this.out = "";
+//     }
+//     render(id){
+//         this.out = `
+//             <img src="${this.src}" alt="">
+//             <h1>${this.h1}</h1>
+//             <h2>${this.h2}</h2>
+//         `;
+//         document.querySelector(`#${id}`).innerHTML = this.out;
+//     }
+// }
+
+// class HeaderExt extends Header{
+//     constructor(img, h1, h2, tel){
+//         super (img, h1, h2);
+//         this.tel = tel;
+//     }
+//     render(id){
+//         super.render(id);
+//         this.out += `
+//         <h3>${this.tel}</h3>
+//         `;
+//         document.querySelector(`#${id}`).innerHTML = this.out;
+//     }
+// }
+
+
+// let img = "https://images.icon-icons.com/855/PNG/96/Android_Robot_social_media_corporate_logo_icon-icons.com_67679.png";
+// let header = new Header(img, "Заголовок", "Описание");
+// header.render("header");
+
+
+// let img2 = "https://images.icon-icons.com/1834/PNG/96/iconfinderbmwlogo4140436-115966_115915.png";
+// let header2 = new Header(img2, "Второй заголовок", "Другое описание");
+// header2.render("header2");
+
+// let img3 = "https://images.icon-icons.com/2415/PNG/96/java_original_wordmark_logo_icon_146459.png"
+// let header3 = new HeaderExt(img3, "Заголовок о наследнике", "Описание в классе", "+7 999 123-45-67");
+// header3.render("header-ext");
+
+
+// let reg = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+
+// let info = '{"first_name":"Ivan","age":36,"mather":{"name":"Olga"},"children":["Kete","Igor","Misha"],"married":true,"dog":null}'
+// console.log(info)
+
+// let person = JSON.parse(info);
+// console.log(person)
+
+// person.first_name = "Petr";
+// delete(person.age);
+
+// person.work = "programmer";
+
+// // delete(person.children[1]);
+// person.children.splice(1,1);
+// person.children.push("Ira");
+// for(let i in person){
+//     document.writeln(i + ": " + person[i] + "<br>");
+
+// }
+
+// let personString = JSON.stringify(person);
+// console.log(personString);
+
+let request = new XMLHttpRequest();
+request.open("GET","data.txt");
+request.send();
+request.onreadystatechange = function(){
+    if((request.readyState == 4) && (request.status == 200)){
+        document.writeln(request.response);
     }
 }
-
-class HeaderExt extends Header{
-    constructor(img, h1, h2, tel){
-        super (img, h1, h2);
-        this.tel = tel;
-    }
-    render(id){
-        super.render(id);
-        this.out += `
-        <h3>${this.tel}</h3>
-        `;
-        document.querySelector(`#${id}`).innerHTML = this.out;
-    }
-}
-
-
-let img = "https://images.icon-icons.com/855/PNG/96/Android_Robot_social_media_corporate_logo_icon-icons.com_67679.png";
-let header = new Header(img, "Заголовок", "Описание");
-header.render("header");
-
-
-let img2 = "https://images.icon-icons.com/1834/PNG/96/iconfinderbmwlogo4140436-115966_115915.png";
-let header2 = new Header(img2, "Второй заголовок", "Другое описание");
-header2.render("header2");
-
-let img3 = "https://images.icon-icons.com/2415/PNG/96/java_original_wordmark_logo_icon_146459.png"
-let header3 = new HeaderExt(img3, "Заголовок о наследнике", "Описание в классе", "+7 999 123-45-67");
-header3.render("header-ext");
