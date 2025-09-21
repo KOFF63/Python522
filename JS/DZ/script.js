@@ -215,69 +215,142 @@
 //     }
 // });
 
-class Header{
-    constructor(img, h1, h2){
-        this.src = img;
-        this.h1 = h1;
-        this.h2 = h2;
-        this.out = "";
-    }
-    render(id){
-        this.out = `
-            <img src="${this.src}" alt="${this.h1}">
-            <h1>${this.h1}</h1>
-            <h2>${this.h2}</h2>
-        `;
-        document.querySelector(`#${id}`).innerHTML = this.out;
-    }
+// class Header{
+//     constructor(img, h1, h2){
+//         this.src = img;
+//         this.h1 = h1;
+//         this.h2 = h2;
+//         this.out = "";
+//     }
+//     render(id){
+//         this.out = `
+//             <img src="${this.src}" alt="${this.h1}">
+//             <h1>${this.h1}</h1>
+//             <h2>${this.h2}</h2>
+//         `;
+//         document.querySelector(`#${id}`).innerHTML = this.out;
+//     }
+// }
+
+// class HeaderExt extends Header{
+//     constructor(img, h1, h2, tel){
+//         super (img, h1, h2);
+//         this.tel = tel;
+//     }
+//     render(id){
+//         super.render(id);
+//         this.out += `
+//         <h3>${this.tel}</h3>
+//         `;
+//         document.querySelector(`#${id}`).innerHTML = this.out;
+//     }
+// }
+
+// let img1 = "https://images.icon-icons.com/3252/PNG/96/store_microsoft_regular_icon_204197.png";
+// let header1 = new Header(img1, "Заголовок 1", "Подзаголовок 1");
+// header1.render("header1");
+
+// let img2 = "https://images.icon-icons.com/3251/PNG/96/eye_show_regular_icon_203603.png";
+// let header2 = new Header(img2, "Заголовок 2", "Подзаголовок 2");
+// header2.render("header2");
+
+// let img3 = "https://images.icon-icons.com/3251/PNG/96/notepad_edit_regular_icon_203434.png";
+// let header3 = new HeaderExt(img3, "Заголовок 3", "Подзаголовок 3", "+7 999-999-999");
+// header3.render("header3");
+
+// let img4 = "https://images.icon-icons.com/3251/PNG/96/video_recording_regular_icon_202660.png";
+// let header4 = new Header(img4, "Заголовок 4", "Подзаголовок 4");
+// header4.render("header4");
+
+// let img5 = "https://images.icon-icons.com/3251/PNG/96/eye_hide_regular_icon_203604.png";
+// let header5 = new HeaderExt(img5, "Заголовок 5", "Подзаголовок 5", "+7 999-999-999");
+// header5.render("header5");
+
+// let img6 = "https://images.icon-icons.com/3251/PNG/96/brain_circuit_regular_icon_203865.png";
+// let header6 = new Header(img6, "Заголовок 6", "Подзаголовок 6");
+// header6.render("header6");
+
+// let img7 = "https://images.icon-icons.com/3251/PNG/96/handshake_regular_icon_203548.png";
+// let header7 = new HeaderExt(img7, "Заголовок 7", "Подзаголовок 7", "+7 999-999-999");
+// header7.render("header7");
+
+// let img8 = "https://images.icon-icons.com/3251/PNG/96/bot_regular_icon_203029.png";
+// let header8 = new Header(img8, "Заголовок 8", "Подзаголовок 8");
+// header8.render("header8");
+
+// let img9 = "https://images.icon-icons.com/3251/PNG/96/cursor_click_regular_icon_203700.png";
+// let header9 = new HeaderExt(img9, "Заголовок 9", "Подзаголовок 9", "+7 999-999-999");
+// header9.render("header9");
+
+
+
+let form = document.form1;
+const modalOverlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+const modalIcon = document.getElementById('modalIcon');
+const modalMessage = document.getElementById('modalMessage');
+const modalClose = document.getElementById('modalClose');
+
+let message = {
+  loading: "Загрузка",
+  success: "Спасибо! Скоро с вами свяжемся",
+  failure: "Что-то пошло не так..."
+};
+
+function showModal(status, text) {
+  modal.className = 'modal';
+  modalIcon.innerHTML = '';
+  
+  modal.classList.add(status);
+  
+  if (status === 'loading') {
+    modalIcon.innerHTML = '<div class="loader"></div>';
+  } else if (status === 'success') {
+    modalIcon.innerHTML = '✓';
+  } else if (status === 'failure') {
+    modalIcon.innerHTML = '✕';
+  }
+  
+  modalMessage.textContent = text;
+  modalOverlay.classList.add('active');
+  
+  if (status !== 'loading') {
+    setTimeout(() => {
+      hideModal();
+    }, 5000); 
+  }
 }
 
-class HeaderExt extends Header{
-    constructor(img, h1, h2, tel){
-        super (img, h1, h2);
-        this.tel = tel;
-    }
-    render(id){
-        super.render(id);
-        this.out += `
-        <h3>${this.tel}</h3>
-        `;
-        document.querySelector(`#${id}`).innerHTML = this.out;
-    }
+function hideModal() {
+  modalOverlay.classList.remove('active');
 }
 
-let img1 = "https://images.icon-icons.com/3252/PNG/96/store_microsoft_regular_icon_204197.png";
-let header1 = new Header(img1, "Заголовок 1", "Подзаголовок 1");
-header1.render("header1");
+modalClose.addEventListener('click', hideModal);
 
-let img2 = "https://images.icon-icons.com/3251/PNG/96/eye_show_regular_icon_203603.png";
-let header2 = new Header(img2, "Заголовок 2", "Подзаголовок 2");
-header2.render("header2");
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) {
+    hideModal();
+  }
+});
 
-let img3 = "https://images.icon-icons.com/3251/PNG/96/notepad_edit_regular_icon_203434.png";
-let header3 = new HeaderExt(img3, "Заголовок 3", "Подзаголовок 3", "+7 999-999-999");
-header3.render("header3");
+form.addEventListener("submit", event => {
+  event.preventDefault();
 
-let img4 = "https://images.icon-icons.com/3251/PNG/96/video_recording_regular_icon_202660.png";
-let header4 = new Header(img4, "Заголовок 4", "Подзаголовок 4");
-header4.render("header4");
+  showModal('loading', message.loading);
 
-let img5 = "https://images.icon-icons.com/3251/PNG/96/eye_hide_regular_icon_203604.png";
-let header5 = new HeaderExt(img5, "Заголовок 5", "Подзаголовок 5", "+7 999-999-999");
-header5.render("header5");
+  let request = new XMLHttpRequest();
+  request.open("POST", "server.php");
 
-let img6 = "https://images.icon-icons.com/3251/PNG/96/brain_circuit_regular_icon_203865.png";
-let header6 = new Header(img6, "Заголовок 6", "Подзаголовок 6");
-header6.render("header6");
+  let formData = new FormData(form);
+  request.send(formData);
 
-let img7 = "https://images.icon-icons.com/3251/PNG/96/handshake_regular_icon_203548.png";
-let header7 = new HeaderExt(img7, "Заголовок 7", "Подзаголовок 7", "+7 999-999-999");
-header7.render("header7");
-
-let img8 = "https://images.icon-icons.com/3251/PNG/96/bot_regular_icon_203029.png";
-let header8 = new Header(img8, "Заголовок 8", "Подзаголовок 8");
-header8.render("header8");
-
-let img9 = "https://images.icon-icons.com/3251/PNG/96/cursor_click_regular_icon_203700.png";
-let header9 = new HeaderExt(img9, "Заголовок 9", "Подзаголовок 9", "+7 999-999-999");
-header9.render("header9");
+  request.addEventListener("load", function(){
+    if(request.status == 200){
+      console.log(request.response);
+      showModal('success', message.success);    
+    } else {
+      showModal('failure', message.failure);
+    }
+    form.reset();
+  });
+});

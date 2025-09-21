@@ -1,50 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Header Blocks Example</title>
-    <style>
-        section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        div {
-            border: 2px solid #000;
-            padding: 20px;
-            margin-bottom: 20px;
-            width: 30%;
-            min-width: 250px;
-            box-sizing: border-box;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        h1, h2, h3 {
-            margin: 10px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма с модальными уведомлениями</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>JavaScript</h1>
+  <form action="server.php" method="POST" name="form1">
+    <input type="text" name="name" placeholder="Имя" required>
+    <input type="tel" name="phone" placeholder="Телефон" required>
+    <button type="submit">Отправить</button>
+  </form>
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-icon" id="modalIcon"></div>
+      <div class="modal-message" id="modalMessage"></div>
+    </div>
+  </div>
 
-    <section>
-        <div id="header1"></div>
-        <div id="header2"></div>
-        <div id="header3"></div>
-        <div id="header4"></div>
-        <div id="header5"></div>
-        <div id="header6"></div>
-        <div id="header7"></div>
-        <div id="header8"></div>
-        <div id="header9"></div>
-    </section>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
