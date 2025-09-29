@@ -1,0 +1,170 @@
+.App {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+.App-header {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.music-album {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.album-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.album-cover img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+}
+
+.album-details {
+  flex: 1;
+}
+
+.album-title {
+  font-size: 2.2em;
+  margin: 0 0 10px 0;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.album-artist {
+  font-size: 1.5em;
+  margin: 0 0 5px 0;
+  color: #ff6b6b;
+}
+
+.album-year {
+  font-size: 1.2em;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.album-info {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.album-info h2 {
+  margin-top: 0;
+  color: #ffd700;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: left;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.label {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.value {
+  text-align: right;
+}
+
+.track-list {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+}
+
+.track-list h3 {
+  margin-top: 0;
+  color: #ffd700;
+  text-align: center;
+}
+
+.track-list ol {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.track-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.track-number {
+  color: #ffd700;
+  font-weight: bold;
+  min-width: 25px;
+}
+
+.track-title {
+  flex: 1;
+}
+
+.track-duration {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .album-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .music-album {
+    margin: 0 15px;
+    padding: 20px;
+  }
+  
+  .album-cover img {
+    width: 150px;
+    height: 150px;
+  }
+}
