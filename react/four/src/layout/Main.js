@@ -41,3 +41,49 @@ class Main extends React.Component{
 }
 
 export default Main;
+
+// import React from "react";
+// import './Main.css';
+// import MovieList from "../components/MovieList";
+// import Preloader from "../components/Preloader";
+// import Search from "../components/Search";
+
+// class Main extends React.Component{
+//     state = {
+//         movies: [],
+//         loading: true
+//     }
+
+//     componentDidMount(){
+//         this.searchMovie('matrix');
+//     }
+
+//     searchMovie = (str, type = 'all') => {
+//         this.setState({ loading: true });
+//         fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=714040eb&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
+//             .then(response => response.json())
+//             .then(data => this.setState({ 
+//                 movies: data.Search || [], 
+//                 loading: false 
+//             }))
+//             .catch(error => {
+//                 console.error('Error:', error);
+//                 this.setState({ movies: [], loading: false });
+//             });
+//     }
+
+//     render(){
+//         const { movies, loading } = this.state;
+        
+//         return(
+//             <div className="main">
+//                 <div className="wrap">
+//                     <Search searchMovie={this.searchMovie} />
+//                     {loading ? <Preloader /> : <MovieList movies={movies} />}
+//                 </div>
+//             </div>
+//         )
+//     }
+// }
+
+// export default Main;

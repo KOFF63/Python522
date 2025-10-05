@@ -67,3 +67,72 @@ class Search extends React.Component {
 }
 
 export default Search;
+
+// import React from "react";
+// import './Search.css';
+
+// class Search extends React.Component {
+//     state = {
+//         search: "",
+//         type: "all"
+//     }
+
+//     handleKey = (event) => {
+//         if (event.key === 'Enter') {
+//             this.handleSearch();
+//         }
+//     }
+
+//     handleSearch = () => {
+//         if (this.state.search.trim()) {
+//             this.props.searchMovie(this.state.search, this.state.type);
+//         }
+//     }
+
+//     handelFilter = (event) => {
+//         const newType = event.target.dataset.type;
+//         this.setState({ type: newType }, () => {
+//             if (this.state.search.trim()) {
+//                 this.props.searchMovie(this.state.search, newType);
+//             }
+//         });
+//     }
+
+//     render() {
+//         return (
+//             <>
+//                 <div className="search">
+//                     <input
+//                         type="search"
+//                         placeholder="Search"
+//                         value={this.state.search}
+//                         onChange={(e) => this.setState({ search: e.target.value })}
+//                         onKeyDown={this.handleKey}
+//                     />
+//                     <button
+//                         className="btn"
+//                         onClick={this.handleSearch}
+//                         disabled={!this.state.search.trim()}
+//                     >
+//                         Search
+//                     </button>
+//                 </div>
+//                 <div className="radio">
+//                     <input type="radio" name="type" data-type="all" checked={this.state.type === 'all'} onChange={this.handelFilter} id="all" /> 
+//                     <label htmlFor="all">All</label>
+                    
+//                     <input type="radio" name="type" data-type="movie" checked={this.state.type === 'movie'} onChange={this.handelFilter} id="movies" /> 
+//                     <label htmlFor="movies">Movies</label>
+                    
+//                     <input type="radio" name="type" data-type="series" checked={this.state.type === 'series'} onChange={this.handelFilter} id="series" /> 
+//                     <label htmlFor="series">Series</label>
+                    
+//                     <input type="radio" name="type" data-type="game" checked={this.state.type === 'game'} onChange={this.handelFilter} id="games" /> 
+//                     <label htmlFor="games">Games</label>
+//                 </div>
+//             </>
+//         )
+//     }
+// }
+
+// export default Search;
