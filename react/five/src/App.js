@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-// import Counter from './Counter';
+import Counter from './Counter';
 // import Person from './Person';
 // import Modal from './Modal';
 // import Item from './Item';
@@ -9,49 +9,51 @@ import Form from './Form';
 
 function App() {
 
-  let [tasks, setTasks] = useState([
-    {
-      text: "Выучить JavaScript",
-      done: false
-    },
-    {
-      text: "Познакомиться с React",
-      done: false
-    },
-    {
-      text: "Устроиться на работу",
-      done: false
-    }
-  ])
+  // let [tasks, setTasks] = useState([
+  //   {
+  //     text: "Выучить JavaScript",
+  //     done: false
+  //   },
+  //   {
+  //     text: "Познакомиться с React",
+  //     done: false
+  //   },
+  //   {
+  //     text: "Устроиться на работу",
+  //     done: false
+  //   }
+  // ])
 
-  let addTask = text => {
-    let newTask = [...tasks, { text }];
-    setTasks(newTask);
-  }
+  // let addTask = text => {
+  //   let newTask = [...tasks, { text }];
+  //   setTasks(newTask);
+  // }
 
-  let doneTask = index => {
-    let newTask = [...tasks];
-    newTask[index].done = !newTask[index].done; 
-    setTasks(newTask);
-  }
+  // let doneTask = index => {
+  //   let newTask = [...tasks];
+  //   newTask[index].done = !newTask[index].done; 
+  //   setTasks(newTask);
+  // }
 
-  let deleteTask = index => {
-    let newTask = [...tasks];
-    newTask.splice(index,1);
-    setTasks(newTask)
-  }
+  // let deleteTask = index => {
+  //   let newTask = [...tasks];
+  //   newTask.splice(index,1);
+  //   setTasks(newTask)
+  // }
 
+  let [isCounter, setCounter] = useState(true);
   return (
     <div className="App">
       <div className='task-list'>
-        {
+        <button onClick={() => setCounter(!isCounter)}>Togle Counter</button>
+        {/* {
           console.log(tasks)
-        }
-        {/* <Counter />
-      <Person />
+        } */}
+        {isCounter && <Counter />}
+  {/* <Person />
       <Modal />
-      <Item />*/}
-        {
+      <Item /> */}
+        {/* {
           tasks.map((task, index) =>
             <Task
               key={index}
@@ -62,7 +64,7 @@ function App() {
             />
           )
         }
-        <Form addTask={addTask} />
+        <Form addTask={addTask} /> */}
       </div>
     </div>
   );
