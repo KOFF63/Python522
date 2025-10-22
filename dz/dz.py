@@ -1007,55 +1007,104 @@
 # if __name__ == '__main__':
 #     main()
 
-from bs4 import BeautifulSoup
-import requests
+# from bs4 import BeautifulSoup
+# import requests
+#
+#
+# class HabrParser:
+#     def __init__(self, base_url, path, pages=3):
+#         self.base_url = base_url
+#         self.path = path
+#         self.pages = pages
+#         self.res = []
+#
+#     def get_html(self, page=1):
+#         url = f"{self.base_url}page{page}/" if page > 1 else self.base_url
+#         req = requests.get(url)
+#         return BeautifulSoup(req.text, 'lxml')
+#
+#     def parsing(self, html):
+#         articles = html.find_all('article', class_='tm-articles-list__item')
+#         for item in articles:
+#             title = item.find('h2', class_='tm-title').text.strip()
+#             href = self.base_url[:-1] + item.find('a', class_='tm-title__link')['href']
+#             author = item.find('a', class_='tm-user-info__username').text.strip()
+#             self.res.append({
+#                 'title': title,
+#                 'href': href,
+#                 'author': author
+#             })
+#
+#     def save(self):
+#         with open(self.path, 'w', encoding='utf-8') as f:
+#             for i, item in enumerate(self.res, 1):
+#                 f.write(f"Статья #{i}\n\n"
+#                         f"Название: {item['title']}\n"
+#                         f"Ссылка: {item['href']}\n"
+#                         f"Автор: {item['author']}\n\n"
+#                         f"{'*' * 50}\n")
+#
+#     def run(self):
+#         for page in range(1, self.pages + 1):
+#             html = self.get_html(page)
+#             self.parsing(html)
+#         self.save()
+#         print(f"Сохранено {len(self.res)} статей в файл {self.path}")
+#
+#
+# if __name__ == '__main__':
+#     parser = HabrParser(
+#         base_url='https://habr.com/ru/news/',
+#         path='habr_news.txt',
+#         pages=3
+#     )
+#     parser.run()
 
 
-class HabrParser:
-    def __init__(self, base_url, path, pages=3):
-        self.base_url = base_url
-        self.path = path
-        self.pages = pages
-        self.res = []
+# первое задание
 
-    def get_html(self, page=1):
-        url = f"{self.base_url}page{page}/" if page > 1 else self.base_url
-        req = requests.get(url)
-        return BeautifulSoup(req.text, 'lxml')
-
-    def parsing(self, html):
-        articles = html.find_all('article', class_='tm-articles-list__item')
-        for item in articles:
-            title = item.find('h2', class_='tm-title').text.strip()
-            href = self.base_url[:-1] + item.find('a', class_='tm-title__link')['href']
-            author = item.find('a', class_='tm-user-info__username').text.strip()
-            self.res.append({
-                'title': title,
-                'href': href,
-                'author': author
-            })
-
-    def save(self):
-        with open(self.path, 'w', encoding='utf-8') as f:
-            for i, item in enumerate(self.res, 1):
-                f.write(f"Статья #{i}\n\n"
-                        f"Название: {item['title']}\n"
-                        f"Ссылка: {item['href']}\n"
-                        f"Автор: {item['author']}\n\n"
-                        f"{'*' * 50}\n")
-
-    def run(self):
-        for page in range(1, self.pages + 1):
-            html = self.get_html(page)
-            self.parsing(html)
-        self.save()
-        print(f"Сохранено {len(self.res)} статей в файл {self.path}")
+from jinja2 import Template
 
 
-if __name__ == '__main__':
-    parser = HabrParser(
-        base_url='https://habr.com/ru/news/',
-        path='habr_news.txt',
-        pages=3
-    )
-    parser.run()
+menu_items = [
+    {'url': '/index', 'title': 'Главная', 'active': True},
+    {'url': '/news', 'title': 'Новости', 'active': False},
+    {'url': '/about', 'title': 'О компании', 'active': False},
+    {'url': '/shop', 'title': 'Магазин', 'active': False},
+    {'url': '/contacts', 'title': 'Контакты', 'active': False}
+]
+
+
+template = """
+<ul>
+{% for item in menu %}
+    <li><a href="{{ item.url }}" {% if item.active %}class="active"{% endif %}>{{ item.title }}</a></li>
+{% endfor %}
+</ul>
+"""
+
+tm = Template(template)
+result = tm.render(menu=menu_items)
+print(result)
+
+
+# второе задание
+
+from jinja2 import Template
+
+# Макроопределение для полей ввода
+template = """
+{% macro input_field(name, placeholder, type='text') %}
+    <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
+{% endmacro %}
+
+{{ input_field('firstname', 'Имя') }}
+{{ input_field('lastname', 'Фамилия') }}
+{{ input_field('address', 'Адрес') }}
+{{ input_field('phone', 'Телефон', 'tel') }}
+{{ input_field('email', 'Почта', 'email') }}
+"""
+
+tm = Template(template)
+result = tm.render()
+print(result)
