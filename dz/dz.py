@@ -1092,7 +1092,7 @@ print(result)
 
 from jinja2 import Template
 
-# Макроопределение для полей ввода
+
 template = """
 {% macro input_field(name, placeholder, type='text') %}
     <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
