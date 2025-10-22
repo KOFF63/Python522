@@ -1063,48 +1063,48 @@
 
 # первое задание
 
-from jinja2 import Template
-
-
-menu_items = [
-    {'url': '/index', 'title': 'Главная', 'active': True},
-    {'url': '/news', 'title': 'Новости', 'active': False},
-    {'url': '/about', 'title': 'О компании', 'active': False},
-    {'url': '/shop', 'title': 'Магазин', 'active': False},
-    {'url': '/contacts', 'title': 'Контакты', 'active': False}
-]
-
-
-template = """
-<ul>
-{% for item in menu %}
-    <li><a href="{{ item.url }}" {% if item.active %}class="active"{% endif %}>{{ item.title }}</a></li>
-{% endfor %}
-</ul>
-"""
-
-tm = Template(template)
-result = tm.render(menu=menu_items)
-print(result)
-
-
-# второе задание
-
-from jinja2 import Template
-
-
-template = """
-{% macro input_field(name, placeholder, type='text') %}
-    <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
-{% endmacro %}
-
-{{ input_field('firstname', 'Имя') }}
-{{ input_field('lastname', 'Фамилия') }}
-{{ input_field('address', 'Адрес') }}
-{{ input_field('phone', 'Телефон', 'tel') }}
-{{ input_field('email', 'Почта', 'email') }}
-"""
-
-tm = Template(template)
-result = tm.render()
-print(result)
+# from jinja2 import Template
+#
+#
+# menu_items = [
+#     {'url': '/index', 'title': 'Главная', 'active': True},
+#     {'url': '/news', 'title': 'Новости', 'active': False},
+#     {'url': '/about', 'title': 'О компании', 'active': False},
+#     {'url': '/shop', 'title': 'Магазин', 'active': False},
+#     {'url': '/contacts', 'title': 'Контакты', 'active': False}
+# ]
+#
+#
+# template = """
+# <ul>
+# {% for item in menu %}
+#     <li><a href="{{ item.url }}" {% if item.active %}class="active"{% endif %}>{{ item.title }}</a></li>
+# {% endfor %}
+# </ul>
+# """
+#
+# tm = Template(template)
+# result = tm.render(menu=menu_items)
+# print(result)
+#
+#
+# # второе задание
+#
+# from jinja2 import Template
+#
+#
+# template = """
+# {% macro input_field(name, placeholder, type='text') %}
+#     <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
+# {% endmacro %}
+#
+# {{ input_field('firstname', 'Имя') }}
+# {{ input_field('lastname', 'Фамилия') }}
+# {{ input_field('address', 'Адрес') }}
+# {{ input_field('phone', 'Телефон', 'tel') }}
+# {{ input_field('email', 'Почта', 'email') }}
+# """
+#
+# tm = Template(template)
+# result = tm.render()
+# print(result)

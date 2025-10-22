@@ -6442,7 +6442,7 @@ from bs4 import BeautifulSoup
 # if __name__ == '__main__':
 #
 #     main()
-from jinja2 import Template
+# from jinja2 import Template
 
 # name = "Игорь"
 # age = 28
@@ -6520,21 +6520,47 @@ from jinja2 import Template
 #
 # print(msg)
 
+#
+# html = """
+# {% macro input_func(name, value='', type='text', size=20) %}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+# {% endmacro %}
+#
+#
+# <p> {{ input_func('username') }} </p>
+# <p> {{ input_func('email') }} </p>
+# <p> {{ input_func('password', type='password') }} </p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+#
+#
 
-html = """
-{% macro input_func(name, value='', type='text', size=20) %}
-    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
-{% endmacro %}
+
+from jinja2 import Environment, FileSystemLoader
+#
+# person = [
+#     {"name": "Alex"},
+#     {"name": "Nikita"},
+#     {"name": "Vitaly"},
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template("index.html")
+# msg = tm.render(users=person, title="About Jinja")
+#
+# print(msg)
 
 
-<p> {{ input_func('username') }} </p>
-<p> {{ input_func('email') }} </p>
-<p> {{ input_func('password', type='password') }} </p>
-"""
+file_loader = FileSystemLoader('templates')
+env = Environment(loader=file_loader)
 
-tm = Template(html)
+tm = env.get_template("about.html")
 msg = tm.render()
 
 print(msg)
-
-
