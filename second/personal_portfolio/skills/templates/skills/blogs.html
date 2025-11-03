@@ -17,7 +17,7 @@
             <h2>{{ blog.title }}</h2>
             <p>{{ blog.description|striptags|truncatechars:100 }}</p>
             <p class="date">{{ blog.date|date:'d.m.Y' }}</p>
-            <a href="{% url 'blog:detail' blog.id %}">Читать далее</a>
+            <a href="{% url 'detail' blog.id %}">Читать далее</a>
         </div>
     </div>
     {% empty %}
@@ -25,6 +25,7 @@
         <div class="text">
             <h2>Пока нет постов</h2>
             <p>Скоро здесь появятся интересные статьи о разработке!</p>
+            <p class="date">01.01.2024</p>
         </div>
     </div>
     {% endfor %}
