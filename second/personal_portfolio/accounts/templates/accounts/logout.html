@@ -1,0 +1,55 @@
+{% extends 'skills/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-form">
+        <h2>Выход</h2>
+        <p>Вы успешно вышли из системы.</p>
+        <div class="auth-links">
+            <a href="{% url 'accounts:login' %}" class="btn-primary">Войти снова</a>
+            <a href="{% url 'blog:blogs' %}" style="display: block; text-align: center; margin-top: 10px;">На главную</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.auth-form {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.auth-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
